@@ -22,12 +22,6 @@ class Evenement
     #[ORM\Column]
     private ?int $nbPlaceMaxEvent = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $dateDebEvent = null;
-
-    #[ORM\Column(length: 30)]
-    private ?string $dateFinEvent = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -65,30 +59,6 @@ class Evenement
     public function setNbPlaceMaxEvent(int $nbPlaceMaxEvent): static
     {
         $this->nbPlaceMaxEvent = $nbPlaceMaxEvent;
-
-        return $this;
-    }
-
-    public function getDateDebEvent(): ?string
-    {
-        return $this->dateDebEvent;
-    }
-
-    public function setDateDebEvent(string $dateDebEvent): static
-    {
-        $this->dateDebEvent = $dateDebEvent;
-
-        return $this;
-    }
-
-    public function getDateFinEvent(): ?string
-    {
-        return $this->dateFinEvent;
-    }
-
-    public function setDateFinEvent(string $dateFinEvent): static
-    {
-        $this->dateFinEvent = $dateFinEvent;
 
         return $this;
     }
