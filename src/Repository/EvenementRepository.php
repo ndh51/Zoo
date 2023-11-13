@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -57,4 +58,20 @@ class EvenementRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    /**
+     * @throws Exception
+     */
+    public function findAll(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM evenement e
+        ORDER BY e.nomEvent, e.nbPLaceMaxEvent ASC
+        ';
+
+        return $conn->executeQuery($sql)->fetchAllAssociative();
+
+        }
 }

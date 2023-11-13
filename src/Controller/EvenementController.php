@@ -14,7 +14,6 @@ class EvenementController extends AbstractController
     public function show(#[MapEntity(expr: 'repository.findWithCategory(id)')]
         ?Evenement $evenement): Response
     {
-
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }
