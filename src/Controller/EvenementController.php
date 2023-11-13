@@ -30,6 +30,10 @@ class EvenementController extends AbstractController
     public function show(#[MapEntity(expr: 'repository.findWithCategory(id)')]
         ?Evenement $evenement): Response
     {
+        if (is_null($evenement)) {
+            return $this->redirectToRoute('app_evenement', status: 303);
+        }
+
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }
