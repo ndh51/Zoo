@@ -10,3 +10,9 @@ Dans le cadre de notre deuxième année d'études, le projet web d'un site de **
 ## Configurations
 ### Base de données  
 ### Scripts Composer  
+```composer db``` lance la création totale de la base de données de zéro, ce script utilise :
+- ```composer drop``` supprime la base de données zoo
+- ```composer create``` créé la base de données zoo
+- ```composer migrate``` application des migrations la base de données zoo 
+- ```composer load``` charge les données factices la base de données zoo
+
