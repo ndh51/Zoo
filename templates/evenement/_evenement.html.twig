@@ -1,0 +1,7 @@
+{% for evenement in evenements %}
+    <ul class="list-group">
+
+        <li><a href="{{ path('app_evenement_id', {id: evenement.id}) }}">{{ evenement.nom_event }}</a></li>
+
+    </ul>
+{% endfor %}
