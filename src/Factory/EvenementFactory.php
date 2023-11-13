@@ -46,9 +46,11 @@ final class EvenementFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $dateFinEvent = self::faker()->date();
+
         return [
-            'dateDebEvent' => self::faker()->text(30),
-            'dateFinEvent' => self::faker()->text(30),
+            'dateDebEvent' => self::faker()->date(max: $dateFinEvent),
+            'dateFinEvent' => $dateFinEvent,
             'descEvent' => self::faker()->text(30),
             'nbPlaceMaxEvent' => self::faker()->randomNumber(),
             'nomEvent' => self::faker()->text(30),
