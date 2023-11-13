@@ -62,13 +62,13 @@ class EvenementRepository extends ServiceEntityRepository
     /**
      * @throws Exception
      */
-    public function findAll(): array
+    public function findAllEvenement(): array
     {
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
         SELECT * FROM evenement e
-        ORDER BY e.nomEvent, e.nbPLaceMaxEvent ASC
+        ORDER BY e.nom_event, e.nb_pLace_max_event ASC
         ';
 
         return $conn->executeQuery($sql)->fetchAllAssociative();
