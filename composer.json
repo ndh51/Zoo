@@ -66,6 +66,9 @@
         "start": [
             "symfony serve"
         ],
+        "stop" : [
+            "symfony local:server:stop"
+        ],
         "drop" : [
             "php bin/console doctrine:database:drop --force --if-exists"
         ],
