@@ -1,5 +1,5 @@
 {% for evenement in evenements %}
-    <ul class="list-group">
+    <ul>
 
         <li><a href="{{ path('app_evenement_id', {id: evenement.id}) }}">{{ evenement.nom_event }}</a></li>
 
