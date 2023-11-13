@@ -9,4 +9,4 @@
 Dans le cadre de notre deuxième année d'études, le projet web d'un site de **gestion de zoo** consiste à allier le travail d'équipe et nos compétences en développement web. Nous utiliserons ```Symfony``` et tous les concepts de programmations en notre connaissance.
 ## Configurations
 ### Base de données  
-### Scripts Composer
+### Scripts Composer  
