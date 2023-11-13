@@ -10,8 +10,8 @@ Dans le cadre de notre deuxième année d'études, le projet web d'un site de **
 ## Configurations
 ### Base de données  
 ### Scripts Composer  
-```composer start``` démarre le serveur local, naviguable à partir de **http://127.0.0.1:8000/**
-```composer stop``` ferme le serveur local symfony en cours (utile si le cmd est fermé)
+```composer start``` démarre le serveur local, naviguable à partir de **http://127.0.0.1:8000/**  
+```composer stop``` ferme le serveur local symfony en cours (utile si le cmd est fermé)  
 <br>
 ```composer db``` lance la création totale de la base de données de zéro, ce script utilise :
 - ```composer drop``` supprime la base de données zoo
