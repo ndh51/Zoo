@@ -61,6 +61,7 @@ class EvenementRepository extends ServiceEntityRepository
 
     /**
      * @throws Exception
+     * @throws Exception
      */
     public function findAllEvenement(): array
     {
@@ -73,5 +74,6 @@ class EvenementRepository extends ServiceEntityRepository
 
         return $conn->executeQuery($sql)->fetchAllAssociative();
 
-        }
+    }
+
 }

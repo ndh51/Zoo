@@ -16,7 +16,7 @@ class Evenement
     #[ORM\Column(length: 30)]
     private ?string $nomEvent = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 255)]
     private ?string $descEvent = null;
 
     #[ORM\Column]
