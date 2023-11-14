@@ -7,14 +7,23 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.16",
         "symfony/console": "6.3.*",
         "symfony/dotenv": "6.3.*",
+        "symfony/expression-language": "6.3.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.3.*",
         "symfony/runtime": "6.3.*",
+        "symfony/twig-bundle": "6.3.*",
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "friendsofphp/php-cs-fixer": "^3.38",
+        "symfony/maker-bundle": "^1.51",
+        "zenstruck/foundry": "^1.36"
     },
     "config": {
         "allow-plugins": {
@@ -53,6 +62,27 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "start": [
+            "symfony serve"
+        ],
+        "stop" : [
+            "symfony local:server:stop"
+        ],
+        "drop" : [
+            "php bin/console doctrine:database:drop --force --if-exists"
+        ],
+        "create" : [
+            "php bin/console doctrine:database:create"
+        ],
+        "migrate" : [
+            "php bin/console doctrine:migrations:migrate --no-interaction"
+        ],
+        "load" : [
+            "php bin/console doctrine:fixtures:load --no-interaction"
+        ],
+        "db" : [
+            "@drop", "@create", "@migrate", "@load"
         ]
     },
     "conflict": {
