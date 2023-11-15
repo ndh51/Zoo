@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EvenementRepository $eventRepo): Response
     {
-        $temp = $eventRepo->findEvenementsMostPlace();
+        $temp = $eventRepo->findBy([], ['nbPlaceMaxEvent' => 'DESC']);
         $events = [];
         for ($i = 0; $i < 3; ++$i) {
             $events[] = $temp[$i];
