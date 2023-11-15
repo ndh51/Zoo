@@ -59,34 +59,6 @@ class EvenementRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    public function findEvenementsMostPlace(): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-        SELECT * FROM evenement e
-        ORDER BY e.nb_pLace_max_event ASC, e.nom_event
-        ';
-
-        return $conn->executeQuery($sql)->fetchAllAssociative();
-    }
-
-    /**
-     * @throws Exception
-     * @throws Exception
-     */
-    public function findAllEvenement(): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-        SELECT * FROM evenement e
-        ORDER BY e.nom_event, e.nb_pLace_max_event ASC
-        ';
-
-        return $conn->executeQuery($sql)->fetchAllAssociative();
-
-    }
 
     public function search(string $text = ''): array
     {
