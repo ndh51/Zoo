@@ -35,6 +35,7 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('app_evenement', status: 303);
         }
 
+        dump($evenement);
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }
