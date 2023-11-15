@@ -22,8 +22,6 @@ class EvenementController extends AbstractController
         $contact = $request->query->get('search', '');
         $evenements = $repository->search($contact);
 
-        //$evenements = $repository->findAll();
-
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements,
         ]);
