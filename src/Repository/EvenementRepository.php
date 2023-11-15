@@ -50,7 +50,7 @@ class EvenementRepository extends ServiceEntityRepository
     /**
      * @throws NonUniqueResultException
      */
-    public function findWithCategory(int $id): ?Evenement
+    public function findWithId(int $id): ?Evenement
     {
         return $this->createQueryBuilder('e')
             ->where('e.id = :id')

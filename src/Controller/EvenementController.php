@@ -28,7 +28,7 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['eventId' => '\d+'])]
-    public function show(#[MapEntity(expr: 'repository.findWithCategory(id)')]
+    public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Evenement $evenement): Response
     {
         if (is_null($evenement)) {
