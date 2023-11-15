@@ -47,11 +47,8 @@ final class AnimalFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'idAnimal' => self::faker()->randomNumber(),
-            'idCategorie' => self::faker()->randomNumber(),
-            'idEnclos' => self::faker()->randomNumber(),
-            'idFamille' => self::faker()->randomNumber(),
             'nomAnimal' => self::faker()->text(50),
+            'descAnimal' => self::faker()->text(200),
         ];
     }
 
