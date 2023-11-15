@@ -64,6 +64,7 @@
             "@auto-scripts"
         ],
         "start": [
+            "Composer\\Config::disableProcessTimeout",
             "symfony serve"
         ],
         "stop" : [
