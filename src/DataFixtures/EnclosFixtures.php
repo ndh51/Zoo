@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\EnclosFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -9,9 +10,14 @@ class EnclosFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        //EnclosFactory::createMany(5);
+    }
 
-        $manager->flush();
+    public function getDependencies(): array
+    {
+        return [
+            EvenementFixtures::class,
+            AppFixtures::class,
+        ];
     }
 }
