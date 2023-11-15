@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimauxController!{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for animal in animaux %}
+            <li>{{animal.nomAnimal}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
