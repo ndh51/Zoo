@@ -22,7 +22,7 @@
     },
     {
       "nom": "Girafe",
-      "description": "La girafe est un mammifère herbivore caractérisé par son cou extrêmement long et ses taches distinctives. Elle est le plus grand animal terrestre et se nourrit principalement des feuilles des arbres. Les girafes ont un mode de vie grégaire et vivent en groupes appelés "troupeaux"."
+      "description": "La girafe est un mammifère herbivore caractérisé par son cou extrêmement long et ses taches distinctives. Elle est le plus grand animal terrestre et se nourrit principalement des feuilles des arbres. Les girafes ont un mode de vie grégaire et vivent en groupes appelés troupeaux"
     },
     {
       "nom": "Éléphant",
@@ -38,7 +38,7 @@
     },
     {
       "nom": "Kangourou",
-      "description": "Le kangourou est un marsupial herbivore originaire d'Australie. Il se caractérise par ses pattes arrière puissantes, sa queue musclée et son mode de déplacement en sautant. Les kangourous portent leurs petits dans une poche abdominale et vivent en groupes appelés "troupes"."
+      "description": "Le kangourou est un marsupial herbivore originaire d'Australie. Il se caractérise par ses pattes arrière puissantes, sa queue musclée et son mode de déplacement en sautant. Les kangourous portent leurs petits dans une poche abdominale et vivent en groupes appelés troupes."
     },
     {
       "nom": "Ours Polaire",
