@@ -15,7 +15,7 @@ class AnimalFixtures extends Fixture
         $animaux = $tab['animaux'];
         foreach ($animaux as $animal) {
             AnimalFactory::createOne(['nomAnimal' => $animal['nom'],
-                'descEvent' => $animal['descAnimal']]);
+                'descAnimal' => $animal['description']]);
         }
     }
 }
