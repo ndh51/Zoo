@@ -94,5 +94,14 @@
             "allow-contrib": false,
             "require": "6.3.*"
         }
+    },
+    "scripts-descriptions": {
+        "start": "Démarrer le serveur local, naviguable à partir de http://127.0.0.1:8000/",
+        "stop": "Fermer le serveur local symfony en cours (utile si le cmd est fermé)",
+        "drop":"Supprimer la base de données zoo",
+        "create": "Créer la base de données zoo",
+        "migrate": "Application des migrations la base de données zoo",
+        "load": "Charge les données factices la base de données zoo",
+        "db" : "Lance la création totale de la base de données de zéro"
     }
 }
