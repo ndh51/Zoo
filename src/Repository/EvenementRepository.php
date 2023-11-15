@@ -59,6 +59,18 @@ class EvenementRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findEvenementsMostPlace(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM evenement e
+        ORDER BY e.nb_pLace_max_event ASC, e.nom_event
+        ';
+
+        return $conn->executeQuery($sql)->fetchAllAssociative();
+    }
+
     /**
      * @throws Exception
      * @throws Exception
@@ -75,5 +87,17 @@ class EvenementRepository extends ServiceEntityRepository
         return $conn->executeQuery($sql)->fetchAllAssociative();
 
     }
+
+    public function search(string $text = ''): array
+    {
+        $qb = $this->createQueryBuilder('ev')
+            ->where('ev.nomEvent LIKE :text')
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('ev.nomEvent, ev.nbPlaceMaxEvent');
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 
 }

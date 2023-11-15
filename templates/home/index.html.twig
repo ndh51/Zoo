@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {% for event in events %}
+        {{ event.nom_event }} <br>
+    {% endfor %}
+{% endblock %}

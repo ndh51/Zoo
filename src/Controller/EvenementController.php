@@ -19,7 +19,10 @@ class EvenementController extends AbstractController
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $repository, Request $request): Response
     {
-        $evenements = $repository->findAllEvenement();
+        $contact = $request->query->get('search', '');
+        $evenements = $repository->search($contact);
+
+        //$evenements = $repository->findAll();
 
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements,
