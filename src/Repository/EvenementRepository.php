@@ -59,21 +59,17 @@ class EvenementRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    /**
-     * @throws Exception
-     * @throws Exception
-     */
-    public function findAllEvenement(): array
+
+    public function search(string $text = ''): array
     {
-        $conn = $this->getEntityManager()->getConnection();
+        $qb = $this->createQueryBuilder('ev')
+            ->where('ev.nomEvent LIKE :text')
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('ev.nomEvent, ev.nbPlaceMaxEvent');
+        $query = $qb->getQuery();
 
-        $sql = '
-        SELECT * FROM evenement e
-        ORDER BY e.nom_event, e.nb_pLace_max_event ASC
-        ';
-
-        return $conn->executeQuery($sql)->fetchAllAssociative();
-
+        return $query->execute();
     }
+
 
 }
