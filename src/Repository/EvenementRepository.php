@@ -50,13 +50,28 @@ class EvenementRepository extends ServiceEntityRepository
     /**
      * @throws NonUniqueResultException
      */
-    public function findWithCategory(int $id): ?Evenement
+    public function findWithId(int $id): ?Evenement
     {
         return $this->createQueryBuilder('e')
+            ->addSelect('enclos')
+            ->leftJoin('e.idEnclos', 'enclos')
             ->where('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+
+    public function search(string $text = ''): array
+    {
+        $qb = $this->createQueryBuilder('ev')
+
+            ->where('ev.nomEvent LIKE :text')
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('ev.nomEvent, ev.nbPlaceMaxEvent');
+        $query = $qb->getQuery();
+
+        return $query->execute();
     }
 
     /**
@@ -68,12 +83,14 @@ class EvenementRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT * FROM evenement e
+        SELECT * FROM evenement e, enclos en
+        WHERE e.id = en.id
         ORDER BY e.nom_event, e.nb_pLace_max_event ASC
         ';
 
         return $conn->executeQuery($sql)->fetchAllAssociative();
 
     }
+
 
 }
