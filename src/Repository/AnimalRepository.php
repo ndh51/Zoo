@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Animaux;
+use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Animaux>
+ * @extends ServiceEntityRepository<Animal>
  *
- * @method Animaux|null find($id, $lockMode = null, $lockVersion = null)
- * @method Animaux|null findOneBy(array $criteria, array $orderBy = null)
- * @method Animaux[]    findAll()
- * @method Animaux[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Animal|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Animal|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Animal[]    findAll()
+ * @method Animal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnimauxRepository extends ServiceEntityRepository
+class AnimalRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Animaux::class);
+        parent::__construct($registry, Animal::class);
     }
 
 //    /**
-//     * @return Animaux[] Returns an array of Animaux objects
+//     * @return Animal[] Returns an array of Animal objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class AnimauxRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Animaux
+//    public function findOneBySomeField($value): ?Animal
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')
