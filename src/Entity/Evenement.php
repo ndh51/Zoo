@@ -22,6 +22,9 @@ class Evenement
     #[ORM\Column]
     private ?int $nbPlaceMaxEvent = null;
 
+    #[ORM\ManyToOne(inversedBy: 'evenements')]
+    private ?Enclos $idEnclos = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Evenement
     public function setNbPlaceMaxEvent(int $nbPlaceMaxEvent): static
     {
         $this->nbPlaceMaxEvent = $nbPlaceMaxEvent;
+
+        return $this;
+    }
+
+    public function getIdEnclos(): ?Enclos
+    {
+        return $this->idEnclos;
+    }
+
+    public function setIdEnclos(?Enclos $idEnclos): static
+    {
+        $this->idEnclos = $idEnclos;
 
         return $this;
     }

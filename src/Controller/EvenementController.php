@@ -19,7 +19,7 @@ class EvenementController extends AbstractController
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $repository, Request $request): Response
     {
-        $evenements = $repository->findAllEvenement();
+        $evenements = $repository->findAll();
 
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements,
@@ -27,13 +27,12 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['eventId' => '\d+'])]
-    public function show(#[MapEntity(expr: 'repository.findWithCategory(id)')]
+    public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Evenement $evenement): Response
     {
         if (is_null($evenement)) {
             return $this->redirectToRoute('app_evenement', status: 303);
         }
-
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }

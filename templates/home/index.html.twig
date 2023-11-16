@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="events">
+    <h3>Évènements</h3>
+    {{ include('evenement/_evenement.html.twig') }}
+    </div>
+    <br>
+    <div class="animaux">
+    <h3>Animaux</h3>
+    {{ include('animal/_animal.html.twig') }}
+    </div>
+{% endblock %}
