@@ -74,23 +74,4 @@ class EvenementRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
-    /**
-     * @throws Exception
-     * @throws Exception
-     */
-    public function findAllEvenement(): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-        SELECT * FROM evenement e, enclos en
-        WHERE e.id = en.id
-        ORDER BY e.nom_event, e.nb_pLace_max_event ASC
-        ';
-
-        return $conn->executeQuery($sql)->fetchAllAssociative();
-
-    }
-
-
 }
