@@ -24,4 +24,21 @@ class IndexCest
         $I->click('#evenements > a');
         $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
     }
+
+    public function testOnSortedEvenement(ControllerTester $I): void
+    {
+        EvenementFactory::createSequence(
+            [
+                ['nomEvent' => 'Spectacle des lions'],
+                ['nomEvent' => 'Spectacle des tigres'],
+                ['nomEvent' => 'Spectacle des otaries'],
+                ['nomEvent' => 'Spectacle des autruches']
+            ]
+        );
+        $I->amOnPage('/evenement');
+        $I->seeResponseCodeIs(200);
+        $lstEvent = $I->grabMultiple('#evenements > a');
+        $I->assertEquals(['Spectacle des autruches', 'Spectacle des lions', 'Spectacle des otaries', 'Spectacle des tigres'], $lstEvent);
+
+    }
 }
