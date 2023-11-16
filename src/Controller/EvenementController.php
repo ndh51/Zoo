@@ -19,8 +19,7 @@ class EvenementController extends AbstractController
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $repository, Request $request): Response
     {
-        $contact = $request->query->get('search', '');
-        $evenements = $repository->search($contact);
+        $evenements = $repository->findAll();
 
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements,
@@ -34,7 +33,6 @@ class EvenementController extends AbstractController
         if (is_null($evenement)) {
             return $this->redirectToRoute('app_evenement', status: 303);
         }
-        
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }
