@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^2.16",
+        "symfony/asset": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/dotenv": "6.3.*",
         "symfony/expression-language": "6.3.*",
@@ -64,6 +65,7 @@
             "@auto-scripts"
         ],
         "start": [
+            "Composer\\Config::disableProcessTimeout",
             "symfony serve"
         ],
         "stop" : [

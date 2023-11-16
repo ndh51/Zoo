@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Recherche de {{ recherche }}
+{% endblock %}
+
+{% block body %}
+    <h1>Recherche de : {{ recherche }}</h1>
+    <h3>Évènements</h3>
+    {% for evenement in evenements %}
+        {{ evenement.nomEvent }}<br>
+    {% endfor %}
+    <h3>Animaux</h3>
+    {% for animal in animaux %}
+        {{ animal.nomAnimal }}<br>
+    {% endfor %}
+{% endblock %}

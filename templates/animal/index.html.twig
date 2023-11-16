@@ -1,11 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnimauxController!{% endblock %}
+{% block title %}Animaux!{% endblock %}
 
 {% block body %}
-    <ul>
-        {% for animal in animaux %}
-            <li>{{animal.nomAnimal}}</li>
-        {% endfor %}
-    </ul>
+    <h1>Liste des animaux</h1>
+    {{ include('animal/_animal.html.twig') }}
 {% endblock %}
