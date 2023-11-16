@@ -3,7 +3,11 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    {% for event in events %}
-        {{ event.nomEvent }} <br>
+    {% for evenement in evenements %}
+        {{ evenement.nomEvent }} <br>
+    {% endfor %}
+    <br>
+    {% for animal in animaux %}
+        {{ animal.nomAnimal }} <br>
     {% endfor %}
 {% endblock %}
