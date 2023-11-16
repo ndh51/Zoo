@@ -12,6 +12,6 @@ class IndexCest
         EvenementFactory::createMany(5);
         $I->amOnPage('/evenement');
         $I->seeResponseCodeIs(200);
-        $I->seeNumberOfElements('a', 5);
+        $I->seeNumberOfElements('#evenements > a', 5);
     }
 }
