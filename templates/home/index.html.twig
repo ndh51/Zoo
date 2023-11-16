@@ -3,11 +3,13 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    {% for evenement in evenements %}
-        {{ evenement.nomEvent }} <br>
-    {% endfor %}
+    <div class="events">
+    <h3>Évenements</h3>
+    {{ include('evenement/_evenement.html.twig') }}
+    </div>
     <br>
-    {% for animal in animaux %}
-        {{ animal.nomAnimal }} <br>
-    {% endfor %}
+    <div class="animaux">
+    <h3>Animaux</h3>
+    {{ include('animal/_animal.html.twig') }}
+    </div>
 {% endblock %}
