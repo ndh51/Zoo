@@ -15,7 +15,7 @@ class AnimalController extends AbstractController
     {
         $animaux = $repository->findBy([], ['nomAnimal' => 'ASC']);
 
-        return $this->render('animal/index.html.twig', ['animaux' => $animaux]);
+        return $this->render('animal/index.html.twig', ['animal' => $animaux]);
     }
 
     #[Route('/animal/{id<\d+>}', name: 'app_animal_show')]
