@@ -3,9 +3,5 @@
 {% block title %}Animaux!{% endblock %}
 
 {% block body %}
-    <ul>
-        {% for animal in animaux %}
-            <li>{{animal.nomAnimal}}</li>
-        {% endfor %}
-    </ul>
+    {{ include('animal/_animal.html.twig') }}
 {% endblock %}
