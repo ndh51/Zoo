@@ -2,24 +2,47 @@
 
 {% block title %}Détails de {{ animal.nomAnimal }}{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/styleAnimal.css">
+{% endblock %}
+
 {% block body %}
+
     <div class="animal">
-        <div class="detailAnimal">
-        <img src="img/capybara.png" alt="image {{ animal.nomAnimal }}">
-        {{ animal.descAnimal }}
+        <div class="corpsAnimal">
+            <img class="animalPresenter" src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            <div class="infoAnimal">
+                <p class="nomAnimal">{{ animal.nomAnimal }}</p>
+                <div>
+                    <p class="titre">Emplacement </p>
+                    <p>t3</p>
+                </div>
+                <div>
+                    <p class="titre">famille</p>
+                    <p>vertébrés </p>
+                </div>
+                <div>
+                    <p class="titre">categories</p>
+                    <p>mammifère </p>
+                </div>
+            </div>
         </div>
-        <div class="infoAnimal">{{ animal.nomAnimal }} Emplacement famille categorie</div>
+        <p class="titre">Descriptions</p>
+        <p>{{ animal.descAnimal }}</p>
     </div>
     <div class="aCoterAnimal">
         <div class="animalFamil">
-            <p>Animeaux de la même famille</p>
-            <img src="img/capybara.png" alt="image {{ animal.nomAnimal }}">
-            <img src="img/capybara.png" alt="image {{ animal.nomAnimal }}">
+            <p class="titre">Animeaux de la même famille</p>
+            <div class="animalFamilImg">
+                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            </div>
         </div>
         <div class="evenementAnimal">
-            <p>Évènement avec {{ animal.nomAnimal }}</p>
-            <img src="img/capybara.png" alt="image {{ animal.nomAnimal }}">
-            <img src="img/capybara.png" alt="image {{ animal.nomAnimal }}">
+            <p class="titre">Évènement avec {{ animal.nomAnimal }}</p>
+            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
         </div>
     </div>
+
 {% endblock %}

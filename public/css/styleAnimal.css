@@ -1,3 +1,66 @@
 body{
+background-image: url("/img/fond.jpg");
+}
+p{
+    color: white;
+}
+.animal{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 2%;
+}
+.corpsAnimal{
+    display: flex;
+    flex-direction: row;
+}
+.infoAnimal{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    padding-left: 2%;
+}
+.titre{
+    text-decoration: underline;
+    font-size: 150%;
+}
+.nomAnimal{
+    font-size: 300%;
+    text-align: center;
+    border-bottom-style: solid;
+}
+
+.aCoterAnimal{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+.animalFamil{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.evenementAnimal{
+    align-items: center;
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    justify-content: space-around;
 
 }
+
+.animalFamilImg{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img{
+    padding: 0.5%;
+    border-radius: 100px;
+    width:45%;
+}
+
+
+
