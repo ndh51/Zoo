@@ -28,6 +28,9 @@ DATABASE_URL="mysql://{login}:{password}@{serverName}/{dbName}?serverVersion=10.
 
 ## Configurations
 ### Base de données  
+MPD :
+![MPD](MPD.png)
+
 ### Scripts Composer  
 Démarrer le serveur local, naviguable à partir de **http://127.0.0.1:8000/**
 ```bash 
