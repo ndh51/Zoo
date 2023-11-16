@@ -20,15 +20,20 @@ class HomeController extends AbstractController
             $events[] = $temp[$i];
         }
         $animaux = $animalRepo->findAll();
+
         return $this->render('home/index.html.twig', ['evenements' => $events, 'animaux' => $animaux]);
     }
 
     #[Route('/filter', name: 'app_filter')]
-    public function search(EvenementRepository $eventRepo, AnimalRepository $animalRepo, Request $request)
+    public function search(EvenementRepository $eventRepo, AnimalRepository $animalRepo, Request $request) : Response
     {
         $search = $request->query->get('search', '');
+        if ('' == $search) {
+            return $this->redirectToRoute('app_home');
+        }
         $evenements = $eventRepo->search($search);
         $animaux = $animalRepo->search($search);
+
         return $this->render('home/filter.html.twig', ['evenements' => $evenements,
                                                             'animaux' => $animaux,
                                                             'recherche' => $search]);
