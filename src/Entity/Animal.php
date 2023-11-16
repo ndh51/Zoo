@@ -16,7 +16,7 @@ class Animal
     #[ORM\Column(length: 50)]
     private ?string $nomAnimal = null;
 
-    #[ORM\Column(length: 200, nullable: true)]
+    #[ORM\Column(length: 500, nullable: true)]
     private ?string $descAnimal = null;
 
     public function getId(): ?int
