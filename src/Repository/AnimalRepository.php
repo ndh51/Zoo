@@ -45,4 +45,16 @@ class AnimalRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function search(string $text = ''): array
+    {
+        $qb = $this->createQueryBuilder('an')
+
+            ->where('an.nomAnimal LIKE :text')
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('an.nomAnimal');
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 }
