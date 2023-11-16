@@ -19,13 +19,18 @@ class HomeController extends AbstractController
         for ($i = 0; $i < 3; ++$i) {
             $events[] = $temp[$i];
         }
-        $animaux = $animalRepo->findAll();
+        $temp = $animalRepo->findAll();
+        $animaux = [];
+        $indices = array_rand($temp, 9);
+        foreach ($indices as $i) {
+            $animaux[] = $temp[$i];
+        }
 
         return $this->render('home/index.html.twig', ['evenements' => $events, 'animaux' => $animaux]);
     }
 
     #[Route('/filter', name: 'app_filter')]
-    public function search(EvenementRepository $eventRepo, AnimalRepository $animalRepo, Request $request) : Response
+    public function search(EvenementRepository $eventRepo, AnimalRepository $animalRepo, Request $request): Response
     {
         $search = $request->query->get('search', '');
         if ('' == $search) {
