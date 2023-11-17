@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Animaux!{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="css/styleAnimal.css">
+    {% endblock %}
+{% block body %}
+    <h1>Liste des animaux</h1>
+    {{ include('animal/_animal.html.twig') }}
+{% endblock %}
