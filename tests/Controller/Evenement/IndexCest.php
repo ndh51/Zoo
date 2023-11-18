@@ -39,6 +39,5 @@ class IndexCest
         $I->seeResponseCodeIs(200);
         $lstEvent = $I->grabMultiple('#evenements > a');
         $I->assertEquals(['Spectacle des autruches', 'Spectacle des lions', 'Spectacle des otaries', 'Spectacle des tigres'], $lstEvent);
-
     }
 }
