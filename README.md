@@ -42,7 +42,7 @@ composer stop
 ```  
 <br>
 
-Lance la création totale de la base de données de zéro
+Lancer la création totale de la base de données de zéro
 ```bash
 composer db
 ```
@@ -64,3 +64,7 @@ composer migrate
 composer load
 ```
 
+Lancer la suite de test PHPUnit
+```bash
+composer test
+```
