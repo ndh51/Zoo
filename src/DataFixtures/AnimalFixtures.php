@@ -6,9 +6,10 @@ use App\Factory\AnimalFactory;
 use App\Factory\CategorieFactory;
 use App\Factory\FamilleFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AnimalFixtures extends Fixture
+class AnimalFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -18,7 +19,15 @@ class AnimalFixtures extends Fixture
             AnimalFactory::createOne(['nomAnimal' => $animal['nom'],
                 'descAnimal' => $animal['description'],
                 'idFamille' => FamilleFactory::createOne(['nomFamille' => $animal['famille']]),
-                'idCategorie' => CategorieFactory::createOne(['nomCategorie' => $animal['categorie']])]);
+                'idCategorie' => CategorieFactory::random()]);
         }
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            CategorieFixture::class,
+            AppFixtures::class,
+        ];
     }
 }
