@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -56,5 +57,19 @@ class AnimalRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
 
         return $query->execute();
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     */
+    public function findWithId(int $id): ?Animal
+    {
+        return $this->createQueryBuilder('a')
+            ->addSelect('famille')
+            ->leftJoin('a.idFamille', 'famille')
+            ->where('a.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Factory\AnimalFactory;
+use App\Factory\FamilleFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -15,7 +16,8 @@ class AnimalFixtures extends Fixture
         $animaux = $tab['animaux'];
         foreach ($animaux as $animal) {
             AnimalFactory::createOne(['nomAnimal' => $animal['nom'],
-                'descAnimal' => $animal['description']]);
+                'descAnimal' => $animal['description'],
+                'idFamille' => FamilleFactory::createOne(['nomFamille' => $animal['famille']])]);
         }
     }
 }
