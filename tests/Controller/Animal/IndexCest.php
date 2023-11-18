@@ -22,7 +22,7 @@ class IndexCest
         $I->amOnPage('/animal');
         $I->seeResponseCodeIs(200);
         $I->click('.list-group > a');
-        $I->seeCurrentRouteIs('app_animal_show', ['id' => 1]);
+        $I->seeCurrentRouteIs('app_animal_id', ['id' => 1]);
     }
 
     public function testOnSortedAnimal(ControllerTester $I): void
