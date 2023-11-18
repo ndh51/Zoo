@@ -7,11 +7,7 @@
 {% block body %}
     <h1>Recherche de : {{ recherche }}</h1>
     <h3>Évènements</h3>
-    {% for evenement in evenements %}
-        {{ evenement.nomEvent }}<br>
-    {% endfor %}
+    {{ include('evenement/_evenement.html.twig') }}
     <h3>Animaux</h3>
-    {% for animal in animaux %}
-        {{ animal.nomAnimal }}<br>
-    {% endfor %}
+    {{ include('animal/_animal.html.twig') }}
 {% endblock %}
