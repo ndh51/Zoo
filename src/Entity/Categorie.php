@@ -14,36 +14,36 @@ class Categorie
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $nomFamille = null;
+    private ?string $nomCategorie = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    private ?string $descFamille = null;
+    private ?string $descCategorie = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomFamille(): ?string
+    public function getNomCategorie(): ?string
     {
-        return $this->nomFamille;
+        return $this->nomCategorie;
     }
 
-    public function setNomFamille(string $nomFamille): static
+    public function setNomCategorie(string $nomCategorie): static
     {
-        $this->nomFamille = $nomFamille;
+        $this->nomCategorie = $nomCategorie;
 
         return $this;
     }
 
-    public function getDescFamille(): ?string
+    public function getDescCategorie(): ?string
     {
-        return $this->descFamille;
+        return $this->descCategorie;
     }
 
-    public function setDescFamille(?string $descFamille): static
+    public function setDescCategorie(?string $descCategorie): static
     {
-        $this->descFamille = $descFamille;
+        $this->descCategorie = $descCategorie;
 
         return $this;
     }
