@@ -1,3 +1,47 @@
 html{
-    background: black;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    border: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+img{
+    width: 20%;
+    height: 20%;
+}
+
+.gauche{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.droite{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.titre{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.animaux{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
 }
