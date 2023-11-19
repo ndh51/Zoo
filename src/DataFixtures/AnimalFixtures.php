@@ -19,7 +19,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
             AnimalFactory::createOne(['nomAnimal' => $animal['nom'],
                 'descAnimal' => $animal['description'],
                 'idFamille' => FamilleFactory::createOne(['nomFamille' => $animal['famille']]),
-                'idCategorie' => CategorieFactory::random()]);
+                'idCategorie' => CategorieFactory::find(['nomCategorie' => $animal['categorie']])]);
         }
     }
 
