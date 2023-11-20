@@ -22,6 +22,9 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Famille $idFamille = null;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    private ?Categorie $idCategorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,24 @@ class Animal
     public function setIdFamille(?Famille $idFamille): static
     {
         $this->idFamille = $idFamille;
+
+        return $this;
+    }
+
+    /**
+     * @return Categorie|null
+     */
+    public function getIdCategorie(): ?Categorie
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * @param Categorie|null $idCategorie
+     */
+    public function setIdCategorie(?Categorie $idCategorie): static
+    {
+        $this->idCategorie = $idCategorie;
 
         return $this;
     }
