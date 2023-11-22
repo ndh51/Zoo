@@ -115,6 +115,7 @@
         "create": "Créer la base de données zoo",
         "migrate": "Application des migrations la base de données zoo",
         "load": "Charge les données factices la base de données zoo",
-        "db" : "Lance la création totale de la base de données de zéro"
+        "db" : "Lance la création totale de la base de données de zéro",
+        "test" : "Lance la suite de test PHPUnit"
     }
 }
