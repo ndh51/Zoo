@@ -44,5 +44,21 @@ class IndexCest
         $I->seeCurrentRouteIs('app_animal_id', ['id' => 1]);
         $I->seeResponseCodeIs(200);
     }
+
+    public function testOnSortedEvenement(ControllerTester $I): void
+    {
+        EvenementFactory::createSequence(
+            [
+                ['nbPlaceMaxEvent' => 1, 'nomEvent' => 'Lion yoga'],
+                ['nbPlaceMaxEvent' => 10, 'nomEvent' => 'Tigre danse'],
+                ['nbPlaceMaxEvent' => 100, 'nomEvent' => 'Otarie plonge'],
+            ]
+        );
+        AnimalFactory::createMany(9);
+        $I->amOnPage('/');
+        $I->seeResponseCodeIs(200);
+        $lstEvent = $I->grabMultiple('#evenements > a');
+        $I->assertEquals(['Otarie plonge', 'Tigre danse', 'Lion yoga'], $lstEvent);
+    }
 }
 
