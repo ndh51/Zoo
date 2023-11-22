@@ -32,5 +32,17 @@ class IndexCest
         $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
         $I->seeResponseCodeIs(200);
     }
+
+    public function testOnClickOnAnAnimal(ControllerTester $I): void
+    {
+        EvenementFactory::createOne(['nbPlaceMaxEvent' => 50000]);
+        EvenementFactory::createMany(5);
+        AnimalFactory::createMany(9);
+        $I->amOnPage('/');
+        $I->seeResponseCodeIs(200);
+        $I->click('#animals > a');
+        $I->seeCurrentRouteIs('app_animal_id', ['id' => 1]);
+        $I->seeResponseCodeIs(200);
+    }
 }
 
