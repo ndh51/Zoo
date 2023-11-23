@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link href="css/styleEvenement.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/styleEvenement.css">
 {% endblock %}
 
 {% block title %}
@@ -11,20 +11,26 @@
 
 
 {% block body %}
+    <div class="content">
     <div class="haut">
 
         <div class="imgetdesc">
             <img src="{{ asset('/img/capybara.jpg') }}">
             <p>description : {{ evenement.descEvent }}</p>
         </div>
-
         <div class="description">
             <h1>{{ evenement.nomEvent}}</h1>
-            <p>enclos : {{ evenement.idEnclos.nomEnclos}}</p>
-            <p>nombre de places maximums : {{ evenement.nbPlaceMaxEvent }}</p>
-
-            <p>Animaux Présents :</p>
-
+            <table>
+                <tr>
+                    <td>Enclos : {{ evenement.idEnclos.nomEnclos }}</td>
+                </tr>
+                <tr>
+                    <td>Nombre de places maximums : {{ evenement.nbPlaceMaxEvent }}</td>
+                </tr>
+                <tr>
+                    <td> Animaux Présents : </td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -39,27 +45,28 @@
 
         <div class="animaux">
             <div class="animal">
-                <img class="animal" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
+                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
                 <p>un animal </p>
             </div>
             <div class="animal">
-                <img class="animal" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
+                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
                 <p>un animal </p>
             </div>
             <div class="animal">
-                <img class="animal" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
+                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
                 <p>un animal </p>
             </div>
             <div class="animal">
-                <img class="animal" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
+                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
                 <p>un animal </p>
             </div>
             <div class="animal">
-                <img class="animal" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
+                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
                 <p>un animal </p>
             </div>
 
         </div>
 
+    </div>
     </div>
 {% endblock %}
