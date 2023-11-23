@@ -2,131 +2,195 @@
   "animaux": [
     {
       "nom": "Poule",
-      "description": "De l’ordre des Galliformes et de la famille des Phasianidae, la poule est un oiseau de basse-cour qui est couvert de plumes protégeant son corps. Le mâle, appelé coq, se distingue de la femelle par une petite peau rouge vif sur la tête dénommée crête, des ergots sur les pattes, et les longues plumes de la queue."
+      "description": "De l’ordre des Galliformes et de la famille des Phasianidae, la poule est un oiseau de basse-cour qui est couvert de plumes protégeant son corps. Le mâle, appelé coq, se distingue de la femelle par une petite peau rouge vif sur la tête dénommée crête, des ergots sur les pattes, et les longues plumes de la queue.",
+      "famille": "Félidés",
+      "categorie": "oiseaux"
     },
     {
       "nom": "Lion",
-      "description": "Le lion est un grand félin de la famille des Felidae et de l'espèce Panthera leo. Il se caractérise par sa crinière distinctive chez les mâles. Les lions vivent en groupes sociaux appelés fiertés et sont parmi les prédateurs les plus redoutables de la savane africaine."
+      "description": "Le lion est un grand félin de la famille des Felidae et de l'espèce Panthera leo. Il se caractérise par sa crinière distinctive chez les mâles. Les lions vivent en groupes sociaux appelés fiertés et sont parmi les prédateurs les plus redoutables de la savane africaine.",
+      "famille": "Canidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Tortue",
-      "description": "Les tortues sont des reptiles caractérisés par leur carapace protectrice. Elles sont divisées en deux groupes principaux : les tortues terrestres et les tortues aquatiques. Les tortues terrestres ont des pattes adaptées à la marche, tandis que les tortues aquatiques ont des membres palmés pour la natation."
+      "description": "Les tortues sont des reptiles caractérisés par leur carapace protectrice. Elles sont divisées en deux groupes principaux : les tortues terrestres et les tortues aquatiques. Les tortues terrestres ont des pattes adaptées à la marche, tandis que les tortues aquatiques ont des membres palmés pour la natation.",
+      "famille": "Ursidés",
+      "categorie":"reptiles"
     },
     {
       "nom": "Dauphin",
-      "description": "Les dauphins sont des mammifères marins appartenant à l'ordre des Cétacés. Ils sont connus pour leur intelligence et leur comportement joueur. Les dauphins utilisent des sifflements et des clics pour communiquer et chasser, et ils sont souvent observés sautant hors de l'eau."
+      "description": "Les dauphins sont des mammifères marins appartenant à l'ordre des Cétacés. Ils sont connus pour leur intelligence et leur comportement joueur. Les dauphins utilisent des sifflements et des clics pour communiquer et chasser, et ils sont souvent observés sautant hors de l'eau.",
+      "famille": "Hominidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Araignée",
-      "description": "Les araignées sont des arthropodes appartenant à la classe des arachnides. Elles ont huit pattes et produisent de la soie pour construire des toiles. Les araignées sont des prédateurs qui capturent leurs proies dans leurs toiles ou en les chassant activement."
+      "description": "Les araignées sont des arthropodes appartenant à la classe des arachnides. Elles ont huit pattes et produisent de la soie pour construire des toiles. Les araignées sont des prédateurs qui capturent leurs proies dans leurs toiles ou en les chassant activement.",
+      "famille": "Éléphantidés",
+      "categorie": "insectes"
     },
     {
       "nom": "Girafe",
-      "description": "La girafe est un mammifère herbivore caractérisé par son cou extrêmement long et ses taches distinctives. Elle est le plus grand animal terrestre et se nourrit principalement des feuilles des arbres. Les girafes ont un mode de vie grégaire et vivent en groupes appelés troupeaux"
+      "description": "La girafe est un mammifère herbivore caractérisé par son cou extrêmement long et ses taches distinctives. Elle est le plus grand animal terrestre et se nourrit principalement des feuilles des arbres. Les girafes ont un mode de vie grégaire et vivent en groupes appelés troupeaux",
+      "famille": "Cétacés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Éléphant",
-      "description": "Les éléphants sont les plus grands animaux terrestres. Ils appartiennent à la famille des Éléphantidés et sont connus pour leurs grandes oreilles, leurs défenses en ivoire et leur intelligence. Les éléphants vivent en groupes familiaux dirigés par une femelle appelée la matriarche."
+      "description": "Les éléphants sont les plus grands animaux terrestres. Ils appartiennent à la famille des Éléphantidés et sont connus pour leurs grandes oreilles, leurs défenses en ivoire et leur intelligence. Les éléphants vivent en groupes familiaux dirigés par une femelle appelée la matriarche.",
+      "famille": "Équidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Panda",
-      "description": "Le panda géant est un mammifère appartenant à la famille des Ursidés. Il est reconnaissable par sa fourrure noire et blanche distinctive. Les pandas se nourrissent principalement de bambous et sont endémiques des montagnes de Chine. Ils sont actuellement une espèce menacée."
+      "description": "Le panda géant est un mammifère appartenant à la famille des Ursidés. Il est reconnaissable par sa fourrure noire et blanche distinctive. Les pandas se nourrissent principalement de bambous et sont endémiques des montagnes de Chine. Ils sont actuellement une espèce menacée.",
+      "famille": "Rhinocéros",
+      "categorie": "mammifères"
     },
     {
       "nom": "Requin",
-      "description": "Les requins sont des poissons cartilagineux prédateurs présents dans les océans du monde entier. Ils ont des nageoires, des branchies et une peau couverte de denticules dermiques. Les requins jouent un rôle essentiel dans l'équilibre des écosystèmes marins en tant que prédateurs."
+      "description": "Les requins sont des poissons cartilagineux prédateurs présents dans les océans du monde entier. Ils ont des nageoires, des branchies et une peau couverte de denticules dermiques. Les requins jouent un rôle essentiel dans l'équilibre des écosystèmes marins en tant que prédateurs.",
+      "famille": "Bovidés",
+      "categorie": "poissons"
     },
     {
       "nom": "Kangourou",
-      "description": "Le kangourou est un marsupial herbivore originaire d'Australie. Il se caractérise par ses pattes arrière puissantes, sa queue musclée et son mode de déplacement en sautant. Les kangourous portent leurs petits dans une poche abdominale et vivent en groupes appelés troupes."
+      "description": "Le kangourou est un marsupial herbivore originaire d'Australie. Il se caractérise par ses pattes arrière puissantes, sa queue musclée et son mode de déplacement en sautant. Les kangourous portent leurs petits dans une poche abdominale et vivent en groupes appelés troupes.",
+      "famille": "Muridés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Ours Polaire",
-      "description": "L'ours polaire est un grand carnivore adapté à la vie dans les régions arctiques. Il a une fourrure épaisse, une couche de graisse isolante et des pattes palmées pour la nage. Les ours polaires se nourrissent principalement de phoques et sont bien adaptés à la vie sur la glace de mer."
+      "description": "L'ours polaire est un grand carnivore adapté à la vie dans les régions arctiques. Il a une fourrure épaisse, une couche de graisse isolante et des pattes palmées pour la nage. Les ours polaires se nourrissent principalement de phoques et sont bien adaptés à la vie sur la glace de mer.",
+      "famille": "Dauphins",
+      "categorie": "mammifères"
     },
     {
       "nom": "Aigle",
-      "description": "Les aigles sont des rapaces diurnes de la famille des Accipitridae. Ils sont connus pour leur vue perçante, leur vol puissant et leurs serres acérées. Les aigles se nourrissent principalement de proies capturées avec leurs serres puissantes."
+      "description": "Les aigles sont des rapaces diurnes de la famille des Accipitridae. Ils sont connus pour leur vue perçante, leur vol puissant et leurs serres acérées. Les aigles se nourrissent principalement de proies capturées avec leurs serres puissantes.",
+      "famille": "Suidés",
+      "categorie": "oiseaux"
     },
     {
       "nom": "Coccinelle",
-      "description": "La coccinelle est un petit insecte coléoptère souvent reconnaissable par ses couleurs vives et ses points noirs. Elle est bénéfique pour les jardiniers car elle se nourrit de pucerons, aidant ainsi à contrôler les populations de ravageurs dans les plantes."
+      "description": "La coccinelle est un petit insecte coléoptère souvent reconnaissable par ses couleurs vives et ses points noirs. Elle est bénéfique pour les jardiniers car elle se nourrit de pucerons, aidant ainsi à contrôler les populations de ravageurs dans les plantes.",
+      "famille": "Hippopotames",
+      "categorie": "insectes"
     },
     {
       "nom": "Hippopotame",
-      "description": "L'hippopotame est un mammifère semi-aquatique herbivore présent en Afrique. Il passe la majeure partie de son temps dans l'eau pour se protéger du soleil. Malgré son apparence massive, l'hippopotame est capable de courir rapidement sur terre."
+      "description": "L'hippopotame est un mammifère semi-aquatique herbivore présent en Afrique. Il passe la majeure partie de son temps dans l'eau pour se protéger du soleil. Malgré son apparence massive, l'hippopotame est capable de courir rapidement sur terre.",
+      "famille": "Girafes",
+      "categorie": "mammifères"
     },
     {
       "nom": "Chouette",
-      "description": "Les chouettes sont des oiseaux de proie nocturnes de la famille des Strigidae. Elles ont une excellente audition et une vision nocturne, ce qui les rend efficaces pour chasser la nuit. Les chouettes ont un vol silencieux grâce à la structure particulière de leurs plumes."
+      "description": "Les chouettes sont des oiseaux de proie nocturnes de la famille des Strigidae. Elles ont une excellente audition et une vision nocturne, ce qui les rend efficaces pour chasser la nuit. Les chouettes ont un vol silencieux grâce à la structure particulière de leurs plumes.",
+      "famille": "Crocodiles",
+      "categorie": "oiseaux"
     },
     {
       "nom": "Gorille",
-      "description": "Le gorille est un grand singe herbivore, cousin de l'homme, habitant les forêts d'Afrique centrale. Les mâles peuvent être distingués par leurs grandes dimensions et leur dos argenté. Les gorilles vivent en groupes familiaux dirigés par un mâle dominant."
+      "description": "Le gorille est un grand singe herbivore, cousin de l'homme, habitant les forêts d'Afrique centrale. Les mâles peuvent être distingués par leurs grandes dimensions et leur dos argenté. Les gorilles vivent en groupes familiaux dirigés par un mâle dominant.",
+      "famille": "Hylidés ",
+      "categorie": "mammifères"
     },
     {
       "nom": "Papillon Monarque",
-      "description": "Le papillon monarque est connu pour ses migrations massives sur de longues distances. Il a des ailes orange et noires et se nourrit principalement du nectar des fleurs. Les monarques passent plusieurs générations pour compléter leur migration annuelle."
+      "description": "Le papillon monarque est connu pour ses migrations massives sur de longues distances. Il a des ailes orange et noires et se nourrit principalement du nectar des fleurs. Les monarques passent plusieurs générations pour compléter leur migration annuelle.",
+      "famille": "Tétraodontidés",
+      "categorie": "insectes"
     },
     {
       "nom": "Pangolin",
-      "description": "Le pangolin est un mammifère écailleux qui se nourrit principalement de fourmis et de termites. Il est menacé en raison du trafic illégal de ses écailles. Le pangolin a la particularité de se rouler en boule pour se protéger des prédateurs."
+      "description": "Le pangolin est un mammifère écailleux qui se nourrit principalement de fourmis et de termites. Il est menacé en raison du trafic illégal de ses écailles. Le pangolin a la particularité de se rouler en boule pour se protéger des prédateurs.",
+      "famille": "Aranéidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Chimpanzé",
-      "description": "Le chimpanzé est un grand singe intelligent, étroitement lié à l'homme sur le plan génétique. Il utilise des outils et vit en groupes sociaux complexes. Les chimpanzés partagent environ 98% de leur ADN avec les humains."
+      "description": "Le chimpanzé est un grand singe intelligent, étroitement lié à l'homme sur le plan génétique. Il utilise des outils et vit en groupes sociaux complexes. Les chimpanzés partagent environ 98% de leur ADN avec les humains.",
+      "famille": "Molossidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Crocodile",
-      "description": "Les crocodiles sont des reptiles semi-aquatiques connus pour leurs mâchoires puissantes et leurs yeux surélevés. Ils chassent leurs proies en embuscade dans l'eau. Les crocodiles ont une longévité impressionnante et sont bien adaptés à la vie aquatique."
+      "description": "Les crocodiles sont des reptiles semi-aquatiques connus pour leurs mâchoires puissantes et leurs yeux surélevés. Ils chassent leurs proies en embuscade dans l'eau. Les crocodiles ont une longévité impressionnante et sont bien adaptés à la vie aquatique.",
+      "famille": "Accipitridés",
+      "categorie": "reptiles"
     },
     {
       "nom": "Pélican",
-      "description": "Les pélicans sont des oiseaux aquatiques qui se caractérisent par leur long bec et leur poche extensible. Ils plongent dans l'eau pour capturer des poissons. Les pélicans sont souvent observés en groupes près des zones d'eau douce ou salée."
+      "description": "Les pélicans sont des oiseaux aquatiques qui se caractérisent par leur long bec et leur poche extensible. Ils plongent dans l'eau pour capturer des poissons. Les pélicans sont souvent observés en groupes près des zones d'eau douce ou salée.",
+      "famille": "Félidés",
+      "categorie": "oiseaux"
     },
     {
       "nom": "Hérisson",
-      "description": "Le hérisson est un petit mammifère couvert de piquants. Il se roule en boule pour se protéger des prédateurs. Les hérissons sont nocturnes et se nourrissent d'insectes, de petits mammifères et de fruits."
+      "description": "Le hérisson est un petit mammifère couvert de piquants. Il se roule en boule pour se protéger des prédateurs. Les hérissons sont nocturnes et se nourrissent d'insectes, de petits mammifères et de fruits.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Koala",
-      "description": "Le koala est un marsupial arboricole originaire d'Australie. Il se nourrit principalement de feuilles d'eucalyptus. Les koalas sont connus pour leur apparence adorable et leur mode de vie tranquille dans les arbres."
+      "description": "Le koala est un marsupial arboricole originaire d'Australie. Il se nourrit principalement de feuilles d'eucalyptus. Les koalas sont connus pour leur apparence adorable et leur mode de vie tranquille dans les arbres.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Faucon",
-      "description": "Les faucons sont des rapaces diurnes connus pour leur vol rapide et agile. Ils ont des serres puissantes pour capturer leurs proies en vol. Les faucons sont utilisés parfois dans la fauconnerie pour la chasse."
+      "description": "Les faucons sont des rapaces diurnes connus pour leur vol rapide et agile. Ils ont des serres puissantes pour capturer leurs proies en vol. Les faucons sont utilisés parfois dans la fauconnerie pour la chasse.",
+      "famille": "Félidés",
+      "categorie": "oiseaux"
     },
     {
       "nom": "Grenouille",
-      "description": "Les grenouilles sont des amphibiens caractérisés par leurs sauts puissants et leurs chants. Elles passent une partie de leur vie dans l'eau, où elles pondent des œufs qui se développent en têtards avant de devenir des grenouilles adultes."
+      "description": "Les grenouilles sont des amphibiens caractérisés par leurs sauts puissants et leurs chants. Elles passent une partie de leur vie dans l'eau, où elles pondent des œufs qui se développent en têtards avant de devenir des grenouilles adultes.",
+      "famille": "Félidés",
+      "categorie": "amphibiens"
     },
     {
       "nom": "Otarie",
-      "description": "Les otaries sont des mammifères marins appartenant à la famille des Otariidae. Elles sont bien adaptées à la vie aquatique, avec des membres palmés et une excellente natation. Les otaries passent du temps à terre et dans l'eau pour se nourrir."
+      "description": "Les otaries sont des mammifères marins appartenant à la famille des Otariidae. Elles sont bien adaptées à la vie aquatique, avec des membres palmés et une excellente natation. Les otaries passent du temps à terre et dans l'eau pour se nourrir.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Chauve-souris",
-      "description": "Les chauves-souris sont les seuls mammifères capables de vol actif. Elles jouent un rôle essentiel dans la pollinisation des plantes et la régulation des insectes. Certaines espèces de chauves-souris se nourrissent de fruits et de nectar."
+      "description": "Les chauves-souris sont les seuls mammifères capables de vol actif. Elles jouent un rôle essentiel dans la pollinisation des plantes et la régulation des insectes. Certaines espèces de chauves-souris se nourrissent de fruits et de nectar.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Panda Rouge",
-      "description": "Le panda rouge, également connu sous le nom de renard de feu, est un petit mammifère originaire de l'Himalaya. Il se nourrit principalement de bambous et a une fourrure rouge vif qui le distingue du panda géant."
+      "description": "Le panda rouge, également connu sous le nom de renard de feu, est un petit mammifère originaire de l'Himalaya. Il se nourrit principalement de bambous et a une fourrure rouge vif qui le distingue du panda géant.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Chameau",
-      "description": "Le chameau est un mammifère adapté à la vie dans des environnements arides. Il a des bosses sur le dos qui stockent de la graisse pour les périodes de pénurie d'eau. Les chameaux sont utilisés comme animaux de bât et de transport dans certaines régions du monde."
+      "description": "Le chameau est un mammifère adapté à la vie dans des environnements arides. Il a des bosses sur le dos qui stockent de la graisse pour les périodes de pénurie d'eau. Les chameaux sont utilisés comme animaux de bât et de transport dans certaines régions du monde.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Écureuil",
-      "description": "Les écureuils sont de petits mammifères arboricoles caractérisés par leur queue touffue et leur habileté à grimper aux arbres. Ils se nourrissent de noix, de graines et de fruits, et stockent souvent de la nourriture pour l'hiver."
+      "description": "Les écureuils sont de petits mammifères arboricoles caractérisés par leur queue touffue et leur habileté à grimper aux arbres. Ils se nourrissent de noix, de graines et de fruits, et stockent souvent de la nourriture pour l'hiver.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Panthère",
-      "description": "La panthère est un grand félin appartenant à la famille des Pantherinae. Elle a une fourrure tachetée et est connue pour sa force et son agilité. Les panthères sont des prédateurs redoutables qui chassent une variété de proies dans leur habitat naturel."
+      "description": "La panthère est un grand félin appartenant à la famille des Pantherinae. Elle a une fourrure tachetée et est connue pour sa force et son agilité. Les panthères sont des prédateurs redoutables qui chassent une variété de proies dans leur habitat naturel.",
+      "famille": "Félidés",
+      "categorie": "mammifères"
     },
     {
       "nom": "Crapaud",
-      "description": "Les crapauds sont des amphibiens similaires aux grenouilles, mais ils ont une peau plus rugueuse. Ils passent une partie de leur vie dans l'eau et sont souvent associés à des habitats humides. Les crapauds se reproduisent par la ponte d'œufs dans l'eau."
+      "description": "Les crapauds sont des amphibiens similaires aux grenouilles, mais ils ont une peau plus rugueuse. Ils passent une partie de leur vie dans l'eau et sont souvent associés à des habitats humides. Les crapauds se reproduisent par la ponte d'œufs dans l'eau.",
+      "famille": "Félidés",
+      "categorie": "amphibiens"
     }
   ]
 }

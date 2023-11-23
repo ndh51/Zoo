@@ -18,12 +18,12 @@
                     <p>t3</p>
                 </div>
                 <div>
-                    <p class="titre">famille</p>
-                    <p>vertébrés </p>
+                    <p class="titre">Famille</p>
+                    <p> {{ animal.idFamille.nomFamille }} </p>
                 </div>
                 <div>
-                    <p class="titre">categories</p>
-                    <p>mammifère </p>
+                    <p class="titre">Catégorie</p>
+                    <p>{{ animal.idCategorie.nomCategorie }} </p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="aCoterAnimal">
         <div class="animalFamil">
-            <p class="titre">Animeaux de la même famille</p>
+            <p class="titre">Animaux de la même famille</p>
             <div class="animalFamilImg">
                 <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
                 <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
