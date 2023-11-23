@@ -1,0 +1,51 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url("/img/fond.jpg");
+}
+
+.content {
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+
+}
+.imgetdesc img {
+    width: 100%;
+    max-width: 45%;
+    height: auto;
+    border-radius: 100px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 3vw;
+    margin-bottom: 10px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.animaux {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    flex-grow: 1;
+}
+
+
+.animal {
+    margin: 5px;
+    width: 30%;
+    text-align: center;
+}
+
+.animal img {
+    width: 100%;
+    height: auto;
+}
