@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Evenement;
 use App\Repository\EvenementRepository;
+use Exception;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -43,14 +44,16 @@ final class EvenementFactory extends ModelFactory
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
      *
      * @todo add your default values here
+     * @throws Exception
      */
     protected function getDefaults(): array
     {
 
         return [
             'descEvent' => self::faker()->text(30),
-            'nbPlaceMaxEvent' => self::faker()->randomNumber(),
+            'nbPlaceMaxEvent' => random_int(10, 150),
             'nomEvent' => self::faker()->text(30),
+            'idEnclos' => EnclosFactory::createOne(),
         ];
     }
 
