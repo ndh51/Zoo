@@ -1,0 +1,142 @@
+body, html {
+    max-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("/img/fond.jpg");
+}
+
+body {
+    overflow: hidden;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.haut {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+.imgetdesc, .description, .animaux, .reservation {
+    flex: 1;
+    padding: 5px;
+}
+
+.imgdesc {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.imgetdesc img {
+    display: block;
+    width: 60%;
+    height: 70%;
+    margin: auto;
+    border-radius: 50px;
+}
+
+p {
+    margin-top: 5px;
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+
+.description {
+    flex-grow: 1;
+}
+
+table {
+    margin-top: 50px;
+}
+
+tr {
+    padding-top: 10px;
+}
+
+th, td {
+    font-size: 20px;
+    padding: 10px;
+    text-align: left;
+    color: white;
+    border-top: 2px solid white;
+}
+
+.bas {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    max-height: 10%;
+}
+
+.reservation {
+    flex-grow: 1;
+}
+
+h1 {
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-bottom: 5px;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.animaux {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    flex-grow: 1;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.animal {
+    margin: 2px;
+    width: 30%;
+    text-align: center;
+}
+
+.animal img {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    display: flex;
+}
+
+img {
+    border-radius: 30px;
+}
+
+@media (max-width: 1000px) {
+
+    .haut {
+        flex-direction: column;
+    }
+    .bas {
+        flex-direction: column-reverse;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .haut > * {
+        margin-top: 30px;
+    }
+
+    .bas > * {
+        margin-top: 30px;
+    }
+}
