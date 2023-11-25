@@ -118,3 +118,25 @@ button {
 img {
     border-radius: 30px;
 }
+
+@media (max-width: 1000px) {
+
+    .haut {
+        flex-direction: column;
+    }
+    .bas {
+        flex-direction: column-reverse;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .haut > * {
+        margin-top: 30px;
+    }
+
+    .bas > * {
+        margin-top: 30px;
+    }
+}
