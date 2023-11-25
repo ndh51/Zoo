@@ -5,6 +5,10 @@ body, html {
     background-image: url("/img/fond.jpg");
 }
 
+body {
+    overflow: hidden;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -70,9 +74,9 @@ th, td {
 }
 
 .bas {
-    flex-grow: 1;
     display: flex;
     flex-wrap: wrap-reverse;
+    max-height: 50%;
 }
 
 .reservation {
@@ -95,6 +99,7 @@ h1 {
     justify-content: start;
     flex-grow: 1;
     overflow-y: scroll;
+    max-height: 300px;
 }
 
 .animal {
