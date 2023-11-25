@@ -1,15 +1,15 @@
 body, html {
-    height: 100%;
+    max-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
     background-image: url("/img/fond.jpg");
-
 }
 
 .content {
+    display: flex;
     flex-direction: column;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     padding: 20px;
 }
 
@@ -23,6 +23,7 @@ body, html {
 .haut, .bas {
     flex: 1;
 }
+
 .imgetdesc, .description, .animaux, .reservation {
     flex: 1;
     padding: 10px;
@@ -30,29 +31,43 @@ body, html {
 
 .imgdesc {
     display: flex;
+    flex-grow: 1;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 .imgetdesc img {
-    max-width: 40%;
-    height: auto;
+    display: block;
+    width: 70%;
+    height: 70%;
+    margin: auto;
     border-radius: 100px;
-    align-content: center;
-    text-align: center;
 }
 
 p{
+    margin-top: 10px;
+    display: flex;
     color: white;
+    font-size: 30px;
 }
 
 .description{
     flex-grow: 1;
 }
 
+table{
+    margin-top: 100px;
+}
+
+tr{
+    padding-top: 20px;
+}
+
 th, td {
-    padding: 8px;
+
+    font-size: 35px;
+    padding: 20px;
     text-align: left;
     color: white;
     border-top: 3px solid white;
@@ -71,8 +86,9 @@ th, td {
 
 
 h1 {
+    padding-top: 40px;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 2.5vw;
     margin-bottom: 10px;
     color: white;
     border-bottom: 2px solid white;
@@ -84,6 +100,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: start;
     flex-grow: 1;
+    overflow-y: scroll;
 }
 
 
@@ -94,8 +111,13 @@ h1 {
 }
 
 .animal img {
-    width: 10%;
+    width: 100%;
     height: auto;
+}
+
+button{
+    display: flex;
+
 }
 
 img {
