@@ -52,8 +52,8 @@ class EvenementController extends AbstractController
 
         return $this->render('evenement/update.html.twig', [
             'evenement' => $evenement,
-            'form' => $form->createView(),
-            'sumbmit_label' => 'Modifier']);
+            'form' => $form->createView()]);
     }
 
 }
+

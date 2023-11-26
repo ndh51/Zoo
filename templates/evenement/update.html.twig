@@ -1,13 +1,6 @@
-
 {% block body %}
     <title>Édition de {{ evenement.nomEvent }}</title>
     <h1>Édition de {{ evenement.nomEvent }}</h1>
-    {{ form_start(form, {'method': 'POST'}) }}
-    {{form_row(form.nomEvent)}}
-    {{ form_row(form.descEvent)}}
-    {{ form_row(form.nbPlaceMaxEvent)}}
-    {{ form_row(form.idEnclos)}}
-    <button type="submit" class="btn btn-success">{{ sumbmit_label }}</button>
-    {{ form_end(form) }}
+    {{ include('evenement/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier'}, with_context = false) }}
 {% endblock %}
 
