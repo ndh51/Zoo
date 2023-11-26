@@ -28,18 +28,18 @@ class FamilleController extends AbstractController
     #[Route('/famille/create', name: 'app_famille_create')]
     public function create(): Response
     {
-
+        return $this->render('famille/create.html.twig');
     }
 
-    #[Route('/famille/id<\d+>}/update', name: 'app_famille_id_update')]
-    public function update(): Response
+    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
+    public function update(Famille $famille): Response
     {
-
+        return $this->render('famille/update.html.twig', ['famille' => $famille]);
     }
 
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
-    public function delete(): Response
+    public function delete(Famille $famille): Response
     {
-
+        return $this->render('famille/delete.html.twig', ['famille' => $famille]);
     }
 }
