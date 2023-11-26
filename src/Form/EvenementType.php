@@ -17,13 +17,14 @@ class EvenementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomEvent', TextType::class, ['empty_data' => ''])
-            ->add('descEvent', TextType::class, ['empty_data' => ''])
-            ->add('nbPlaceMaxEvent', IntegerType::class, ['empty_data' => 3])
+            ->add('nomEvent', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'évènement '])
+            ->add('descEvent', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'évènement '])
+            ->add('nbPlaceMaxEvent', IntegerType::class, ['label' => 'Nombre de places maximum '])
             ->add('idEnclos', EntityType::class, [
                 'required' => false,
                 'class' => Enclos::class,
                 'choice_label' => 'nomEnclos',
+                'label' => 'Enclos ',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('c')
                         ->orderBy('c.nomEnclos', 'ASC');
