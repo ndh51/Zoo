@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Famille;
+use App\Form\FamilleType;
 use App\Repository\FamilleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ class FamilleController extends AbstractController
     public function index(FamilleRepository $repository): Response
     {
         $familles = $repository->findBy([]);
+
         return $this->render('famille/index.html.twig', [
             'familles' => $familles,
         ]);
@@ -34,7 +36,9 @@ class FamilleController extends AbstractController
     #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
     public function update(Famille $famille): Response
     {
-        return $this->render('famille/update.html.twig', ['famille' => $famille]);
+        $form = $this->createForm(FamilleType::class, $famille);
+
+        return $this->render('famille/update.html.twig', ['famille' => $famille, 'form' => $form]);
     }
 
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
