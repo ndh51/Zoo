@@ -27,7 +27,7 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['eventId' => '\d+'])]
+    #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Evenement $evenement): Response
     {
@@ -54,6 +54,25 @@ class EvenementController extends AbstractController
             'evenement' => $evenement,
             'form' => $form->createView()]);
     }
+
+    #[Route('/evenement/create', name: 'app_evenement_create')]
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $evenement = new Evenement();
+        $form = $this->createForm(EvenementType::class, $evenement);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($evenement);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()]);
+        }
+
+        return $this->render('evenement/create.html.twig',
+            ['form' => $form->createView()]);
+    }
+
 
 }
 
