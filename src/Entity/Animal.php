@@ -27,7 +27,7 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Categorie $idCategorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: Participer::class)]
+    #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Participer::class)]
     private Collection $participations;
 
     public function __construct()
