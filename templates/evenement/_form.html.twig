@@ -1,0 +1,7 @@
+{{ form_start(form, {'method': 'POST'}) }}
+    {{form_row(form.nomEvent)}}
+    {{ form_row(form.descEvent)}}
+    {{ form_row(form.nbPlaceMaxEvent)}}
+    {{ form_row(form.idEnclos)}}
+<button type="submit" class="btn btn-success">{{ sumbmit_label }}</button>
+{{ form_end(form) }}

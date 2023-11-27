@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
 class Evenement
@@ -16,8 +17,18 @@ class Evenement
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 5,
+        max: 50,
+    )]
     private ?string $nomEvent = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 10,
+        max: 255,
+    )]
     #[ORM\Column(length: 255)]
     private ?string $descEvent = null;
 
