@@ -75,12 +75,14 @@ class AnimalRepository extends ServiceEntityRepository
 
     public function findWithTheMostEvent()
     {
-        $this->createQueryBuilder('a')
+        return $this->createQueryBuilder('a')
             ->select('a.id', 'a.nomAnimal', 'COUNT(p.idEvent) as eventCount')
-            ->from('App\Entity\Animal', 'a')
-            ->join('a.participations', 'p')
+            ->leftJoin('a.participations', 'p')
             ->groupBy('a.id')
             ->orderBy('eventCount', 'DESC')
-            ->setMaxResults(10);
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+
     }
 }

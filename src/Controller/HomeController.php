@@ -24,7 +24,6 @@ class HomeController extends AbstractController
         }
         $animaux = $animalRepo->findWithTheMostEvent();
 
-
         return $this->render('home/index.html.twig', ['evenements' => $events, 'animaux' => $animaux]);
     }
 
