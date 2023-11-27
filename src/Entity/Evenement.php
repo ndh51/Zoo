@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
@@ -24,6 +26,14 @@ class Evenement
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?Enclos $idEnclos = null;
+
+    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Participer::class)]
+    private Collection $participations;
+
+    public function __construct()
+    {
+        $this->participations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class Evenement
     public function setIdEnclos(?Enclos $idEnclos): static
     {
         $this->idEnclos = $idEnclos;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Participer>
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participer $participation): static
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations->add($participation);
+            $participation->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participer $participation): static
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getEvenement() === $this) {
+                $participation->setEvenement(null);
+            }
+        }
 
         return $this;
     }
