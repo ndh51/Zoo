@@ -9,6 +9,7 @@ use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,6 +23,7 @@ class EvenementController extends AbstractController
     public function index(EvenementRepository $repository, Request $request): Response
     {
         $evenements = $repository->findBy([], ['nomEvent' => 'ASC']);
+
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements,
         ]);
@@ -34,6 +36,7 @@ class EvenementController extends AbstractController
         if (is_null($evenement)) {
             return $this->redirectToRoute('app_evenement', status: 303);
         }
+
         return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement]);
     }
@@ -73,6 +76,19 @@ class EvenementController extends AbstractController
             ['form' => $form->createView()]);
     }
 
+    #[Route('/evenement/{id}/delete', name: 'app_evenement_delete', requirements: ['id' => '\d+'])]
+    public function delete(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createFormBuilder()
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+            ->getForm();
 
+        $form->handleRequest($request);
+
+
+        return $this->render('evenement/delete.html.twig', [
+            'evenement' => $evenement,
+            'form' => $form]);
+    }
 }
-
