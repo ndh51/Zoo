@@ -92,10 +92,10 @@ class EvenementController extends AbstractController
             if ($clickedButton && 'delete' === $clickedButton->getName()) {
                 $entityManager->remove($evenement);
                 $entityManager->flush();
-                return $this->redirectToRoute('app_evenement');
+                return $this->redirectToRoute('app_evenement', status: 303);
 
             } else {
-                return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()]);
+                return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()], status: 303);
             }
         }
 
