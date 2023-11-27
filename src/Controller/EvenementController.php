@@ -86,9 +86,20 @@ class EvenementController extends AbstractController
 
         $form->handleRequest($request);
 
+        if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+            $clickedButton = $form->getClickedButton();
+
+            if ($clickedButton && 'delete' === $clickedButton->getName()) {
+                $entityManager->remove($evenement);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_evenement');
+
+            } else {
+                return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()]);
+            }
+        }
 
         return $this->render('evenement/delete.html.twig', [
-            'evenement' => $evenement,
             'form' => $form]);
     }
 }
