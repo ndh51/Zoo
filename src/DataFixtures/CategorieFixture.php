@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Factory\CategorieFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CategorieFixture extends Fixture
+class CategorieFixture extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -15,5 +16,9 @@ class CategorieFixture extends Fixture
         foreach ($catg as $element) {
             CategorieFactory::createOne(['nomCategorie' => $element['nom']]);
         }
+    }
+    public function getOrder()
+    {
+        return 1;
     }
 }
