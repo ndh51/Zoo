@@ -30,12 +30,22 @@ class FamilleController extends AbstractController
     }
 
     #[Route('/famille/create', name: 'app_famille_create')]
-    public function create(Request $request): Response
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(FamilleType::class);
-        $form->handleRequest($request);
+        $famille = new Famille();
+        $form = $this->createForm(FamilleType::class, $famille);
 
-        return $this->render('famille/create.html.twig', ['form' => $form]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($famille);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()]);
+        }
+
+        return $this->render('famille/create.html.twig',
+            ['form' => $form->createView()]);
+
     }
 
     #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
