@@ -6,5 +6,6 @@
 
 {% block body %}
     <h1>Édition de {{ famille.nomFamille }} </h1>
-    {{ form(form) }}
+    {{ include('famille/_form.html.twig', {'form': form, 'sumbmit_label' : 'modifier'}, with_context = false) }}
+
 {% endblock %}
