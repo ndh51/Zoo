@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Factory\EnclosFactory;
 use App\Factory\EvenementFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class EvenementFixtures extends Fixture
+class EvenementFixtures extends Fixture implements OrderedFixtureInterface
 {
     /**
      * @throws \Exception
@@ -24,11 +25,8 @@ class EvenementFixtures extends Fixture
         }
     }
 
-    public function getDependencies(): array
+    public function getOrder()
     {
-        return [
-            EnclosFixtures::class,
-            AppFixtures::class,
-        ];
+        return 5;
     }
 }

@@ -6,10 +6,10 @@ use App\Factory\AnimalFactory;
 use App\Factory\CategorieFactory;
 use App\Factory\FamilleFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AnimalFixtures extends Fixture implements DependentFixtureInterface
+class AnimalFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -23,11 +23,8 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         }
     }
 
-    public function getDependencies(): array
+    public function getOrder()
     {
-        return [
-            CategorieFixture::class,
-            AppFixtures::class,
-        ];
+        return 4;
     }
 }
