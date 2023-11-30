@@ -29,12 +29,21 @@ class ParticiperFixtures extends Fixture
             if (!in_array($idAnimal, array_values($participations[$idEvent]))) {
                 ++$nbGen;
                 $participations[$idEvent][] = $idAnimal;
-                $participation = ParticiperFactory::createOne(['idEvent' => EvenementFactory::find(['id' => $idEvent]),
-                                                                'idAnimal' => AnimalFactory::find(['id' => $idAnimal])]);
+                $participation = ParticiperFactory::createOne(['idEvent' => EvenementFactory::findBy(['id' => $idEvent]),
+                                                                'idAnimal' => AnimalFactory::findBy(['id' => $idAnimal])]);
                 $manager->persist($participation);
             }
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            EvenementFixtures::class,
+            AnimalFixtures::class,
+            AppFixtures::class,
+        ];
     }
 }
