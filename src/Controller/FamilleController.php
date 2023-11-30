@@ -30,7 +30,9 @@ class FamilleController extends AbstractController
     #[Route('/famille/create', name: 'app_famille_create')]
     public function create(): Response
     {
-        return $this->render('famille/create.html.twig');
+        $form = $this->createForm(FamilleType::class);
+
+        return $this->render('famille/create.html.twig', ['form' => $form]);
     }
 
     #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
@@ -44,6 +46,7 @@ class FamilleController extends AbstractController
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
     public function delete(Famille $famille): Response
     {
-        return $this->render('famille/delete.html.twig', ['famille' => $famille]);
+        $form = $this->createForm(FamilleType::class, $famille);
+        return $this->render('famille/delete.html.twig', ['famille' => $famille, 'form' => $form]);
     }
 }

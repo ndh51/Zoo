@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig'%}
 
 {% block title %}Famille Create{% endblock %}
 
 {% block body %}
-    Création d'une nouvel famille
+    <h1>Création d'une nouvel famille</h1>
+    {{ form(form) }}
 {% endblock %}

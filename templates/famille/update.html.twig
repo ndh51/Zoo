@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
 
 {% block title %}Famille update{% endblock %}
 
 {% block body %}
-    Édition de {{ famille.nomFamille }}
+    <h1>Édition de {{ famille.nomFamille }} </h1>
     {{ form(form) }}
 {% endblock %}
