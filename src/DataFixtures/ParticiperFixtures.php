@@ -13,31 +13,29 @@ class ParticiperFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-//        // Nombre total d'animaux et d'événements générés
-//        $totalNbAnimaux = count(json_decode(file_get_contents(__DIR__.'/data/Animaux.json'), true));
-//        $totalNbEvenements = count(json_decode(file_get_contents(__DIR__.'/data/Evenement.json'), true));
-//
-//
-//        // Génération aléatoire des relations entre animaux et événements
-//        $nbGen = 0;
-//        // Initialisation du tableau
-//        $participations = [];
-//        for ($i = 1; $i < $totalNbEvenements + 1; ++$i) {
-//            $participations[$i] = [];
-//        }
-//        while ($nbGen < 50) {
-//            $idAnimal = random_int(1, $totalNbAnimaux);
-//            $idEvent = random_int(1, $totalNbEvenements);
-//            if (!in_array($idAnimal, array_values($participations[$idEvent]))) {
-//                ++$nbGen;
-//                $participations[$idEvent][] = $idAnimal;
-//                $participation = ParticiperFactory::createOne(['idEvent' => EvenementFactory::find(['id' => $idEvent]),
-//                                                                'idAnimal' => AnimalFactory::find(['id' => $idAnimal])]);
-//                $manager->persist($participation);
-//            }
-//        }
+        // Nombre total d'animaux et d'événements générés
+        $totalNbAnimaux = count(json_decode(file_get_contents(__DIR__.'/data/Animaux.json'), true)['animaux']);
+        $totalNbEvenements = count(json_decode(file_get_contents(__DIR__.'/data/Evenement.json'), true)['evenements']);
 
-        $manager->flush();
+        // Génération aléatoire des relations entre animaux et événements
+        $nbGen = 0;
+        // Initialisation du tableau
+        $participations = [];
+        for ($i = 1; $i < $totalNbEvenements + 1; ++$i) {
+            $participations[$i] = [];
+        }
+        while ($nbGen < 50) {
+            $idAnimal = random_int(1, $totalNbAnimaux);
+            $idEvent = random_int(1, $totalNbEvenements);
+            if (!in_array($idAnimal, array_values($participations[$idEvent]))) {
+                ++$nbGen;
+                $participations[$idEvent][] = $idAnimal;
+                $event = EvenementFactory::findOrCreate(['id' => $idEvent]);
+                $animal = AnimalFactory::findOrCreate(['id' => $idAnimal]);
+                ParticiperFactory::createOne(['idEvent' => $event,
+                    'idAnimal' => $animal]);
+            }
+        }
     }
 
     public function getOrder()

@@ -38,7 +38,7 @@ class Evenement
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?Enclos $idEnclos = null;
 
-    #[ORM\OneToMany(mappedBy: 'idEvenement', targetEntity: Participer::class)]
+    #[ORM\OneToMany(mappedBy: 'idEvent', targetEntity: Participer::class)]
     private Collection $participations;
 
     public function __construct()
