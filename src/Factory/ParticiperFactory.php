@@ -11,21 +11,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Participer>
  *
- * @method        Participer|Proxy create(array|callable $attributes = [])
- * @method static Participer|Proxy createOne(array $attributes = [])
- * @method static Participer|Proxy find(object|array|mixed $criteria)
- * @method static Participer|Proxy findOrCreate(array $attributes)
- * @method static Participer|Proxy first(string $sortedField = 'id')
- * @method static Participer|Proxy last(string $sortedField = 'id')
- * @method static Participer|Proxy random(array $attributes = [])
- * @method static Participer|Proxy randomOrCreate(array $attributes = [])
+ * @method        Participer|Proxy                     create(array|callable $attributes = [])
+ * @method static Participer|Proxy                     createOne(array $attributes = [])
+ * @method static Participer|Proxy                     find(object|array|mixed $criteria)
+ * @method static Participer|Proxy                     findOrCreate(array $attributes)
+ * @method static Participer|Proxy                     first(string $sortedField = 'id')
+ * @method static Participer|Proxy                     last(string $sortedField = 'id')
+ * @method static Participer|Proxy                     random(array $attributes = [])
+ * @method static Participer|Proxy                     randomOrCreate(array $attributes = [])
  * @method static ParticiperRepository|RepositoryProxy repository()
- * @method static Participer[]|Proxy[] all()
- * @method static Participer[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Participer[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static Participer[]|Proxy[] findBy(array $attributes)
- * @method static Participer[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Participer[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Participer[]|Proxy[]                 all()
+ * @method static Participer[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Participer[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static Participer[]|Proxy[]                 findBy(array $attributes)
+ * @method static Participer[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Participer[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class ParticiperFactory extends ModelFactory
 {
@@ -47,6 +47,8 @@ final class ParticiperFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
+            'idEvent' => null,
+            'idAnimal' => null,
         ];
     }
 
