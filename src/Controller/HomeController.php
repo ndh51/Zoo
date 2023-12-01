@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EvenementRepository $eventRepo, AnimalRepository $animalRepo): Response
     {
-        $events = $eventRepo->findBy([], ['nbPlaceMaxEvent' => 'DESC'], 3);
+        $events = $eventRepo->findWithTheMostAnimals();
         $animaux = $animalRepo->findWithTheMostEvent();
 
         return $this->render('home/index.html.twig', ['evenements' => $events, 'animaux' => $animaux]);
