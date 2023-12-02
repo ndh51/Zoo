@@ -61,7 +61,8 @@ class FamilleController extends AbstractController
 
         return $this->render('famille/update.html.twig', [
             'famille' => $famille,
-            'form' => $form->createView()]);
+            'form' => $form->createView(),
+            'animaux' => $famille->getAnimals()]);
     }
 
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
@@ -100,7 +101,7 @@ class FamilleController extends AbstractController
             return $this->render('famille/delete.html.twig', [
                 'form' => $form,
                 'famille' => $famille,
-                'animals' => $famille->getAnimals()]);
+                'animaux' => $famille->getAnimals()]);
         }
     }
 }
