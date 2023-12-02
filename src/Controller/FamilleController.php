@@ -67,28 +67,40 @@ class FamilleController extends AbstractController
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
     public function delete(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createFormBuilder()
-            ->add('delete', SubmitType::class, ['label' => 'delete'])
-            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
-            ->getForm();
+        if ($famille->getAnimals()->isEmpty()) {
+            $form = $this->createFormBuilder()
+                ->add('delete', SubmitType::class, ['label' => 'delete'])
+                ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+                ->getForm();
 
-        $form->handleRequest($request);
+            $form->handleRequest($request);
 
-        if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
-            $clickedButton = $form->getClickedButton();
+            if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+                $clickedButton = $form->getClickedButton();
 
-            if ($clickedButton && 'delete' === $clickedButton->getName()) {
-                $entityManager->remove($famille);
-                $entityManager->flush();
+                if ($clickedButton && 'delete' === $clickedButton->getName()) {
+                    $entityManager->remove($famille);
+                    $entityManager->flush();
 
-                return $this->redirectToRoute('app_famille', status: 303);
-            } else {
-                return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()], status: 303);
+                    return $this->redirectToRoute('app_famille', status: 303);
+                } else {
+                    return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()], status: 303);
+                }
             }
-        }
 
-        return $this->render('famille/delete.html.twig', [
-            'form' => $form,
-            'famille'=> $famille]);
+            return $this->render('famille/delete.html.twig', [
+                'form' => $form,
+                'famille' => $famille,
+                'animals' => 'vide']);
+        } else {
+            $form = $this->createFormBuilder()
+                ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+                ->getForm();
+
+            return $this->render('famille/delete.html.twig', [
+                'form' => $form,
+                'famille' => $famille,
+                'animals' => $famille->getAnimals()]);
+        }
     }
 }
