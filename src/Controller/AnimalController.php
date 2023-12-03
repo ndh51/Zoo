@@ -30,4 +30,16 @@ class AnimalController extends AbstractController
         return $this->render('animal/show.html.twig', [
             'animal' => $animal]);
     }
+    #[Route('/animal/create', name: 'app_animal_create', requirements: ['animalId' => '\d+'])]
+    public function create()
+    {
+    }
+    #[Route('/animal/{id}/update', name: 'app_animal_id_update', requirements: ['animalId' => '\d+'])]
+    public function update(?Animal $animal)
+    {
+    }
+    #[Route('/animal/{id}/delete', name: 'app_animal_id_delete', requirements: ['animalId' => '\d+'])]
+    public function delete(?Animal $animal)
+    {
+    }
 }
