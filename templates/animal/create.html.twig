@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    <title>Création d'un Animal</title>
+    <h1>Création d'un Animal</h1>
+    {{ include('animal/_form.html.twig', {'form': form, 'sumbmit_label' : 'Créer'}, with_context = false) }}
+{% endblock %}
+
+
+
