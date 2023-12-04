@@ -3,82 +3,72 @@
     {
       "nom": "Safari Nocturne",
       "description": "Une expérience unique où les visiteurs peuvent explorer le zoo après le coucher du soleil avec des guides experts et des lanternes, découvrant la vie nocturne des animaux.",
-      "enclos" : "Savane Africaine"
+      "enclos" : "Savane"
     },
     {
       "nom": "Journée des Super Héros Animaux",
       "description": "Les visiteurs sont encouragés à se déguiser en super-héros tout en découvrant des faits fascinants sur les capacités exceptionnelles des animaux du zoo.",
-      "enclos" : "Forêt Tropicale"
-    },
-    {
-      "nom" : "Safari Nocturne",
-      "description" : "Une expérience unique où les visiteurs peuvent explorer le zoo après le coucher du soleil avec des guides experts et des lanternes, découvrant la vie nocturne des animaux.",
-      "enclos" : "Territoire des Lions"
-    },
-    {
-      "nom" : "Journée des Super Héros Animaux",
-      "description" : "Les visiteurs sont encouragés à se déguiser en super-héros tout en découvrant des faits fascinants sur les capacités exceptionnelles des animaux du zoo.",
-      "enclos" : "Pôle Nord"
+      "enclos" : "Basse-cour"
     },
     {
       "nom" : "Atelier de Sculpture de Glace pour Pingouins",
       "description" : "Un événement hivernal où les visiteurs peuvent regarder des sculpteurs de glace créer des œuvres d'art éphémères pour les pingouins.",
-      "enclos" : "Montagnes Rocheuses"
+      "enclos" : "Arctique"
     },
     {
       "nom" : "Concert sous les Étoiles",
       "description" : "Une soirée musicale en plein air mettant en vedette des artistes locaux, offrant une atmosphère unique avec les sons de la nature en toile de fond.",
-      "enclos" : "Jungle Mystérieuse"
+      "enclos" : "Forêt tropicale"
     },
     {
       "nom" : "Festival de la Jungle",
       "description" : "Une célébration colorée mettant en avant les habitats tropicaux du zoo avec de la musique, de la danse, des artisans locaux et des spécialités culinaires exotiques.",
-      "enclos" : "Plaines de l'Outback"
+      "enclos" : "Forêt tropicale"
     },
     {
       "nom" : "Journée des Gardiens en Herbe",
       "description" : "Les enfants peuvent participer à des activités spéciales pour en apprendre davantage sur la conservation et ce qu'il faut pour prendre soin des animaux.",
-      "enclos" : "Côte Aquatique"
+      "enclos" : "Basse-cour"
     },
     {
       "nom" : "Chasse au Trésor Zoologique",
       "description" : "Les familles sont invitées à participer à une chasse au trésor éducative à travers le zoo, découvrant des faits intéressants sur les animaux le long du chemin.",
-      "enclos" : "Volière Enchantée"
+      "enclos" : "Littoral"
     },
     {
       "nom" : "Yoga avec les Girafes",
       "description" : "Une séance de yoga relaxante organisée devant l'enclos des girafes pour une expérience zen entourée de la majesté de ces animaux gracieux.",
-      "enclos" : "Désert des Tortues"
+      "enclos" : "Savane"
     },
     {
       "nom" : "Course Fun pour Animaux de Compagnie",
       "description" : "Les visiteurs peuvent inscrire leurs animaux de compagnie pour une course amusante à travers le zoo, avec des prix pour les animaux les plus rapides.",
-      "enclos" : "Grotte des Chauves-souris"
+      "enclos" : "Basse-cour"
     },
     {
       "nom" : "Rencontre avec le Vétérinaire",
       "description" : "Les visiteurs ont la chance de voir les vétérinaires en action lors de démonstrations interactives sur les soins médicaux et les examens des animaux.",
-      "enclos" : "Rivière Serpentine"
+      "enclos" : "Jardin floral"
     },
     {
       "nom" : "Journée des Sciences Naturelles",
       "description" : "Des ateliers éducatifs et des présentations mettent en lumière les aspects scientifiques de la vie animale, avec des experts partageant des découvertes récentes.",
-      "enclos" : "Palais des Pingouins"
+      "enclos" : "Jardin floral"
     },
     {
       "nom" : "Soirée Cinéma en Plein Air",
       "description" : "Projection de films familiaux populaires près de l'aire de pique-nique, offrant une soirée relaxante sous les étoiles.",
-      "enclos" : "Récif Corallien"
+      "enclos" : "Forêt de bambous"
     },
     {
       "nom" : "Fête d'Anniversaire Géante pour les Tortues",
       "description" : "Un événement festif avec des gâteaux spéciaux pour les tortues, des activités ludiques et des démonstrations sur ces créatures fascinantes.",
-      "enclos" : "Grotte des Chauves-souris"
+      "enclos" : "Zone côtière"
     },
     {
       "nom" : "Journée des Oiseaux Migrateurs",
       "description" : "Une célébration de la migration des oiseaux avec des ateliers sur l'ornithologie, des observations d'oiseaux guidées et des activités artistiques.",
-      "enclos" : "Côte Aquatique"
+      "enclos" : "Zone côtière"
     }
   ]
 }
