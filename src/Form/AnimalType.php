@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Animal;
+use App\Entity\Categorie;
 use App\Entity\Famille;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,7 +28,17 @@ class AnimalType extends AbstractType
                     return $entityRepository->createQueryBuilder('c')
                         ->orderBy('c.nomFamille', 'ASC');
                 },
-            ]
+            ])
+            ->add('idCategorie', EntityType::class, [
+                    'required' => true,
+                    'class' => Categorie::class,
+                    'choice_label' => 'nomCategorie',
+                    'label' => 'Categorie ',
+                    'query_builder' => function (EntityRepository $entityRepository) {
+                        return $entityRepository->createQueryBuilder('c')
+                            ->orderBy('c.nomCategorie', 'ASC');
+                    },
+                ]
             )
         ;
     }
