@@ -11,10 +11,10 @@ class EnclosFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        //EnclosFactory::createMany(5);
+        // EnclosFactory::createMany(5);
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 3;
     }

@@ -17,7 +17,7 @@ class CategorieFixture extends Fixture implements OrderedFixtureInterface
             CategorieFactory::createOne(['nomCategorie' => $element['nom']]);
         }
     }
-    public function getOrder()
+    public function getOrder(): int
     {
         return 1;
     }

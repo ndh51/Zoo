@@ -10,10 +10,12 @@ p{
     margin: 5px;
     padding: 2%;
 }
-.corpsAnimal{
+
+.corps-animal{
     display: flex;
     flex-direction: row;
 }
+
 .infoAnimal{
     display: flex;
     flex-direction: column;
