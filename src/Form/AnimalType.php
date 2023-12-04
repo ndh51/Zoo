@@ -3,9 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Animal;
-use App\Entity\Categorie;
 use App\Entity\Famille;
-use App\Repository\AnimalRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -18,9 +16,9 @@ class AnimalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nomAnimal', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'Animal '])
-        ->add('descAnimal', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'Animal '])
-        ->add('idFamille', EntityType::class, [
+            ->add('nomAnimal', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'Animal '])
+            ->add('descAnimal', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'Animal '])
+            ->add('idFamille', EntityType::class, [
                 'required' => true,
                 'class' => Famille::class,
                 'choice_label' => 'nomFamille',
@@ -30,7 +28,7 @@ class AnimalType extends AbstractType
                         ->orderBy('c.nomFamille', 'ASC');
                 },
             ]
-        )
+            )
         ;
     }
 
