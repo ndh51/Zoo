@@ -39,6 +39,13 @@ class Animal
     #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Participer::class)]
     private Collection $participations;
 
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function capitalizeNomAnimal()
+    {
+        $this->nomAnimal = ucfirst($this->nomAnimal);
+    }
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
