@@ -4,11 +4,11 @@
 
     <h1>Voules vous vraiement supprimer cet animal ? :</h1>
 
-    {{ animal.nomAnimal }}
+    <h2>{{ animal.nomAnimal }}</h2>
 
     {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
-        {{form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
-        {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
+        {{form_row(form.Supprimer, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
+        {{ form_row(form.Annuler, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
     {{ form_end(form) }}
 
 {% endblock %}
