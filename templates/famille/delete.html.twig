@@ -6,14 +6,11 @@
 
 {% block body %}
     <h1>Suppression de {{ famille.nomFamille }}</h1>
-    {% if animaux is empty %}
-        {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
-            {{ form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
-            {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
-        {{ form_end(form) }}
-    {% else %}
-        <h2>Impossible de supprimer {{ famille.nomFamille }}</h2>
-        Les animaux de cette famille sont :
-        {{ include('animal/_animal.html.twig') }}
-    {% endif %}
+    {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
+        {{ form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
+        {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
+    {{ form_end(form) }}
+
+    Les animaux de cette famille sont :
+    {{ include('animal/_animal.html.twig') }}
 {% endblock %}

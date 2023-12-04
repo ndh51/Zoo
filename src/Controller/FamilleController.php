@@ -80,6 +80,9 @@ class FamilleController extends AbstractController
 
             if ($clickedButton && 'delete' === $clickedButton->getName()) {
                 $entityManager->remove($famille);
+                foreach ($famille->getAnimals() as $animal) {
+                    $animal->setIdFamille(null);
+                }
                 $entityManager->flush();
 
                 return $this->redirectToRoute('app_famille', status: 303);
