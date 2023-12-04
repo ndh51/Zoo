@@ -65,9 +65,9 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('app_animal_id', ['id' => $animal->getId()]);
         }
 
-        return $form = $this->render('animal/update.html.twig', [
+        return $this->render('animal/update.html.twig', [
             'animal' => $animal,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -86,6 +86,7 @@ class AnimalController extends AbstractController
 
             if ($clickedButton && 'Supprimer' === $clickedButton->getName()) {
                 $entityManager->remove($animal);
+
                 $entityManager->flush();
 
                 return $this->redirectToRoute('app_animal', status: 303);
@@ -96,6 +97,6 @@ class AnimalController extends AbstractController
 
         return $this->render('animal/delete.html.twig', [
             'animal' => $animal,
-            'form' => $form]);
+            'form' => $form->createView()]);
     }
 }
