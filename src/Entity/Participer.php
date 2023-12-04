@@ -10,12 +10,12 @@ class Participer
 {
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'participations')]
-    //#[ORM\JoinColumn(name: 'animal_id', referencedColumnName: 'id')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Animal $idAnimal = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'participations')]
-    //#[ORM\JoinColumn(name: 'evenement_id', referencedColumnName: 'id')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Evenement $idEvent = null;
 
     public function getIdAnimal(): ?Animal
