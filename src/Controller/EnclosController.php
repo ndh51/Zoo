@@ -28,4 +28,23 @@ class EnclosController extends AbstractController
         return $this->render('enclos/show.html.twig', [
             'enclos' => $enclos]);
     }
+
+    #[Route('/enclos/{id}/update', name: 'app_enclos_update', requirements: ['id' => '\d+'])]
+    public function update(Enclos $enclos): Response
+    {
+        return $this->render('enclos/update.html.twig', [
+            'enclos' => $enclos]);
+    }
+    #[Route('/enclos/create', name: 'app_enclos_create')]
+    public function create(): Response
+    {
+        return $this->render('enclos/create.html.twig');
+    }
+
+    #[Route('/enclos/{id}/delete', name: 'app_enclos_delete', requirements: ['id' => '\d+'])]
+    public function delete(Enclos $enclos): Response
+    {
+        return $this->render('enclos/delete.html.twig', [
+            'enclos' => $enclos]);
+    }
 }
