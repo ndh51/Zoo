@@ -11,7 +11,13 @@ class EnclosFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        //EnclosFactory::createMany(5);
+        $tab = json_decode(file_get_contents(__DIR__.'/data/Enclos.json'), true);
+        $encl = $tab['enclos'];
+        foreach ($encl as $element) {
+            EnclosFactory::createOne([
+                'nomEnclos' => $element['nom'],
+            ]);
+        }
     }
 
     public function getOrder()
