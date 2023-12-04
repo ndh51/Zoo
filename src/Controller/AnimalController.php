@@ -75,8 +75,8 @@ class AnimalController extends AbstractController
     public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
-            ->add('Supprimer', SubmitType::class, ['label' => 'Supprimer'])
-            ->add('Annuler', SubmitType::class, ['label' => 'Annuler'])
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
             ->getForm();
 
         $form->handleRequest($request);
@@ -84,7 +84,7 @@ class AnimalController extends AbstractController
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $clickedButton = $form->getClickedButton();
 
-            if ($clickedButton && 'Supprimer' === $clickedButton->getName()) {
+            if ($clickedButton && 'delete' === $clickedButton->getName()) {
                 $entityManager->remove($animal);
 
                 $entityManager->flush();
