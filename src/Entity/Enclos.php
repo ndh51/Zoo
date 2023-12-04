@@ -6,6 +6,7 @@ use App\Repository\EnclosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EnclosRepository::class)]
 class Enclos
@@ -16,6 +17,13 @@ class Enclos
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de l\'enclos doit faire {{ limit }} caractères au minimum',
+        maxMessage: 'Le nom de l\'enclos doit faire {{ limit }} caractères au maximum',
+    )]
     private ?string $nomEnclos = null;
 
     #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Evenement::class)]

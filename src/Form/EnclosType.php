@@ -14,7 +14,11 @@ class EnclosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomEnclos', TextType::class, ['label' => 'Nom de l\'enclos'])
+            ->add('nomEnclos', TextType::class, [
+                'label' => 'Nom de l\'enclos',
+                'empty_data' => '',
+                'required' => true,
+            ])
         ;
     }
 
