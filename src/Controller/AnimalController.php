@@ -22,7 +22,7 @@ class AnimalController extends AbstractController
         return $this->render('animal/index.html.twig', ['animaux' => $animaux]);
     }
 
-    #[Route('/animal/{id}', name: 'app_animal_id', requirements: ['animalId' => '\d+'])]
+    #[Route('/animal/{id}', name: 'app_animal_id', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Animal $animal): Response
     {
@@ -34,7 +34,7 @@ class AnimalController extends AbstractController
             'animal' => $animal]);
     }
 
-    #[Route('/animal/create', name: 'app_animal_create', requirements: ['animalId' => '\d+'])]
+    #[Route('/animal/create', name: 'app_animal_create')]
     public function create(Request $request, EntityManagerInterface $entityManager)
     {
         $animal = new Animal();
