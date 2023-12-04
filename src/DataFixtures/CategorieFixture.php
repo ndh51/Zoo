@@ -14,7 +14,10 @@ class CategorieFixture extends Fixture implements OrderedFixtureInterface
         $tab = json_decode(file_get_contents(__DIR__.'/data/Categorie.json'), true);
         $catg = $tab['categorie'];
         foreach ($catg as $element) {
-            CategorieFactory::createOne(['nomCategorie' => $element['nom']]);
+            CategorieFactory::createOne([
+                'nomCategorie' => $element['nom'],
+                'descCategorie' => $element['description'],
+            ]);
         }
     }
     public function getOrder()
