@@ -23,7 +23,7 @@ class AnimalFixtures extends Fixture implements OrderedFixtureInterface
         }
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 4;
     }

@@ -25,7 +25,7 @@ class EvenementFixtures extends Fixture implements OrderedFixtureInterface
         }
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 5;
     }
