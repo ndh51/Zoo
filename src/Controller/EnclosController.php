@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Enclos;
+use App\Form\EnclosType;
 use App\Repository\EnclosRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,8 +33,12 @@ class EnclosController extends AbstractController
     #[Route('/enclos/{id}/update', name: 'app_enclos_update', requirements: ['id' => '\d+'])]
     public function update(Enclos $enclos): Response
     {
+        $form = $this->createForm(EnclosType::class, $enclos);
+
         return $this->render('enclos/update.html.twig', [
-            'enclos' => $enclos]);
+            'enclos' => $enclos,
+            'form' => $form->createView(),
+        ]);
     }
     #[Route('/enclos/create', name: 'app_enclos_create')]
     public function create(): Response

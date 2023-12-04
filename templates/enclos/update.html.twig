@@ -2,5 +2,6 @@
 {% block body %}
     <title>Edition de {{ enclos.nomEnclos }}</title>
     <h1>Edition de {{ enclos.nomEnclos }}</h1>
+    {{ include('enclos/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier'}, with_context = false) }}
 {% endblock %}
 
