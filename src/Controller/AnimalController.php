@@ -53,7 +53,7 @@ class AnimalController extends AbstractController
             ['form' => $form->createView()]);
     }
 
-    #[Route('/animal/{id}/update', name: 'app_animal_id_update', requirements: ['animalId' => '\d+'])]
+    #[Route('/animal/{id}/update', name: 'app_animal_id_update', requirements: ['id' => '\d+'])]
     public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager)
     {
         $form = $this->createForm(AnimalType::class, $animal);
@@ -71,7 +71,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/animal/{id}/delete', name: 'app_animal_id_delete', requirements: ['animalId' => '\d+'])]
+    #[Route('/animal/{id}/delete', name: 'app_animal_id_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager)
     {
         $form = $this->createFormBuilder()
