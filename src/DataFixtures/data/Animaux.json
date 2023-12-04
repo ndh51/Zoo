@@ -5,14 +5,14 @@
       "description": "De l’ordre des Galliformes et de la famille des Phasianidae, la poule est un oiseau de basse-cour qui est couvert de plumes protégeant son corps. Le mâle, appelé coq, se distingue de la femelle par une petite peau rouge vif sur la tête dénommée crête, des ergots sur les pattes, et les longues plumes de la queue.",
       "famille": "Oiseaux",
       "categorie": "Oiseaux",
-      "enclos": "Basse-cour",
+      "enclos": "Basse-cour"
     },
     {
       "nom": "Lion",
       "description": "Le lion est un grand félin de la famille des Felidae et de l'espèce Panthera leo. Il se caractérise par sa crinière distinctive chez les mâles. Les lions vivent en groupes sociaux appelés fiertés et sont parmi les prédateurs les plus redoutables de la savane africaine.",
       "famille": "Félidés",
       "categorie": "Mammifère",
-      "enclos": "Savane",
+      "enclos": "Savane"
     },
     {
       "nom": "Tortue",
@@ -59,7 +59,7 @@
     {
       "nom": "Requin",
       "description": "Les requins sont des poissons cartilagineux prédateurs présents dans les océans du monde entier. Ils ont des nageoires, des branchies et une peau couverte de denticules dermiques. Les requins jouent un rôle essentiel dans l'équilibre des écosystèmes marins en tant que prédateurs.",
-      "famille": "Poissons",
+      "famille": "Poisson",
       "categorie": "Poisson",
       "enclos": "Océan"
     },

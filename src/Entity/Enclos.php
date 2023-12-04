@@ -21,9 +21,13 @@ class Enclos
     #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Evenement::class)]
     private Collection $evenements;
 
+    #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Animal::class)]
+    private Collection $animals;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
+        $this->animals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +71,36 @@ class Enclos
             // set the owning side to null (unless already changed)
             if ($evenement->getIdEnclos() === $this) {
                 $evenement->setIdEnclos(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animal>
+     */
+    public function getAnimals(): Collection
+    {
+        return $this->animals;
+    }
+
+    public function addAnimal(Animal $animal): static
+    {
+        if (!$this->animals->contains($animal)) {
+            $this->animals->add($animal);
+            $animal->setIdEnclos($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimal(Animal $animal): static
+    {
+        if ($this->animals->removeElement($animal)) {
+            // set the owning side to null (unless already changed)
+            if ($animal->getIdEnclos() === $this) {
+                $animal->setIdEnclos(null);
             }
         }
 

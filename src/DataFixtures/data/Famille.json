@@ -87,6 +87,38 @@
     {
       "nom": "Strigidae",
       "description": "Famille d'oiseaux de proie nocturnes, tels que les chouettes. Ils sont connus pour leur excellente audition et leur capacité à chasser la nuit."
+    },
+    {
+      "nom": "Cétacés",
+      "description": "Famille de mammifères marins incluant des baleines, des dauphins et des marsouins. Ils se caractérisent par leur adaptation à la vie aquatique et leur respiration à travers un évent."
+    },
+    {
+      "nom": "Girafidés",
+      "description": "Famille de mammifères herbivores comprenant des girafes et des okapis. Ils sont connus pour leur long cou et leurs taches distinctives."
+    },
+    {
+      "nom": "Éléphantidés",
+      "description": "Famille de grands mammifères terrestres incluant les éléphants. Ils se caractérisent par leurs grandes oreilles, leurs défenses et leur comportement social complexe."
+    },
+    {
+      "nom": "Rapaces",
+      "description": "Groupe d'oiseaux de proie comprenant des espèces telles que les aigles, les faucons et les vautours. Ils se distinguent par leurs serres acérées et leur régime alimentaire de chasseurs."
+    },
+    {
+      "nom": "Crocodiliens",
+      "description": "Ordre de reptiles carnivores à la mâchoire puissante. Il comprend des espèces comme les crocodiles et les alligators, souvent trouvés dans les habitats aquatiques."
+    },
+    {
+      "nom": "Pélécanidés",
+      "description": "Famille d'oiseaux aquatiques comprenant les pélicans. Ils se caractérisent par leur grande poche gulaire et leur méthode de chasse plongeante."
+    },
+    {
+      "nom": "Érinacéidés",
+      "description": "Famille de petits mammifères couverts de piquants, tels que les hérissons. Ils ont une stratégie de défense unique avec leurs piquants."
+    },
+    {
+      "nom": "Phascolarctidés",
+      "description": "Famille de marsupiaux arboricoles, incluant le koala. Ils sont principalement herbivores et se trouvent dans les régions forestières d'Australie."
     }
   ]
 }

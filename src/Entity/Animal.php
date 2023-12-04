@@ -39,6 +39,9 @@ class Animal
     #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Participer::class)]
     private Collection $participations;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    private ?Enclos $idEnclos = null;
+
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
     public function capitalizeNomAnimal()
@@ -136,6 +139,18 @@ class Animal
                 $participation->setAnimal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdEnclos(): ?Enclos
+    {
+        return $this->idEnclos;
+    }
+
+    public function setIdEnclos(?Enclos $idEnclos): static
+    {
+        $this->idEnclos = $idEnclos;
 
         return $this;
     }

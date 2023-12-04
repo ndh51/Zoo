@@ -16,7 +16,7 @@ class CategorieFixture extends Fixture implements OrderedFixtureInterface
         foreach ($catg as $element) {
             CategorieFactory::createOne([
                 'nomCategorie' => $element['nom'],
-                'descCategorie' => $element['description'],
+                'descCategorie' => $element['desc'],
             ]);
         }
     }
