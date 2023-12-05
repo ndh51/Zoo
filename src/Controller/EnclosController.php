@@ -6,7 +6,9 @@ use App\Entity\Enclos;
 use App\Form\EnclosType;
 use App\Repository\EnclosRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -70,9 +72,43 @@ class EnclosController extends AbstractController
     }
 
     #[Route('/enclos/{id}/delete', name: 'app_enclos_delete', requirements: ['id' => '\d+'])]
-    public function delete(Enclos $enclos): Response
+    public function delete(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $form = $this->createFormBuilder()
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+            $clickedButton = $form->getClickedButton();
+
+            if ($clickedButton && 'delete' === $clickedButton->getName()) {
+                foreach ($enclos->getAnimals() as $animal) {
+                    foreach ($animal->getParticipations() as $participation) {
+                        $entityManager->remove($participation);
+                    }
+                    $entityManager->remove($animal);
+                }
+                foreach ($enclos->getEvenements() as $evenement) {
+                    foreach ($evenement->getParticipations() as $participation) {
+                        $entityManager->remove($participation);
+                    }
+                    $entityManager->remove($evenement);
+                }
+                $entityManager->remove($enclos);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_enclos', status: 303);
+            } else {
+                return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()], status: 303);
+            }
+        }
+
         return $this->render('enclos/delete.html.twig', [
-            'enclos' => $enclos]);
+            'enclos' => $enclos,
+            'form' => $form,
+        ]);
     }
 }

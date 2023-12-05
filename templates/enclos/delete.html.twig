@@ -3,5 +3,14 @@
 {% block body %}
     <title>Suppression de {{ enclos.nomEnclos }}</title>
     <h1>Suppression de {{ enclos.nomEnclos }}</h1>
+    <h2>Attention en supprimant cet enclos, tous les animaux et évènements liés à cet enclos seront supprimé</h2>
+    <h3>Les animaux liés à cet enclos sont :</h3>
+    {{ include('animal/_animal.html.twig', {'animaux' : enclos.animals}) }}
+    <h3>Les évènements liés à cet enclos sont :</h3>
+    {{ include('evenement/_evenement.html.twig', {'evenements' : enclos.evenements}) }}
+    {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
+    {{ form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-danger'}}) }}
+    {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'}}) }}
+    {{ form_end(form) }}
 {% endblock %}
 
