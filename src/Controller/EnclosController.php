@@ -49,10 +49,24 @@ class EnclosController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     #[Route('/enclos/create', name: 'app_enclos_create')]
-    public function create(): Response
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('enclos/create.html.twig');
+        $enclos = new Enclos();
+        $form = $this->createForm(EnclosType::class, $enclos);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($enclos);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()]);
+        }
+
+        return $this->render('enclos/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/enclos/{id}/delete', name: 'app_enclos_delete', requirements: ['id' => '\d+'])]
