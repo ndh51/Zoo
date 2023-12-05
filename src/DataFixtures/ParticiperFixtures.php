@@ -11,7 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 
 class ParticiperFixtures extends Fixture implements OrderedFixtureInterface
 {
-    public function load(ObjectManager $manager)
+    /**
+     * @throws \Exception
+     */
+    public function load(ObjectManager $manager): void
     {
         // Nombre total d'animaux et d'événements générés
         $totalNbAnimaux = count(json_decode(file_get_contents(__DIR__.'/data/Animaux.json'), true)['animaux']);
@@ -30,15 +33,15 @@ class ParticiperFixtures extends Fixture implements OrderedFixtureInterface
             if (!in_array($idAnimal, array_values($participations[$idEvent]))) {
                 ++$nbGen;
                 $participations[$idEvent][] = $idAnimal;
-                $event = EvenementFactory::findOrCreate(['id' => $idEvent]);
-                $animal = AnimalFactory::findOrCreate(['id' => $idAnimal]);
+                $event = EvenementFactory::find(['id' => $idEvent]);
+                $animal = AnimalFactory::find(['id' => $idAnimal]);
                 ParticiperFactory::createOne(['idEvent' => $event,
                     'idAnimal' => $animal]);
             }
         }
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 6;
     }

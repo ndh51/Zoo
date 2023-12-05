@@ -20,7 +20,7 @@ class CategorieFixture extends Fixture implements OrderedFixtureInterface
             ]);
         }
     }
-    public function getOrder()
+    public function getOrder(): int
     {
         return 1;
     }

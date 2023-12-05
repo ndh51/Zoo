@@ -36,7 +36,7 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/animal/create', name: 'app_animal_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager)
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $animal = new Animal();
         $form = $this->createForm(AnimalType::class, $animal);
@@ -53,8 +53,8 @@ class AnimalController extends AbstractController
             ['form' => $form->createView()]);
     }
 
-    #[Route('/animal/{id}/update', name: 'app_animal_id_update', requirements: ['animalId' => '\d+'])]
-    public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager)
+    #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id' => '\d+'])]
+    public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AnimalType::class, $animal);
 
@@ -65,18 +65,18 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('app_animal_id', ['id' => $animal->getId()]);
         }
 
-        return $form = $this->render('animal/update.html.twig', [
+        return $this->render('animal/update.html.twig', [
             'animal' => $animal,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/animal/{id}/delete', name: 'app_animal_id_delete', requirements: ['animalId' => '\d+'])]
-    public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager)
+    #[Route('/animal/{id}/delete', name: 'app_animal_delete', requirements: ['id' => '\d+'])]
+    public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
-            ->add('Supprimer', SubmitType::class, ['label' => 'Supprimer'])
-            ->add('Annuler', SubmitType::class, ['label' => 'Annuler'])
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
             ->getForm();
 
         $form->handleRequest($request);
@@ -84,8 +84,9 @@ class AnimalController extends AbstractController
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $clickedButton = $form->getClickedButton();
 
-            if ($clickedButton && 'Supprimer' === $clickedButton->getName()) {
+            if ($clickedButton && 'delete' === $clickedButton->getName()) {
                 $entityManager->remove($animal);
+
                 $entityManager->flush();
 
                 return $this->redirectToRoute('app_animal', status: 303);
@@ -96,6 +97,6 @@ class AnimalController extends AbstractController
 
         return $this->render('animal/delete.html.twig', [
             'animal' => $animal,
-            'form' => $form]);
+            'form' => $form->createView()]);
     }
 }

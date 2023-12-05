@@ -44,7 +44,7 @@ class Animal
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
-    public function capitalizeNomAnimal()
+    public function capitalizeNomAnimal(): void
     {
         $this->nomAnimal = ucfirst($this->nomAnimal);
     }
@@ -105,6 +105,7 @@ class Animal
 
     /**
      * @param Categorie|null $idCategorie
+     * @return Animal
      */
     public function setIdCategorie(?Categorie $idCategorie): static
     {

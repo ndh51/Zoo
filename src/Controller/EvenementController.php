@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
-use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,9 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EvenementController extends AbstractController
 {
-    /**
-     * @throws Exception
-     */
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $repository, Request $request): Response
     {
@@ -92,14 +88,14 @@ class EvenementController extends AbstractController
             if ($clickedButton && 'delete' === $clickedButton->getName()) {
                 $entityManager->remove($evenement);
                 $entityManager->flush();
-                return $this->redirectToRoute('app_evenement', status: 303);
 
+                return $this->redirectToRoute('app_evenement', status: 303);
             } else {
                 return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()], status: 303);
             }
         }
 
         return $this->render('evenement/delete.html.twig', [
-            'form' => $form]);
+            'form' => $form->createView()]);
     }
 }
