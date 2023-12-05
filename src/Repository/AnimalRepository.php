@@ -80,7 +80,6 @@ class AnimalRepository extends ServiceEntityRepository
             ->leftJoin('a.participations', 'p')
             ->groupBy('a.id')
             ->orderBy('eventCount', 'DESC')
-            ->setMaxResults(9)
             ->getQuery()
             ->getResult();
 
