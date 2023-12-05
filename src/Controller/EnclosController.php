@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Enclos;
 use App\Form\EnclosType;
 use App\Repository\EnclosRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,9 +33,16 @@ class EnclosController extends AbstractController
     }
 
     #[Route('/enclos/{id}/update', name: 'app_enclos_update', requirements: ['id' => '\d+'])]
-    public function update(Enclos $enclos): Response
+    public function update(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(EnclosType::class, $enclos);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()]);
+        }
 
         return $this->render('enclos/update.html.twig', [
             'enclos' => $enclos,
