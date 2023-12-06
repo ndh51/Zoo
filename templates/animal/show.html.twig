@@ -10,7 +10,7 @@
 
     <div class="animal">
         <div class="corps-animal">
-            <img class="animalPresenter" src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            <img class="animalPresenter" src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             <div class="infoAnimal">
                 <p class="nomAnimal">{{ animal.nomAnimal }}</p>
                 <div>
@@ -31,18 +31,25 @@
         <p>{{ animal.descAnimal }}</p>
     </div>
     <div class="aCoteAnimal">
+        {% if sameFamille is not empty %}
         <div class="animalFamille">
             <p class="titre">Animaux de la même famille</p>
+            {% for animal in sameFamille %}
             <div class="animalFamilleImg">
-                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
-                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+                <img src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             </div>
+            {% endfor %}
         </div>
+        {% endif %}
+        {% if sameEvent is not empty %}
         <div class="evenementAnimal">
-            <p class="titre">Évènement avec {{ animal.nomAnimal }}</p>
-            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
-            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            <p class="titre">Évenements avec {{ animal.nomAnimal }}</p>
+            {% for animal in sameEvent %}
+                <div class="animalFamilleImg">
+                    <img src="{{ asset(animal.idImage.pathImage) }}">
+                </div>
+            {% endfor %}
         </div>
-    </div>
+        {% endif %}
 
 {% endblock %}
