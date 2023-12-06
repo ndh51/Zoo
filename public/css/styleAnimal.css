@@ -1,5 +1,5 @@
 body{
-background-image: url("/img/fond.jpg");
+    background-image: url("/img/fond.jpg");
 }
 p{
     color: white;
@@ -33,7 +33,7 @@ p{
     border-bottom-style: solid;
 }
 
-.aCoteAnimal{
+.AnimauxetEvenements{
     display: flex;
     flex-direction: row;
     padding: 2%;
@@ -65,4 +65,30 @@ img{
 }
 
 
+@media (max-width: 1000px) {
 
+    .animal {
+        flex-direction: column;
+    }
+    .AnimauxetEvenements {
+        flex-direction: column-reverse;
+    }
+
+    .corps-animal{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .animal > * {
+        margin-top: 30px;
+    }
+
+    .AnimauxetEvenements > * {
+        margin-top: 30px;
+    }
+
+    .animalPresenter{
+        margin: auto;
+    }
+
+}
