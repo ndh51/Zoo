@@ -33,12 +33,12 @@ p{
     border-bottom-style: solid;
 }
 
-.aCoterAnimal{
+.aCoteAnimal{
     display: flex;
     flex-direction: row;
     padding: 2%;
 }
-.animalFamil{
+.animalFamille{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -53,7 +53,7 @@ p{
 
 }
 
-.animalFamilImg{
+.animalFamilleImg{
     display: flex;
     justify-content: space-evenly;
 }
