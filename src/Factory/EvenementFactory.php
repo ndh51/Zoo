@@ -53,7 +53,7 @@ final class EvenementFactory extends ModelFactory
             'descEvent' => self::faker()->text(30),
             'nbPlaceMaxEvent' => random_int(10, 150),
             'nomEvent' => self::faker()->text(30),
-            'idEnclos' => EnclosFactory::createOne(),
+            'idEnclos' => EnclosFactory::random(),
         ];
     }
 
