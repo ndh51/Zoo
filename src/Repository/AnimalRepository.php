@@ -22,30 +22,30 @@ class AnimalRepository extends ServiceEntityRepository
         parent::__construct($registry, Animal::class);
     }
 
-//    /**
-//     * @return Animal[] Returns an array of Animal objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Animal[] Returns an array of Animal objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('a.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Animal
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Animal
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 
     public function search(string $text = ''): array
     {
@@ -82,6 +82,38 @@ class AnimalRepository extends ServiceEntityRepository
             ->orderBy('eventCount', 'DESC')
             ->getQuery()
             ->getResult();
+    }
 
+    public function findWithTheSameFamily(Animal $animal)
+    {
+        $idFamille = $animal->getIdFamille();
+        $idAnimal = $animal->getId();
+
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.id != :idAnimal')
+            ->andWhere('a.idFamille = :idFamille')
+            ->setParameter('idFamille', $idFamille)
+            ->setParameter('idAnimal', $idAnimal)
+            ->orderBy('a.nomAnimal')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findWithTheSameEvent(Animal $animal)
+    {
+        $idAnimal = $animal->getId();
+
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->leftJoin('a.participations', 'p') // Supposons que la relation vers les participations s'appelle 'participations' dans l'entité Animal
+            ->leftJoin('p.idEvent', 'e') // Supposons que la relation vers l'événement s'appelle 'evenement' dans l'entité Participer
+            ->leftJoin('e.participations', 'p2') // Supposons que la relation inverse vers les participations s'appelle 'participations' dans l'entité Evenement
+            ->leftJoin('p2.idAnimal', 'a2')
+            ->where('a.id != :idAnimal')
+            ->setParameter('idAnimal', $idAnimal)
+            ->orderBy('a.nomAnimal')
+            ->getQuery()
+            ->getResult();
     }
 }
