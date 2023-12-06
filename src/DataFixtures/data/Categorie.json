@@ -1,15 +1,15 @@
 {
   "categorie": [
     {
-      "nom": "Insectes",
+      "nom": "Insecte",
       "desc": "Les Insectes sont une classe d'animaux invertébrés de l'embranchement des Arthropodes et du sous-embranchement des Hexapodes."
     },
     {
-      "nom": "Mollusques",
+      "nom": "Mollusque",
       "desc": "Les mollusques sont un embranchement d'animaux lophotrochozoaires. Ce sont des animaux non segmentés, à symétrie bilatérale parfois altérée. Leur corps se compose généralement d'une tête, d'une masse viscérale, et d'un pied."
     },
     {
-      "nom": "Mammifères",
+      "nom": "Mammifère",
       "desc": "Les Mammifères sont une classe d'animaux vertébrés caractérisés par la présence de fourrures, d'une oreille moyenne comportant trois os, d'un néocortex et de glandes mammaires, dont les représentants femelles nourrissent leurs juvéniles à partir d'une sécrétion cutanéo-glandulaire spécialisée appelée lait."
     },
     {
@@ -17,15 +17,15 @@
       "desc": "Les oiseaux sont une classe de vertébrés tétrapodes caractérisée par la bipédie, des ailes, un plumage et un bec sans dents. Survivants de l'extinction Crétacé-Paléogène, les oiseaux modernes sont les seuls représentants actuels des dinosaures théropodes, tandis que tous les autres groupes de Dinosaures sont éteints."
     },
     {
-      "nom": "Poissons",
+      "nom": "Poisson",
       "desc": "Les poissons sont des animaux vertébrés aquatiques à branchies, pourvus de nageoires et dont le corps est généralement couvert d'écailles. On les trouve abondamment aussi bien en eau douce, en eau saumâtre et en eau de mer, depuis les sources de montagne jusqu'au plus profond des océans."
     },
     {
-      "nom": "Amphibiens",
+      "nom": "Amphibien",
       "desc": "Les amphibiens, anciennement batraciens, forment une classe de vertébrés tétrapodes. Ils sont aujourd'hui définis comme un groupe monophylétique issu de l'une des deux branches principales de tétrapodes, l'autre ayant conduit aux amniotes."
     },
     {
-      "nom": "Reptiles",
+      "nom": "Reptile",
       "desc": "Les Reptiles sont une classe de vertébrés tétrapodes à température variable et recouverts d'écailles."
     }
   ]
