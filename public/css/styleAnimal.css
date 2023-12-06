@@ -1,5 +1,5 @@
 body{
-background-image: url("/img/fond.jpg");
+    background-image: url("/img/fond.jpg");
 }
 p{
     color: white;
@@ -33,7 +33,7 @@ p{
     border-bottom-style: solid;
 }
 
-.aCoteAnimal{
+.AnimauxetEvenements{
     display: flex;
     flex-direction: row;
     padding: 2%;
@@ -63,6 +63,5 @@ img{
     border-radius: 100px;
     width:45%;
 }
-
 
 
