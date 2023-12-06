@@ -41,6 +41,9 @@ class Evenement
     #[ORM\OneToMany(mappedBy: 'idEvent', targetEntity: Participer::class)]
     private Collection $participations;
 
+    #[ORM\ManyToOne(inversedBy: 'evenements')]
+    private ?Image $idImage = null;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
@@ -125,6 +128,18 @@ class Evenement
                 $participation->setEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdImage(): ?Image
+    {
+        return $this->idImage;
+    }
+
+    public function setIdImage(?Image $idImage): static
+    {
+        $this->idImage = $idImage;
 
         return $this;
     }
