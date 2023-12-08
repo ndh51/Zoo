@@ -31,9 +31,9 @@ class AnimalController extends AbstractController
             return $this->redirectToRoute('app_animal', status: 303);
         }
         $sameFamily = $animalRepo->findWithTheSameFamily($animal);
-        $sameEvent = $animalRepo->findWithTheSameEvent($animal);
+        $events = $animalRepo->findEvents($animal);
         return $this->render('animal/show.html.twig', [
-            'animal' => $animal, 'sameFamille' => $sameFamily, 'sameEvent' => $sameEvent]);
+            'animal' => $animal, 'sameFamille' => $sameFamily, 'events' => $events]);
     }
 
     #[Route('/animal/create', name: 'app_animal_create')]
