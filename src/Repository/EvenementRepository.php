@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception;
@@ -82,6 +83,23 @@ class EvenementRepository extends ServiceEntityRepository
             ->groupBy('e.id')
             ->orderBy('animalCount', 'DESC')
             ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function findAnimals(Evenement $evenement)
+    {
+        $idEvent = $evenement->getId();
+
+        return $this->createQueryBuilder('e')
+            ->select('a')
+            ->from('App\Entity\Animal', 'a')
+            ->join('a.participations', 'p1')
+            ->join('e.participations', 'p2')
+            ->where('p1.idEvent = :idEvent')
+            ->andWhere('p2.idEvent = :idEvent')
+            ->setParameter('idEvent', $idEvent)
             ->getQuery()
             ->getResult();
 
