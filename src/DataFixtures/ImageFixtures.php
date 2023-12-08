@@ -15,14 +15,14 @@ class ImageFixtures extends Fixture implements OrderedFixtureInterface
         $evenements = json_decode(file_get_contents(__DIR__.'/data/Evenement.json'), true)['evenements'];
 
         foreach ($animaux as $animal) {
-            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/img/animaux/'.$animal['nom'].'.jpg')) {
+//            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/img/animaux/'.$animal['nom'].'.jpg')) {
                 ImageFactory::createOne(['pathImage' => '/img/animaux/'.$animal['nom'].'.jpg']);
-            }
+//            }
         }
         foreach ($evenements as $evenement) {
-            if (file_exists('/public/img/evenements/'.$evenement['nom'].'.jpg')) {
+//            if (file_exists('/public/img/evenements/'.$evenement['nom'].'.jpg')) {
                 ImageFactory::createOne(['pathImage' => '/img/evenements/'.$evenement['nom'].'.jpg']);
-            }
+//            }
         }
     }
 
