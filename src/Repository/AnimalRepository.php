@@ -100,20 +100,20 @@ class AnimalRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findWithTheSameEvent(Animal $animal)
+    public function findEvents(Animal $animal)
     {
         $idAnimal = $animal->getId();
 
         return $this->createQueryBuilder('a')
-            ->select('a')
-            ->leftJoin('a.participations', 'p') // Supposons que la relation vers les participations s'appelle 'participations' dans l'entité Animal
-            ->leftJoin('p.idEvent', 'e') // Supposons que la relation vers l'événement s'appelle 'evenement' dans l'entité Participer
-            ->leftJoin('e.participations', 'p2') // Supposons que la relation inverse vers les participations s'appelle 'participations' dans l'entité Evenement
-            ->leftJoin('p2.idAnimal', 'a2')
-            ->where('a.id != :idAnimal')
+            ->select('e')
+            ->from('App\Entity\Evenement', 'e')
+            ->join('a.participations', 'p1')
+            ->join('e.participations', 'p2')
+            ->where('p1.idAnimal = :idAnimal')
+            ->andWhere('p2.idAnimal = :idAnimal')
             ->setParameter('idAnimal', $idAnimal)
-            ->orderBy('a.nomAnimal')
             ->getQuery()
             ->getResult();
+
     }
 }
