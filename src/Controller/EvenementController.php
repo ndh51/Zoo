@@ -27,14 +27,16 @@ class EvenementController extends AbstractController
 
     #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
-        ?Evenement $evenement): Response
+        ?Evenement $evenement, EvenementRepository $eventRepo): Response
     {
         if (is_null($evenement)) {
             return $this->redirectToRoute('app_evenement', status: 303);
         }
 
+        $animaux = $eventRepo->findAnimals($evenement);
+
         return $this->render('evenement/show.html.twig', [
-            'evenement' => $evenement]);
+            'evenement' => $evenement, 'animaux' => $animaux]);
     }
 
     #[Route('/evenement/{id}/update', name: 'app_evenement_update', requirements: ['id' => '\d+'])]
