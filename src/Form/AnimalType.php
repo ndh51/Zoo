@@ -21,7 +21,7 @@ class AnimalType extends AbstractType
 {
     private ImageRepository $imageRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, ImageRepository $imageRepository)
+    public function __construct(ImageRepository $imageRepository)
     {
         // j'initie l'attribut au repository de l'image
         $this->imageRepository = $imageRepository;
