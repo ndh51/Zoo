@@ -40,6 +40,8 @@ class Animal
     private Collection $participations;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
+    private ?Image $idImage = null;
+    #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Enclos $idEnclos = null;
 
     #[ORM\PrePersist]
@@ -95,16 +97,12 @@ class Animal
         return $this;
     }
 
-    /**
-     * @return Categorie|null
-     */
     public function getIdCategorie(): ?Categorie
     {
         return $this->idCategorie;
     }
 
     /**
-     * @param Categorie|null $idCategorie
      * @return Animal
      */
     public function setIdCategorie(?Categorie $idCategorie): static
@@ -140,6 +138,18 @@ class Animal
                 $participation->setAnimal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdImage(): ?Image
+    {
+        return $this->idImage;
+    }
+
+    public function setIdImage(?Image $idImage): static
+    {
+        $this->idImage = $idImage;
 
         return $this;
     }

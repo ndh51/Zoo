@@ -25,14 +25,15 @@ class AnimalController extends AbstractController
 
     #[Route('/animal/{id}', name: 'app_animal_id', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
-        ?Animal $animal): Response
+        ?Animal $animal, AnimalRepository $animalRepo): Response
     {
         if (is_null($animal)) {
             return $this->redirectToRoute('app_animal', status: 303);
         }
-
+        $sameFamily = $animalRepo->findWithTheSameFamily($animal);
+        $events = $animalRepo->findEvents($animal);
         return $this->render('animal/show.html.twig', [
-            'animal' => $animal]);
+            'animal' => $animal, 'sameFamille' => $sameFamily, 'events' => $events]);
     }
 
     #[Route('/animal/create', name: 'app_animal_create')]

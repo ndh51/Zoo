@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Famille;
+use App\Entity\Participer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
