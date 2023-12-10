@@ -14,19 +14,22 @@ class ImageFixtures extends Fixture implements OrderedFixtureInterface
         $animaux = json_decode(file_get_contents(__DIR__.'/data/Animaux.json'), true)['animaux'];
         $evenements = json_decode(file_get_contents(__DIR__.'/data/Evenement.json'), true)['evenements'];
 
+        // création de l'image par défaut
+        ImageFactory::createOne(['pathImage' => '/img/default.jpg']);
+
         foreach ($animaux as $animal) {
-//            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/img/animaux/'.$animal['nom'].'.jpg')) {
-                ImageFactory::createOne(['pathImage' => '/img/animaux/'.$animal['nom'].'.jpg']);
-//            }
+            //            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/img/animaux/'.$animal['nom'].'.jpg')) {
+            ImageFactory::createOne(['pathImage' => '/img/animaux/'.$animal['nom'].'.jpg']);
+            //            }
         }
         foreach ($evenements as $evenement) {
-//            if (file_exists('/public/img/evenements/'.$evenement['nom'].'.jpg')) {
-                ImageFactory::createOne(['pathImage' => '/img/evenements/'.$evenement['nom'].'.jpg']);
-//            }
+            //            if (file_exists('/public/img/evenements/'.$evenement['nom'].'.jpg')) {
+            ImageFactory::createOne(['pathImage' => '/img/evenements/'.$evenement['nom'].'.jpg']);
+            //            }
         }
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 4;
     }
