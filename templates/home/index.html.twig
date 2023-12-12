@@ -5,7 +5,16 @@
 {% block body %}
     <div class="events">
     <h3>Évènements</h3>
-    {{ include('evenement/_evenement.html.twig') }}
+        <div id="carousel-container">
+            <div id="carousel-content">
+                {% for evenement in evenements %}
+                <div class="carousel-item"><img src="{{ asset(evenement.idImage.pathImage) }}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="Image 1">{{ evenement.nomEvent }}</div>
+                {% endfor %}
+            </div>
+
+            <div id="prev">&lt;</div>
+            <div id="next">&gt;</div>
+        </div>
     </div>
     <br>
     <div class="animaux">
