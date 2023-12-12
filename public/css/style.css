@@ -1,3 +1,49 @@
-*{
-    font-family: Dejavu Sans;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+}
+
+#carousel-container {
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+    overflow: hidden;
+    margin: 20px auto;
+    position: relative;
+}
+
+#carousel-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 100px; /* Ajustez la largeur selon vos besoins */
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#prev, #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
 }
