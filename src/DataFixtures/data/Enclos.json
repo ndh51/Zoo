@@ -1,0 +1,70 @@
+{
+  "enclos": [
+    {
+      "nom": "Basse-cour"
+    },
+    {
+      "nom": "Savane"
+    },
+    {
+      "nom": "Terrarium"
+    },
+    {
+      "nom": "Bassin marin"
+    },
+    {
+      "nom": "Forêt de bambous"
+    },
+    {
+      "nom": "Océan"
+    },
+    {
+      "nom": "Pré d'Australie"
+    },
+    {
+      "nom": "Arctique"
+    },
+    {
+      "nom": "Montagnes"
+    },
+    {
+      "nom": "Jardin"
+    },
+    {
+      "nom": "Rivière"
+    },
+    {
+      "nom": "Bois"
+    },
+    {
+      "nom": "Forêt tropicale"
+    },
+    {
+      "nom": "Marécage"
+    },
+    {
+      "nom": "Littoral"
+    },
+    {
+      "nom": "Jardin floral"
+    },
+    {
+      "nom": "Zone côtière"
+    },
+    {
+      "nom": "Grotte"
+    },
+    {
+      "nom": "Désert"
+    },
+    {
+      "nom": "Forêt"
+    },
+    {
+      "nom": "Forêt d'eucalyptus"
+    },
+    {
+      "nom": "Zone aquatique"
+    }
+  ]
+}

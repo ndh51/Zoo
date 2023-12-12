@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+    <h1>Voulez vous vraiment supprimer cet animal ? :</h1>
+
+    <h2>{{ animal.nomAnimal }}</h2>
+
+    {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
+        {{form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
+        {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
+    {{ form_end(form) }}
+
+{% endblock %}
+

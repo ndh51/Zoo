@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+
+{% block title %}Famille delete{% endblock %}
+
+{% block body %}
+    <h1>Suppression de {{ famille.nomFamille }}</h1>
+    <h2>Attention en suppriment cette famille tous les animaux liés à cette famille seront supprimer </h2>
+    {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
+        {{ form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}
+        {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
+    {{ form_end(form) }}
+
+    <h2>Les animaux liés à cette famille sont :</h2>
+    {{ include('animal/_animal.html.twig') }}
+{% endblock %}

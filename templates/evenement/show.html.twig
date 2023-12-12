@@ -15,7 +15,7 @@
     <div class="haut">
 
         <div class="imgetdesc">
-            <img src="{{ asset('/img/capybara.jpg') }}">
+            <img src="{{ asset(evenement.idImage.pathImage) }}">
             <p>description : {{ evenement.descEvent }}</p>
         </div>
         <div class="description">
@@ -27,9 +27,11 @@
                 <tr>
                     <td>Nombre de places maximums : {{ evenement.nbPlaceMaxEvent }}</td>
                 </tr>
+                {% if animaux is not empty %}
                 <tr>
                     <td> Animaux Présents : </td>
                 </tr>
+                {% endif %}
             </table>
         </div>
     </div>
@@ -42,31 +44,15 @@
 
 
         </div>
-
-        <div class="animaux">
-            <div class="animal">
-                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
-                <p>un animal </p>
+        {% if animaux is not empty %}
+            <div class="animaux">
+                {% for animal in animaux %}
+                <div class="animal">
+                    <img class="animage" src="{{ asset(animal.idImage.pathImage) }}"  alt="Un animal">
+                    <p>{{ animal.nomAnimal }} </p>
+                {% endfor %}
             </div>
-            <div class="animal">
-                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
-                <p>un animal </p>
-            </div>
-            <div class="animal">
-                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
-                <p>un animal </p>
-            </div>
-            <div class="animal">
-                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
-                <p>un animal </p>
-            </div>
-            <div class="animal">
-                <img class="animage" src="{{ asset('/img/capybara.jpg') }}"  alt="Un animal">
-                <p>un animal </p>
-            </div>
-
-        </div>
-
+        {% endif %}
     </div>
     </div>
 {% endblock %}

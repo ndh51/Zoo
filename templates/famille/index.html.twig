@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Famille{% endblock %}
+
+{% block body %}
+    {% for famille in familles %}
+        {{ famille.nomFamille }} , {{  famille.descFamille }} <br><br>
+    {% endfor %}
+{% endblock %}

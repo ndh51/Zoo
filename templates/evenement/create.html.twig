@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    <title>Création d'un évènement</title>
+    <h1>Création d'un évènement</h1>
+    {{ include('evenement/_form.html.twig', {'form': form, 'submit_label' : 'Créer'}, with_context = false) }}
+{% endblock %}
+
+
+

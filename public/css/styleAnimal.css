@@ -1,5 +1,5 @@
 body{
-background-image: url("/img/fond.jpg");
+    background-image: url("/img/fond.jpg");
 }
 p{
     color: white;
@@ -10,10 +10,12 @@ p{
     margin: 5px;
     padding: 2%;
 }
-.corpsAnimal{
+
+.corps-animal{
     display: flex;
     flex-direction: row;
 }
+
 .infoAnimal{
     display: flex;
     flex-direction: column;
@@ -31,12 +33,12 @@ p{
     border-bottom-style: solid;
 }
 
-.aCoterAnimal{
+.AnimauxetEvenements{
     display: flex;
     flex-direction: row;
     padding: 2%;
 }
-.animalFamil{
+.animalFamille{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -51,7 +53,7 @@ p{
 
 }
 
-.animalFamilImg{
+.animalFamilleImg{
     display: flex;
     justify-content: space-evenly;
 }
@@ -63,4 +65,30 @@ img{
 }
 
 
+@media (max-width: 1000px) {
 
+    .animal {
+        flex-direction: column;
+    }
+    .AnimauxetEvenements {
+        flex-direction: column-reverse;
+    }
+
+    .corps-animal{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .animal > * {
+        margin-top: 30px;
+    }
+
+    .AnimauxetEvenements > * {
+        margin-top: 30px;
+    }
+
+    .animalPresenter{
+        margin: auto;
+    }
+
+}

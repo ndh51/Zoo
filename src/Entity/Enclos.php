@@ -6,6 +6,7 @@ use App\Repository\EnclosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EnclosRepository::class)]
 class Enclos
@@ -16,14 +17,25 @@ class Enclos
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de l\'enclos doit faire {{ limit }} caractères au minimum',
+        maxMessage: 'Le nom de l\'enclos doit faire {{ limit }} caractères au maximum',
+    )]
     private ?string $nomEnclos = null;
 
     #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Evenement::class)]
     private Collection $evenements;
 
+    #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Animal::class)]
+    private Collection $animals;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
+        $this->animals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +79,36 @@ class Enclos
             // set the owning side to null (unless already changed)
             if ($evenement->getIdEnclos() === $this) {
                 $evenement->setIdEnclos(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animal>
+     */
+    public function getAnimals(): Collection
+    {
+        return $this->animals;
+    }
+
+    public function addAnimal(Animal $animal): static
+    {
+        if (!$this->animals->contains($animal)) {
+            $this->animals->add($animal);
+            $animal->setIdEnclos($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimal(Animal $animal): static
+    {
+        if ($this->animals->removeElement($animal)) {
+            // set the owning side to null (unless already changed)
+            if ($animal->getIdEnclos() === $this) {
+                $animal->setIdEnclos(null);
             }
         }
 

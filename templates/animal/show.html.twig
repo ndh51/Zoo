@@ -9,13 +9,13 @@
 {% block body %}
 
     <div class="animal">
-        <div class="corpsAnimal">
-            <img class="animalPresenter" src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+        <div class="corps-animal">
+            <img class="animalPresenter" src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             <div class="infoAnimal">
                 <p class="nomAnimal">{{ animal.nomAnimal }}</p>
                 <div>
                     <p class="titre">Emplacement </p>
-                    <p>t3</p>
+                    <p> {{ animal.idEnclos.nomEnclos }}</p>
                 </div>
                 <div>
                     <p class="titre">Famille</p>
@@ -27,22 +27,28 @@
                 </div>
             </div>
         </div>
-        <p class="titre">Descriptions</p>
+        <p class="titre">Description</p>
         <p>{{ animal.descAnimal }}</p>
     </div>
-    <div class="aCoterAnimal">
-        <div class="animalFamil">
+    <div class="AnimauxetEvenements">
+        {% if sameFamille is not empty %}
+        <div class="animalFamille">
             <p class="titre">Animaux de la même famille</p>
-            <div class="animalFamilImg">
-                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
-                <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            {% for animal in sameFamille %}
+            <div class="animalFamilleImg">
+                <img src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             </div>
+            {% endfor %}
         </div>
+        {% endif %}
+        {% if events is not empty %}
         <div class="evenementAnimal">
-            <p class="titre">Évènement avec {{ animal.nomAnimal }}</p>
-            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
-            <img src="/img/capybara.jpg" alt="image {{ animal.nomAnimal }}">
+            <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
+            {% for evenement in events %}
+            <img src="{{ asset(evenement.idImage.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 
 {% endblock %}

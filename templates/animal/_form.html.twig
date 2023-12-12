@@ -1,0 +1,9 @@
+{{ form_start(form, {'method': 'POST'}) }}
+    {{form_row(form.nomAnimal)}}
+    {{ form_row(form.descAnimal)}}
+    {{ form_row(form.idFamille)}}
+    {{ form_row(form.idCategorie)}}
+    {{ form_row(form.idEnclos)}}
+    {{ form_row(form.idImage)}}
+<button type="submit" class="btn btn-success">{{ submit_label }}</button>
+{{ form_end(form) }}
