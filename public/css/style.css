@@ -31,7 +31,7 @@ h3{
 }
 
 #carousel-container-maison {
-    width: 90%;
+    width: 95%;
     overflow: hidden;
     margin: 20px auto;
     position: relative;
@@ -83,7 +83,7 @@ img {
 }
 
 .animal {
-    margin: 30px;
+    margin: 25px;
     width: 28%;
     text-align: center;
 }
