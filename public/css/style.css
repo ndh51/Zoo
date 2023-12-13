@@ -8,16 +8,21 @@ body {
     background-image: url("/img/fond.jpg");
 }
 
+p{
+    text-align: center;
+}
+
 h3{
     color: white;
 }
 
-a{
+.contenu a{
     color: white;
+
 }
 
-a:visited {
-    color: #800000;
+.contenu a:visited {
+    color: #ff0000;
 }
 
 .contenu{
@@ -39,19 +44,23 @@ a:visited {
 
 .carousel-item-maison {
     flex: 0 0 auto;
-    width: 33%; /* Ajustez la largeur selon vos besoins */
+    width: 33%;
     box-sizing: border-box;
+}
+
+.carousel-item-maison:first-child:first-child {
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
 img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 20px;
 }
 
 #prev, #next {
-    color: red;
+    color: white;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -77,8 +86,6 @@ img {
     margin: 15px;
     width: 28%;
     text-align: center;
-
-
 }
 
 .animal img {
