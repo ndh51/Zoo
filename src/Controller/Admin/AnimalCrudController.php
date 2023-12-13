@@ -31,6 +31,16 @@ class AnimalCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $entity->getIdFamille()?->getNomFamille();
                 }),
+            AssociationField::new('idCategorie', 'Catégorie')
+                ->setFormTypeOptions(['choice_label' => 'nomCategorie',
+                    'label' => 'Catégorie',
+                    'query_builder' => function (EntityRepository $entityRepository) {
+                        return $entityRepository->createQueryBuilder('c')
+                            ->orderBy('c.nomCategorie', 'ASC');
+                    }, ])
+                ->formatValue(function ($value, $entity) {
+                    return $entity->getIdCategorie()?->getNomCategorie();
+                }),
         ];
     }
 }
