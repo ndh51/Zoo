@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Animal;
 use App\Entity\Enclos;
+use App\Entity\Evenement;
 use App\Entity\Famille;
 use App\Entity\Visiteur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -45,6 +46,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::linkToCrud('Evenement', 'fas fa-list', Evenement::class);
+        yield MenuItem::linkToCrud('Add Evenement', 'fa fa-tags', Evenement::class)->setAction('new');
 
         yield MenuItem::linkToCrud('Animal', 'fas fa-list', Animal::class);
         yield MenuItem::linkToCrud('Add Animal', 'fa fa-tags', Animal::class)->setAction('new');
