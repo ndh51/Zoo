@@ -47,8 +47,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Animal', 'fas fa-list', Animal::class);
         yield MenuItem::linkToCrud('Add Animal', 'fa fa-tags', Animal::class)->setAction('new');
 
-        //yield MenuItem::linkToCrud('Visiteur', 'fas fa-list', Visiteur::class);
-        //yield MenuItem::linkToCrud('Add Visiteur', 'fa fa-tags', Visiteur::class)->setAction('new');
+        yield MenuItem::linkToCrud('Visiteur', 'fas fa-list', Visiteur::class);
+        yield MenuItem::linkToCrud('Add Visiteur', 'fa fa-tags', Visiteur::class)->setAction('new');
 
     }
 }
