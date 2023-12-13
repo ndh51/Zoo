@@ -5,7 +5,19 @@
 }
 
 body {
+    background-image: url("/img/fond.jpg");
+}
 
+h3{
+    color: white;
+}
+
+a{
+    color: white;
+}
+
+a:visited {
+    color: #800000;
 }
 
 .contenu{
@@ -58,12 +70,15 @@ img {
 .animaux{
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 .animal {
     margin: 15px;
-    width: 30%;
+    width: 28%;
     text-align: center;
+
+
 }
 
 .animal img {
