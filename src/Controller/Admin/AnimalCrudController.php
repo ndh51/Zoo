@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Faker\Provider\Text;
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -50,6 +49,12 @@ class AnimalCrudController extends AbstractCrudController
                     }, ])
                 ->formatValue(function ($value, $entity) {
                     return $entity->getIdEnclos()?->getNomEnclos();
+                }),
+            AssociationField::new('idImage', 'Image')
+                ->setFormTypeOptions(['choice_label' => 'pathImage',
+                    'label' => 'Image', ])
+                ->formatValue(function ($value, $entity) {
+                    return $entity->getIdImage()?->getPathImage();
                 }),
         ];
     }
