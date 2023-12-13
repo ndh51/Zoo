@@ -8,21 +8,21 @@ body {
 
 }
 
-#carousel-container {
-    width: 300px; /* Ajustez la largeur selon vos besoins */
+#carousel-container-maison {
+    width: 90%;
     overflow: hidden;
     margin: 20px auto;
     position: relative;
 }
 
-#carousel-content {
+#carousel-content-maison {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
-.carousel-item {
+.carousel-item-maison {
     flex: 0 0 auto;
-    width: 100px; /* Ajustez la largeur selon vos besoins */
+    width: 33%; /* Ajustez la largeur selon vos besoins */
     box-sizing: border-box;
 }
 
@@ -33,10 +33,11 @@ img {
 }
 
 #prev, #next {
+    color: red;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
+    font-size: 500%;
     cursor: pointer;
 }
 
