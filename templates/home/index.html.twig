@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
     <div class="events">
     <h3>Évènements</h3>
-        <div id="carousel-container">
-            <div id="carousel-content">
+        <div id="carousel-container-maison">
+            <div id="carousel-content-maison">
                 {% for evenement in evenements %}
-                <div class="carousel-item"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
+                <div class="carousel-item-maison"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
                 {% endfor %}
             </div>
 
@@ -19,6 +27,8 @@
     <br>
     <div class="animaux">
     <h3>Animaux</h3>
+
     {{ include('animal/_animal.html.twig') }}
     </div>
+
 {% endblock %}
