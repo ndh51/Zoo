@@ -39,7 +39,7 @@
 
 {% block body %}
     <div class="events">
-    <h3>Évènements</h3>
+    <h3>Évènements :</h3>
         <div id="carousel-container-maison">
             <div id="carousel-content-maison">
                 {% for evenement in evenements %}
@@ -53,9 +53,10 @@
     </div>
     <br>
     <div class="animaux">
-    <h3>Animaux</h3>
-
-    {{ include('animal/_animal.html.twig') }}
+    <h3>Animaux :</h3>
+        {% for animal in animaux %}
+            <div class="animal"><img src="{{asset(animal.idImage.pathImage)}}" href="{{ path('app_animal_id', {id: animal.id}) }}" alt="{{ animal.nomAnimal }}">{{ animal.nomAnimal }}</div>
+        {% endfor %}
     </div>
     <script>
     const container = document.getElementById('carousel-container-maison');
@@ -70,18 +71,18 @@
     nextBtn.addEventListener('click', () => {
     if (currentIndex < totalItems - visibleItems) {
     currentIndex++;
-    updateCarousel();
+    updateCarouselMaison();
     }
     });
 
     prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
     currentIndex--;
-    updateCarousel();
+    updateCarouselMaison();
     }
     });
 
-    function updateCarousel() {
+    function updateCarouselMaison() {
     const newPosition = -currentIndex * 100 / visibleItems + '%';
     content.style.transform = 'translateX(' + newPosition + ')';
     }
