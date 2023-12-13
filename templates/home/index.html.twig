@@ -44,7 +44,13 @@
             <div id="carousel-container-maison">
                 <div id="carousel-content-maison">
                     {% for evenement in evenements %}
-                    <div class="carousel-item-maison"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
+                        <div class="carousel-item-maison">
+                            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                            <img src="{{asset(evenement.idImage.pathImage)}}"  alt="{{ evenement.nomEvent }}">
+
+                            <p>{{ evenement.nomEvent }}</p>
+                            </a>
+                        </div>
                     {% endfor %}
                 </div>
 
@@ -53,11 +59,17 @@
             </div>
         </div>
         <br>
-        <div class="animaux">
         <h3>Animaux :</h3>
-            {% for animal in animaux %}
-                <div class="animal"><img src="{{asset(animal.idImage.pathImage)}}" href="{{ path('app_animal_id', {id: animal.id}) }}" alt="{{ animal.nomAnimal }}">{{ animal.nomAnimal }}</div>
-            {% endfor %}
+        <div class="animaux">
+                {% for animal in animaux %}
+                        <div class="animal">
+                            <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                            <img src="{{asset(animal.idImage.pathImage)}}" alt="{{ animal.nomAnimal }}">
+
+                            <p>{{ animal.nomAnimal }}</p>
+                            </a>
+                        </div>
+                {% endfor %}
         </div>
     </div>
     <script>
