@@ -8,7 +8,7 @@
         <div id="carousel-container">
             <div id="carousel-content">
                 {% for evenement in evenements %}
-                <div class="carousel-item"><img src="{{ asset(evenement.idImage.pathImage) }}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="Image 1">{{ evenement.nomEvent }}</div>
+                <div class="carousel-item"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
                 {% endfor %}
             </div>
 
