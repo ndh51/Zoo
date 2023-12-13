@@ -3,10 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animal;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Faker\Provider\Text;
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -15,14 +16,21 @@ class AnimalCrudController extends AbstractCrudController
         return Animal::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('nomAnimal', 'Animal'),
+            TextField::new('descAnimal', 'Description'),
+            AssociationField::new('idFamille', 'Famille')
+            ->setFormTypeOptions(['choice_label' => 'nomFamille',
+                'label' => 'Famille',
+                'query_builder' => function (EntityRepository $entityRepository) {
+                    return $entityRepository->createQueryBuilder('f')
+                        ->orderBy('f.nomFamille', 'ASC');
+                }, ])
+                ->formatValue(function ($value, $entity) {
+                    return $entity->getIdFamille()?->getNomFamille();
+                }),
         ];
     }
-    */
 }
