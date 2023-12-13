@@ -37,7 +37,10 @@ class VisiteurCrudController extends AbstractCrudController
                 'empty_data' => '',
                 'auto_complete' => 'off']),
             TextField::new('nomVisiteur', 'Nom'),
-            TextField::new('prenomVisiteur', 'Prénom'),
+            TextField::new('adVisiteur', 'Adresse'),
+            TextField::new('villeVisiteur', 'Ville'),
+            TextField::new('CpVisiteur', 'CP'),
+            TextField::new('telVisiteur', 'Tel'),
         ];
     }
 
