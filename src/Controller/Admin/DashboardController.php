@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animal;
+use App\Entity\Enclos;
 use App\Entity\Visiteur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -46,6 +47,9 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Animal', 'fas fa-list', Animal::class);
         yield MenuItem::linkToCrud('Add Animal', 'fa fa-tags', Animal::class)->setAction('new');
+
+        yield MenuItem::linkToCrud('Enclos', 'fas fa-list', Enclos::class);
+        yield MenuItem::linkToCrud('Add Enclos', 'fa fa-tags', Enclos::class)->setAction('new');
 
         yield MenuItem::linkToCrud('Visiteur', 'fas fa-list', Visiteur::class);
         yield MenuItem::linkToCrud('Add Visiteur', 'fa fa-tags', Visiteur::class)->setAction('new');
