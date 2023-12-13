@@ -20,6 +20,10 @@ class Ticket
     #[ORM\Column]
     private ?float $prixTicket = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Visiteur $visiteur = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +49,18 @@ class Ticket
     public function setPrixTicket(float $prixTicket): static
     {
         $this->prixTicket = $prixTicket;
+
+        return $this;
+    }
+
+    public function getVisiteur(): ?Visiteur
+    {
+        return $this->visiteur;
+    }
+
+    public function setVisiteur(?Visiteur $visiteur): static
+    {
+        $this->visiteur = $visiteur;
 
         return $this;
     }
