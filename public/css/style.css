@@ -8,6 +8,11 @@ body {
 
 }
 
+.contenu{
+    display: flex;
+    flex-direction: column;
+}
+
 #carousel-container-maison {
     width: 90%;
     overflow: hidden;
@@ -30,6 +35,7 @@ img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 20px;
 }
 
 #prev, #next {
@@ -47,4 +53,21 @@ img {
 
 #next {
     right: 10px;
+}
+
+.animaux{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.animal {
+    margin: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.animal img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
 }
