@@ -33,17 +33,17 @@ class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenomVisiteur = null;
 
-    #[ORM\Column(length: 6)]
-    private ?string $CPVisiteur = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adVisiteur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $villeVisiteur = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $telVisiteur = null;
+
+    #[ORM\Column(length: 6)]
+    private ?string $CpVisiteur = null;
 
     public function getId(): ?int
     {
@@ -139,18 +139,6 @@ class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCPVisiteur(): ?string
-    {
-        return $this->adVisiteur;
-    }
-
-    public function setCPVisiteur(string $adVisiteur): static
-    {
-        $this->adVisiteur = $adVisiteur;
-
-        return $this;
-    }
-
     public function getAdVisiteur(): ?string
     {
         return $this->adVisiteur;
@@ -183,6 +171,18 @@ class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelVisiteur(?string $telVisiteur): static
     {
         $this->telVisiteur = $telVisiteur;
+
+        return $this;
+    }
+
+    public function getCpVisiteur(): ?string
+    {
+        return $this->CpVisiteur;
+    }
+
+    public function setCpVisiteur(?string $CpVisiteur): static
+    {
+        $this->CpVisiteur = $CpVisiteur;
 
         return $this;
     }
