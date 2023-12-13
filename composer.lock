@@ -2467,7 +2467,7 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/dotenv/tree/v6.3.7"
-            },H
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
