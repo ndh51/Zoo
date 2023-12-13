@@ -5,9 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\Visiteur;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Faker\Provider\Text;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class VisiteurCrudController extends AbstractCrudController
@@ -25,16 +27,20 @@ class VisiteurCrudController extends AbstractCrudController
         return Visiteur::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            EmailField::new('email'),
+            TextField::new('password')->setFormTypeOption('attr', ['autocomplete' => 'off',
+                'required' => false,
+                'empty_data' => '',
+                'auto_complete' => 'off']),
+            TextField::new('nomVisiteur', 'Nom'),
+            TextField::new('prenomVisiteur', 'Prénom'),
         ];
     }
-    */
+
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->setVisiteurPassword($entityInstance, $entityManager);
