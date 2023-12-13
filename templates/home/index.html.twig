@@ -38,25 +38,27 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div class="events">
-    <h3>Évènements :</h3>
-        <div id="carousel-container-maison">
-            <div id="carousel-content-maison">
-                {% for evenement in evenements %}
-                <div class="carousel-item-maison"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
-                {% endfor %}
-            </div>
+    <div class="contenu">
+        <div class="events">
+        <h3>Évènements :</h3>
+            <div id="carousel-container-maison">
+                <div id="carousel-content-maison">
+                    {% for evenement in evenements %}
+                    <div class="carousel-item-maison"><img src="{{asset(evenement.idImage.pathImage)}}" href="{{ path('app_evenement_id', {id: evenement.id}) }}" alt="{{ evenement.nomEvent }}">{{ evenement.nomEvent }}</div>
+                    {% endfor %}
+                </div>
 
-            <div id="prev">&lt;</div>
-            <div id="next">&gt;</div>
+                <div id="prev">&lt;</div>
+                <div id="next">&gt;</div>
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="animaux">
-    <h3>Animaux :</h3>
-        {% for animal in animaux %}
-            <div class="animal"><img src="{{asset(animal.idImage.pathImage)}}" href="{{ path('app_animal_id', {id: animal.id}) }}" alt="{{ animal.nomAnimal }}">{{ animal.nomAnimal }}</div>
-        {% endfor %}
+        <br>
+        <div class="animaux">
+        <h3>Animaux :</h3>
+            {% for animal in animaux %}
+                <div class="animal"><img src="{{asset(animal.idImage.pathImage)}}" href="{{ path('app_animal_id', {id: animal.id}) }}" alt="{{ animal.nomAnimal }}">{{ animal.nomAnimal }}</div>
+            {% endfor %}
+        </div>
     </div>
     <script>
     const container = document.getElementById('carousel-container-maison');
