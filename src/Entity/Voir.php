@@ -15,37 +15,37 @@ class Voir
 
     #[ORM\ManyToOne(inversedBy: 'vues')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Animal $idAnimal = null;
+    private ?Animal $animal = null;
 
     #[ORM\ManyToOne(inversedBy: 'vues')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Ticket $idTicket = null;
+    private ?Ticket $ticket = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdAnimal(): ?Animal
+    public function getAnimal(): ?Animal
     {
-        return $this->idAnimal;
+        return $this->animal;
     }
 
-    public function setIdAnimal(?Animal $idAnimal): static
+    public function setAnimal(?Animal $animal): static
     {
-        $this->idAnimal = $idAnimal;
+        $this->animal = $animal;
 
         return $this;
     }
 
-    public function getIdTicket(): ?Ticket
+    public function getTicket(): ?Ticket
     {
-        return $this->idTicket;
+        return $this->ticket;
     }
 
-    public function setIdTicket(?Ticket $idTicket): static
+    public function setTicket(?Ticket $ticket): static
     {
-        $this->idTicket = $idTicket;
+        $this->ticket = $ticket;
 
         return $this;
     }

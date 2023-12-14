@@ -47,8 +47,8 @@ final class VoirFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'idAnimal' => AnimalFactory::random(),
-            'idTicket' => TicketFactory::random(),
+            'animal' => AnimalFactory::random(),
+            'ticket' => TicketFactory::random(),
         ];
     }
 
