@@ -47,7 +47,7 @@ final class ParticiperFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'idEvent' => null,
+            'evenement' => null,
             'idAnimal' => null,
         ];
     }

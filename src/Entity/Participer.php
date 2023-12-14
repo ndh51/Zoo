@@ -16,7 +16,7 @@ class Participer
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
-    private ?Evenement $idEvent = null;
+    private ?Evenement $evenement = null;
 
     public function getIdAnimal(): ?Animal
     {
@@ -26,18 +26,6 @@ class Participer
     public function setIdAnimal(?Animal $idAnimal): static
     {
         $this->idAnimal = $idAnimal;
-
-        return $this;
-    }
-
-    public function getIdEvent(): ?Evenement
-    {
-        return $this->idEvent;
-    }
-
-    public function setIdEvent(?Evenement $idEvent): static
-    {
-        $this->idEvent = $idEvent;
 
         return $this;
     }
