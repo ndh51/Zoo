@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Visiteur;
 use App\Factory\TicketFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class TicketFixtures extends Fixture
+class TicketFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -19,6 +20,11 @@ class TicketFixtures extends Fixture
         return [
             Visiteur::class,
         ];
+    }
+
+    public function getOrder(): int
+    {
+        return 9;
     }
 
 }
