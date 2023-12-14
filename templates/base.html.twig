@@ -34,7 +34,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_evenement') }}">Évènements</a>
                     </li>
-
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_animal') }}">Animaux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_enclos') }}">Enclos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_famille') }}">Familles</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex"  role="search" action="{{ path('app_filter') }}">
                     <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="search" name="search">
