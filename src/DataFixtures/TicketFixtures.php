@@ -15,13 +15,6 @@ class TicketFixtures extends Fixture implements OrderedFixtureInterface
         TicketFactory::createMany(50);
     }
 
-    public function getDependencies()
-    {
-        return [
-            Visiteur::class,
-        ];
-    }
-
     public function getOrder(): int
     {
         return 9;
