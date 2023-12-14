@@ -11,24 +11,12 @@ class Participer
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
-    private ?Animal $idAnimal = null;
+    private ?Animal $animal = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Evenement $evenement = null;
-
-    public function getIdAnimal(): ?Animal
-    {
-        return $this->idAnimal;
-    }
-
-    public function setIdAnimal(?Animal $idAnimal): static
-    {
-        $this->idAnimal = $idAnimal;
-
-        return $this;
-    }
 
     public function getAnimal(): ?Animal
     {

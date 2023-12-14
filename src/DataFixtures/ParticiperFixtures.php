@@ -28,15 +28,15 @@ class ParticiperFixtures extends Fixture implements OrderedFixtureInterface
             $participations[$i] = [];
         }
         while ($nbGen < 50) {
-            $idAnimal = random_int(1, $totalNbAnimaux);
+            $animal = random_int(1, $totalNbAnimaux);
             $evenement = random_int(1, $totalNbEvenements);
-            if (!in_array($idAnimal, array_values($participations[$evenement]))) {
+            if (!in_array($animal, array_values($participations[$evenement]))) {
                 ++$nbGen;
-                $participations[$evenement][] = $idAnimal;
+                $participations[$evenement][] = $animal;
                 $event = EvenementFactory::find(['id' => $evenement]);
-                $animal = AnimalFactory::find(['id' => $idAnimal]);
+                $animal = AnimalFactory::find(['id' => $animal]);
                 ParticiperFactory::createOne(['evenement' => $event,
-                    'idAnimal' => $animal]);
+                    'animal' => $animal]);
             }
         }
     }

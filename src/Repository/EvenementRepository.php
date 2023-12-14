@@ -81,7 +81,7 @@ class EvenementRepository extends ServiceEntityRepository
             ->select('e')
             ->leftJoin('e.participations', 'p')
             ->groupBy('e.id')
-            ->orderBy('COUNT(p.idAnimal)', 'DESC')
+            ->orderBy('COUNT(p.animal)', 'DESC')
             ->getQuery()
             ->getResult();
 

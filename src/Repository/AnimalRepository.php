@@ -87,14 +87,14 @@ class AnimalRepository extends ServiceEntityRepository
     public function findWithTheSameFamily(Animal $animal)
     {
         $idFamille = $animal->getIdFamille();
-        $idAnimal = $animal->getId();
+        $animal = $animal->getId();
 
         return $this->createQueryBuilder('a')
             ->select('a')
-            ->where('a.id != :idAnimal')
+            ->where('a.id != :animal')
             ->andWhere('a.idFamille = :idFamille')
             ->setParameter('idFamille', $idFamille)
-            ->setParameter('idAnimal', $idAnimal)
+            ->setParameter('animal', $animal)
             ->orderBy('a.nomAnimal')
             ->getQuery()
             ->getResult();
@@ -102,16 +102,16 @@ class AnimalRepository extends ServiceEntityRepository
 
     public function findEvents(Animal $animal)
     {
-        $idAnimal = $animal->getId();
+        $animal = $animal->getId();
 
         return $this->createQueryBuilder('a')
             ->select('e')
             ->from('App\Entity\Evenement', 'e')
             ->join('a.participations', 'p1')
             ->join('e.participations', 'p2')
-            ->where('p1.idAnimal = :idAnimal')
-            ->andWhere('p2.idAnimal = :idAnimal')
-            ->setParameter('idAnimal', $idAnimal)
+            ->where('p1.animal = :animal')
+            ->andWhere('p2.animal = :animal')
+            ->setParameter('animal', $animal)
             ->getQuery()
             ->getResult();
 

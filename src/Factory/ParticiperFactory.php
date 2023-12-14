@@ -48,7 +48,7 @@ final class ParticiperFactory extends ModelFactory
     {
         return [
             'evenement' => null,
-            'idAnimal' => null,
+            'animal' => null,
         ];
     }
 

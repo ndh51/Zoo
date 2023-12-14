@@ -89,7 +89,7 @@ class Image
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setIdAnimal($this);
+            $animal->setanimal($this);
         }
 
         return $this;
@@ -99,8 +99,8 @@ class Image
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getIdAnimal() === $this) {
-                $animal->setIdAnimal(null);
+            if ($animal->getanimal() === $this) {
+                $animal->setanimal(null);
             }
         }
 
