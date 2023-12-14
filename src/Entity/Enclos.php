@@ -26,10 +26,10 @@ class Enclos
     )]
     private ?string $nomEnclos = null;
 
-    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Evenement::class)]
+    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Evenement::class, cascade: ['remove'])]
     private Collection $evenements;
 
-    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Animal::class, cascade: ['remove'])]
     private Collection $animals;
 
     public function __construct()
