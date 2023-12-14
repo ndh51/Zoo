@@ -45,7 +45,9 @@
         <div class="evenementAnimal">
             <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
             {% for evenement in events %}
+            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
             <img src="{{ asset(evenement.idImage.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+            </a>
             {% endfor %}
         </div>
         {% endif %}
