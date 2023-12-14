@@ -44,6 +44,9 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Enclos $idEnclos = null;
 
+    #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Voir::class)]
+    private Collection $vues;
+
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
     public function capitalizeNomAnimal(): void
@@ -54,6 +57,7 @@ class Animal
     public function __construct()
     {
         $this->participations = new ArrayCollection();
+        $this->vues = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,6 +166,36 @@ class Animal
     public function setIdEnclos(?Enclos $idEnclos): static
     {
         $this->idEnclos = $idEnclos;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voir>
+     */
+    public function getVues(): Collection
+    {
+        return $this->vues;
+    }
+
+    public function addVue(Voir $vue): static
+    {
+        if (!$this->vues->contains($vue)) {
+            $this->vues->add($vue);
+            $vue->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVue(Voir $vue): static
+    {
+        if ($this->vues->removeElement($vue)) {
+            // set the owning side to null (unless already changed)
+            if ($vue->getAnimal() === $this) {
+                $vue->setAnimal(null);
+            }
+        }
 
         return $this;
     }

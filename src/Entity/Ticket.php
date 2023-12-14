@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TicketRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +25,14 @@ class Ticket
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Visiteur $visiteur = null;
+
+    #[ORM\OneToMany(mappedBy: 'idTicket', targetEntity: Voir::class)]
+    private Collection $vues;
+
+    public function __construct()
+    {
+        $this->vues = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +71,36 @@ class Ticket
     public function setVisiteur(?Visiteur $visiteur): static
     {
         $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voir>
+     */
+    public function getVues(): Collection
+    {
+        return $this->vues;
+    }
+
+    public function addVue(Voir $vue): static
+    {
+        if (!$this->vues->contains($vue)) {
+            $this->vues->add($vue);
+            $vue->setTicket($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVue(Voir $vue): static
+    {
+        if ($this->vues->removeElement($vue)) {
+            // set the owning side to null (unless already changed)
+            if ($vue->getTicket() === $this) {
+                $vue->setTicket(null);
+            }
+        }
 
         return $this;
     }
