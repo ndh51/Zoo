@@ -182,7 +182,7 @@ class Animal
     {
         if (!$this->vues->contains($vue)) {
             $this->vues->add($vue);
-            $vue->setIdAnimal($this);
+            $vue->setAnimal($this);
         }
 
         return $this;
@@ -192,8 +192,8 @@ class Animal
     {
         if ($this->vues->removeElement($vue)) {
             // set the owning side to null (unless already changed)
-            if ($vue->getIdAnimal() === $this) {
-                $vue->setIdAnimal(null);
+            if ($vue->getAnimal() === $this) {
+                $vue->setAnimal(null);
             }
         }
 
