@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class EvenementController extends AbstractController
 {
@@ -39,12 +40,10 @@ class EvenementController extends AbstractController
             'evenement' => $evenement, 'animaux' => $animaux]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/{id}/update', name: 'app_evenement_update', requirements: ['id' => '\d+'])]
     public function update(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $form = $this->createForm(EvenementType::class, $evenement);
 
         $form->handleRequest($request);
@@ -59,12 +58,10 @@ class EvenementController extends AbstractController
             'form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/create', name: 'app_evenement_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $evenement = new Evenement();
         $form = $this->createForm(EvenementType::class, $evenement);
 
@@ -80,12 +77,10 @@ class EvenementController extends AbstractController
             ['form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/{id}/delete', name: 'app_evenement_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])

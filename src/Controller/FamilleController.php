@@ -11,15 +11,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class FamilleController extends AbstractController
 {
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille', name: 'app_famille')]
     public function index(FamilleRepository $repository): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $familles = $repository->findBy([]);
 
         return $this->render('famille/index.html.twig', [
@@ -33,12 +32,10 @@ class FamilleController extends AbstractController
         return $this->render('famille/show.html.twig', ['famille' => $famille]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille/create', name: 'app_famille_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $famille = new Famille();
         $form = $this->createForm(FamilleType::class, $famille);
 
@@ -54,12 +51,10 @@ class FamilleController extends AbstractController
             ['form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille/{id<\d+>}/update', name: 'app_famille_update')]
     public function update(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $form = $this->createForm(FamilleType::class, $famille);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,12 +69,10 @@ class FamilleController extends AbstractController
             'animaux' => $famille->getAnimals()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_delete')]
     public function delete(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
-        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
