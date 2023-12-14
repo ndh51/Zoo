@@ -17,6 +17,9 @@ class FamilleController extends AbstractController
     #[Route('/famille', name: 'app_famille')]
     public function index(FamilleRepository $repository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $familles = $repository->findBy([]);
 
         return $this->render('famille/index.html.twig', [
@@ -33,6 +36,9 @@ class FamilleController extends AbstractController
     #[Route('/famille/create', name: 'app_famille_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $famille = new Famille();
         $form = $this->createForm(FamilleType::class, $famille);
 
@@ -48,9 +54,12 @@ class FamilleController extends AbstractController
             ['form' => $form->createView()]);
     }
 
-    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
+    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_update')]
     public function update(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createForm(FamilleType::class, $famille);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,9 +74,12 @@ class FamilleController extends AbstractController
             'animaux' => $famille->getAnimals()]);
     }
 
-    #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
+    #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_delete')]
     public function delete(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
