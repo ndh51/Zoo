@@ -50,7 +50,7 @@ final class AnimalFactory extends ModelFactory
             'nomAnimal' => self::faker()->text(50),
             'descAnimal' => self::faker()->text(200),
             'idFamille' => FamilleFactory::random(),
-            'idCategorie' => CategorieFactory::random(),
+            'categorie' => CategorieFactory::random(),
         ];
     }
 

@@ -34,7 +34,7 @@ class Animal
     private ?Famille $idFamille = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Categorie $idCategorie = null;
+    private ?Categorie $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Participer::class)]
     private Collection $participations;
@@ -97,17 +97,17 @@ class Animal
         return $this;
     }
 
-    public function getIdCategorie(): ?Categorie
+    public function getCategorie(): ?Categorie
     {
-        return $this->idCategorie;
+        return $this->categorie;
     }
 
     /**
      * @return Animal
      */
-    public function setIdCategorie(?Categorie $idCategorie): static
+    public function setCategorie(?Categorie $categorie): static
     {
-        $this->idCategorie = $idCategorie;
+        $this->categorie = $categorie;
 
         return $this;
     }

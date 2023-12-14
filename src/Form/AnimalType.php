@@ -42,7 +42,7 @@ class AnimalType extends AbstractType
                         ->orderBy('c.nomFamille', 'ASC');
                 },
             ])
-            ->add('idCategorie', EntityType::class, [
+            ->add('categorie', EntityType::class, [
                     'required' => true,
                     'class' => Categorie::class,
                     'choice_label' => 'nomCategorie',

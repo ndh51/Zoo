@@ -21,7 +21,7 @@ class Categorie
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descCategorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'idCategorie', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Animal::class)]
     private Collection $animals;
 
     public function __construct()
@@ -71,7 +71,7 @@ class Categorie
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setIdCategorie($this);
+            $animal->setCategorie($this);
         }
 
         return $this;
@@ -81,8 +81,8 @@ class Categorie
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getIdCategorie() === $this) {
-                $animal->setIdCategorie(null);
+            if ($animal->getCategorie() === $this) {
+                $animal->setCategorie(null);
             }
         }
 
