@@ -5,23 +5,22 @@
 {% endblock %}
 
 {% block javascripts %}
+
     const container = document.getElementById('carousel-container-maison');
     const content = document.getElementById('carousel-content-maison');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
 
     let currentIndex = 0;
     const totalItems = document.querySelectorAll('.carousel-item-maison').length;
     const visibleItems = 3; // Nombre d'images visibles à la fois
 
-    nextBtn.addEventListener('click', () => {
+    document.getElementById('suivant').addEventListener('click', () => {
     if (currentIndex < totalItems - visibleItems) {
     currentIndex++;
     updateCarouselMaison();
     }
     });
 
-    prevBtn.addEventListener('click', () => {
+    document.getElementById('precedent').addEventListener('click', () => {
     if (currentIndex > 0) {
     currentIndex--;
     updateCarouselMaison();
@@ -29,7 +28,7 @@
     });
 
     function updateCarouselMaison() {
-    const newPosition = -currentIndex * 100 / visibleItems + '%';
+    const newPosition = -currentIndex * 102 / visibleItems + '%';
     content.style.transform = 'translateX(' + newPosition + ')';
     }
 
@@ -54,8 +53,8 @@
                     {% endfor %}
                 </div>
 
-                <div id="prev">&lt;</div>
-                <div id="next">&gt;</div>
+                <div id="precedent">&lt;</div>
+                <div id="suivant">&gt;</div>
             </div>
         </div>
         <br>
