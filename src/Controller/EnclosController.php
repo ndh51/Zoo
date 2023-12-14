@@ -18,6 +18,9 @@ class EnclosController extends AbstractController
     #[Route('/enclos', name: 'app_enclos')]
     public function index(EnclosRepository $repository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $enclos = $repository->findBy([], ['nomEnclos' => 'ASC']);
 
         return $this->render('enclos/index.html.twig', ['enclos' => $enclos]);
@@ -37,6 +40,9 @@ class EnclosController extends AbstractController
     #[Route('/enclos/{id}/update', name: 'app_enclos_update', requirements: ['id' => '\d+'])]
     public function update(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createForm(EnclosType::class, $enclos);
 
         $form->handleRequest($request);
@@ -55,6 +61,9 @@ class EnclosController extends AbstractController
     #[Route('/enclos/create', name: 'app_enclos_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $enclos = new Enclos();
         $form = $this->createForm(EnclosType::class, $enclos);
 
@@ -74,6 +83,9 @@ class EnclosController extends AbstractController
     #[Route('/enclos/{id}/delete', name: 'app_enclos_delete', requirements: ['id' => '\d+'])]
     public function delete(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
