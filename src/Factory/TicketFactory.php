@@ -49,7 +49,7 @@ final class TicketFactory extends ModelFactory
         return [
             'dateTicket' => self::faker()->dateTime(),
             'prixTicket' => self::faker()->randomFloat(),
-            'visiteur' => VisiteurFactory::new(),
+            'visiteur' => VisiteurFactory::random(),
         ];
     }
 
