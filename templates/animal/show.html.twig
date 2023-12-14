@@ -12,23 +12,23 @@
         <div class="corps-animal">
             <img class="animalPresenter" src="{{ asset(animal.image.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             <div class="infoAnimal">
-                <p class="nomAnimal">{{ animal.nomAnimal }}</p>
+                <p class="nomAnimal">{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                 <div>
                     <p class="titre">Emplacement </p>
-                    <p> {{ animal.enclos.nomEnclos }}</p>
+                    <p> {{ animal.idEnclos.nomEnclos|first|upper}}{{ animal.idEnclos.nomEnclos|slice(1) }}</p>
                 </div>
                 <div>
                     <p class="titre">Famille</p>
-                    <p> {{ animal.famille.nomFamille }} </p>
+                    <p> {{ animal.idFamille.nomFamille|first|upper}}{{ animal.idFamille.nomFamille|slice(1) }} </p>
                 </div>
                 <div>
                     <p class="titre">Catégorie</p>
-                    <p>{{ animal.categorie.nomCategorie }} </p>
+                    <p>{{ animal.idCategorie.nomCategorie|first|upper}}{{ animal.idCategorie.nomCategorie|slice(1) }}</p>
                 </div>
             </div>
         </div>
         <p class="titre">Description</p>
-        <p>{{ animal.descAnimal }}</p>
+        <p>{{ animal.descAnimal|first|upper}}{{ animal.descAnimal|slice(1) }}</p>
     </div>
     <div class="AnimauxetEvenements">
         {% if sameFamille is not empty %}
@@ -36,7 +36,10 @@
             <p class="titre">Animaux de la même famille</p>
             {% for animal in sameFamille %}
             <div class="animalFamilleImg">
-                <img src="{{ asset(animal.image.pathImage) }}" alt="image {{ animal.nomAnimal }}">
+                <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                <img src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
+                <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
+                </a>
             </div>
             {% endfor %}
         </div>
@@ -45,7 +48,10 @@
         <div class="evenementAnimal">
             <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
             {% for evenement in events %}
-            <img src="{{ asset(evenement.image.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+            <img src="{{ asset(evenement.idImage.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+                <p>{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</p>
+            </a>
             {% endfor %}
         </div>
         {% endif %}
