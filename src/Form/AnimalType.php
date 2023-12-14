@@ -53,7 +53,7 @@ class AnimalType extends AbstractType
                     },
                 ]
             )
-            ->add('idEnclos', EntityType::class, [
+            ->add('enclos', EntityType::class, [
                     'required' => true,
                     'class' => Enclos::class,
                     'choice_label' => 'nomEnclos',

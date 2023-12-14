@@ -55,7 +55,7 @@ class EvenementRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
             ->addSelect('enclos')
-            ->leftJoin('e.idEnclos', 'enclos')
+            ->leftJoin('e.enclos', 'enclos')
             ->where('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()

@@ -26,10 +26,10 @@ class Enclos
     )]
     private ?string $nomEnclos = null;
 
-    #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Evenement::class)]
+    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Evenement::class)]
     private Collection $evenements;
 
-    #[ORM\OneToMany(mappedBy: 'idEnclos', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'enclos', targetEntity: Animal::class)]
     private Collection $animals;
 
     public function __construct()
@@ -67,7 +67,7 @@ class Enclos
     {
         if (!$this->evenements->contains($evenement)) {
             $this->evenements->add($evenement);
-            $evenement->setIdEnclos($this);
+            $evenement->setenclos($this);
         }
 
         return $this;
@@ -77,8 +77,8 @@ class Enclos
     {
         if ($this->evenements->removeElement($evenement)) {
             // set the owning side to null (unless already changed)
-            if ($evenement->getIdEnclos() === $this) {
-                $evenement->setIdEnclos(null);
+            if ($evenement->getenclos() === $this) {
+                $evenement->setenclos(null);
             }
         }
 
@@ -97,7 +97,7 @@ class Enclos
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setIdEnclos($this);
+            $animal->setenclos($this);
         }
 
         return $this;
@@ -107,8 +107,8 @@ class Enclos
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getIdEnclos() === $this) {
-                $animal->setIdEnclos(null);
+            if ($animal->getenclos() === $this) {
+                $animal->setenclos(null);
             }
         }
 

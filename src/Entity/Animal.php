@@ -42,7 +42,7 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Image $image = null;
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Enclos $idEnclos = null;
+    private ?Enclos $enclos = null;
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
@@ -154,14 +154,14 @@ class Animal
         return $this;
     }
 
-    public function getIdEnclos(): ?Enclos
+    public function getEnclos(): ?Enclos
     {
-        return $this->idEnclos;
+        return $this->enclos;
     }
 
-    public function setIdEnclos(?Enclos $idEnclos): static
+    public function setEnclos(?Enclos $enclos): static
     {
-        $this->idEnclos = $idEnclos;
+        $this->enclos = $enclos;
 
         return $this;
     }

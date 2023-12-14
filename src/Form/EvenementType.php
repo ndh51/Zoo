@@ -30,7 +30,7 @@ class EvenementType extends AbstractType
             ->add('nomEvent', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'évènement '])
             ->add('descEvent', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'évènement '])
             ->add('nbPlaceMaxEvent', IntegerType::class, ['label' => 'Nombre de places maximum '])
-            ->add('idEnclos', EntityType::class, [
+            ->add('enclos', EntityType::class, [
                 'required' => false,
                 'class' => Enclos::class,
                 'choice_label' => 'nomEnclos',

@@ -36,7 +36,7 @@ class Evenement
     private ?int $nbPlaceMaxEvent = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
-    private ?Enclos $idEnclos = null;
+    private ?Enclos $enclos = null;
 
     #[ORM\OneToMany(mappedBy: 'idEvent', targetEntity: Participer::class)]
     private Collection $participations;
@@ -90,14 +90,14 @@ class Evenement
         return $this;
     }
 
-    public function getIdEnclos(): ?Enclos
+    public function getEnclos(): ?Enclos
     {
-        return $this->idEnclos;
+        return $this->enclos;
     }
 
-    public function setIdEnclos(?Enclos $idEnclos): static
+    public function setEnclos(?Enclos $enclos): static
     {
-        $this->idEnclos = $idEnclos;
+        $this->enclos = $enclos;
 
         return $this;
     }
