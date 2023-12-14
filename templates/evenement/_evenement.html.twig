@@ -1,5 +1,7 @@
 <ul class="list-group" id="evenements">
+    {% if is_granted('ROLE_ADMIN') %}
     <li class="list-group-item"><a href="{{ path('app_evenement_create') }}">Ajouter un évenement</a></li>
+    {% endif %}
     {% for evenement in evenements %}
         <li class="list-group-item list-group-item-action">
             <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">{{ evenement.nomEvent }}</a>
