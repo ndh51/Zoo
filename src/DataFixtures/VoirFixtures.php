@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\VoirFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -13,7 +14,7 @@ class VoirFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        VoirFactory::create_many(50);
+        VoirFactory::createMany(50);
     }
 
     public function getOrder(): int
