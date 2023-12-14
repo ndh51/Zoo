@@ -42,6 +42,9 @@ class EvenementController extends AbstractController
     #[Route('/evenement/{id}/update', name: 'app_evenement_update', requirements: ['id' => '\d+'])]
     public function update(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createForm(EvenementType::class, $evenement);
 
         $form->handleRequest($request);
@@ -59,6 +62,9 @@ class EvenementController extends AbstractController
     #[Route('/evenement/create', name: 'app_evenement_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $evenement = new Evenement();
         $form = $this->createForm(EvenementType::class, $evenement);
 
@@ -77,6 +83,9 @@ class EvenementController extends AbstractController
     #[Route('/evenement/{id}/delete', name: 'app_evenement_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
