@@ -38,6 +38,9 @@
 
 {% block body %}
     <div class="contenu">
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <h2 class="text-light">Bonjour {{ app.user.nomVisiteur }}</h2>
+        {% endif %}
         <div class="events">
         <h3>Évènements :</h3>
             <div id="carousel-container-maison">
