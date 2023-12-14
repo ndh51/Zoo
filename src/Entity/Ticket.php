@@ -87,7 +87,7 @@ class Ticket
     {
         if (!$this->vues->contains($vue)) {
             $this->vues->add($vue);
-            $vue->setIdTicket($this);
+            $vue->setTicket($this);
         }
 
         return $this;
@@ -97,8 +97,8 @@ class Ticket
     {
         if ($this->vues->removeElement($vue)) {
             // set the owning side to null (unless already changed)
-            if ($vue->getIdTicket() === $this) {
-                $vue->setIdTicket(null);
+            if ($vue->getTicket() === $this) {
+                $vue->setTicket(null);
             }
         }
 
