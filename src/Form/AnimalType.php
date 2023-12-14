@@ -32,7 +32,7 @@ class AnimalType extends AbstractType
         $builder
             ->add('nomAnimal', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'Animal '])
             ->add('descAnimal', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'Animal '])
-            ->add('idFamille', EntityType::class, [
+            ->add('famille', EntityType::class, [
                 'required' => true,
                 'class' => Famille::class,
                 'choice_label' => 'nomFamille',
@@ -42,7 +42,7 @@ class AnimalType extends AbstractType
                         ->orderBy('c.nomFamille', 'ASC');
                 },
             ])
-            ->add('idCategorie', EntityType::class, [
+            ->add('categorie', EntityType::class, [
                     'required' => true,
                     'class' => Categorie::class,
                     'choice_label' => 'nomCategorie',
@@ -53,7 +53,7 @@ class AnimalType extends AbstractType
                     },
                 ]
             )
-            ->add('idEnclos', EntityType::class, [
+            ->add('enclos', EntityType::class, [
                     'required' => true,
                     'class' => Enclos::class,
                     'choice_label' => 'nomEnclos',
@@ -64,7 +64,7 @@ class AnimalType extends AbstractType
                     },
                 ]
             )
-            ->add('idImage', EntityType::class, [
+            ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',
                 'label' => 'L\'image attribuée à cet animal sera l\'image par défaut ',

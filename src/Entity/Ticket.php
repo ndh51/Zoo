@@ -24,9 +24,11 @@ class Ticket
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Visiteur $visiteur = null;
 
     #[ORM\OneToMany(mappedBy: 'idTicket', targetEntity: Voir::class)]
+
     private Collection $vues;
 
     public function __construct()

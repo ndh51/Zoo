@@ -15,10 +15,12 @@ class Voir
 
     #[ORM\ManyToOne(inversedBy: 'vues')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Animal $animal = null;
 
     #[ORM\ManyToOne(inversedBy: 'vues')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Ticket $ticket = null;
 
     public function getId(): ?int

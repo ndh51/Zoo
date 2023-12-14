@@ -12,9 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class AnimalController extends AbstractController
 {
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/animal', name: 'app_animal')]
     public function index(AnimalRepository $repository): Response
     {
@@ -32,13 +34,16 @@ class AnimalController extends AbstractController
         }
         $sameFamily = $animalRepo->findWithTheSameFamily($animal);
         $events = $animalRepo->findEvents($animal);
+
         return $this->render('animal/show.html.twig', [
             'animal' => $animal, 'sameFamille' => $sameFamily, 'events' => $events]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/animal/create', name: 'app_animal_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+
         $animal = new Animal();
         $form = $this->createForm(AnimalType::class, $animal);
 
@@ -54,6 +59,7 @@ class AnimalController extends AbstractController
             ['form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id' => '\d+'])]
     public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
@@ -72,6 +78,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/animal/{id}/delete', name: 'app_animal_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {

@@ -11,9 +11,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class FamilleController extends AbstractController
 {
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille', name: 'app_famille')]
     public function index(FamilleRepository $repository): Response
     {
@@ -30,6 +32,7 @@ class FamilleController extends AbstractController
         return $this->render('famille/show.html.twig', ['famille' => $famille]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/famille/create', name: 'app_famille_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -48,7 +51,8 @@ class FamilleController extends AbstractController
             ['form' => $form->createView()]);
     }
 
-    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_id_update')]
+    #[isGranted('ROLE_ADMIN')]
+    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_update')]
     public function update(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(FamilleType::class, $famille);
@@ -65,7 +69,8 @@ class FamilleController extends AbstractController
             'animaux' => $famille->getAnimals()]);
     }
 
-    #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_id_delete')]
+    #[isGranted('ROLE_ADMIN')]
+    #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_delete')]
     public function delete(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()

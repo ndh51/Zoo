@@ -20,7 +20,7 @@ class AnimalCrudController extends AbstractCrudController
         return [
             TextField::new('nomAnimal', 'Animal'),
             TextField::new('descAnimal', 'Description'),
-            AssociationField::new('idFamille', 'Famille')
+            AssociationField::new('famille', 'Famille')
             ->setFormTypeOptions(['choice_label' => 'nomFamille',
                 'label' => 'Famille',
                 'query_builder' => function (EntityRepository $entityRepository) {
@@ -28,9 +28,9 @@ class AnimalCrudController extends AbstractCrudController
                         ->orderBy('f.nomFamille', 'ASC');
                 }, ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdFamille()?->getNomFamille();
+                    return $entity->getFamille()?->getNomFamille();
                 }),
-            AssociationField::new('idCategorie', 'Catégorie')
+            AssociationField::new('categorie', 'Catégorie')
                 ->setFormTypeOptions(['choice_label' => 'nomCategorie',
                     'label' => 'Catégorie',
                     'query_builder' => function (EntityRepository $entityRepository) {
@@ -38,9 +38,9 @@ class AnimalCrudController extends AbstractCrudController
                             ->orderBy('c.nomCategorie', 'ASC');
                     }, ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdCategorie()?->getNomCategorie();
+                    return $entity->getCategorie()?->getNomCategorie();
                 }),
-            AssociationField::new('idEnclos', 'Enclos')
+            AssociationField::new('enclos', 'Enclos')
                 ->setFormTypeOptions(['choice_label' => 'nomEnclos',
                     'label' => 'Enclos',
                     'query_builder' => function (EntityRepository $entityRepository) {
@@ -48,13 +48,13 @@ class AnimalCrudController extends AbstractCrudController
                             ->orderBy('e.nomEnclos', 'ASC');
                     }, ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdEnclos()?->getNomEnclos();
+                    return $entity->getenclos()?->getNomEnclos();
                 }),
-            AssociationField::new('idImage', 'Image')
+            AssociationField::new('image', 'Image')
                 ->setFormTypeOptions(['choice_label' => 'pathImage',
                     'label' => 'Image', ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdImage()?->getPathImage();
+                    return $entity->getImage()?->getPathImage();
                 }),
         ];
     }

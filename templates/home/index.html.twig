@@ -38,6 +38,9 @@
 
 {% block body %}
     <div class="contenu">
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <h2 class="text-light">Bonjour {{ app.user.nomVisiteur }}</h2>
+        {% endif %}
         <div class="events">
         <h3>Évènements :</h3>
             <div id="carousel-container-maison">
@@ -45,7 +48,7 @@
                     {% for evenement in evenements %}
                         <div class="carousel-item-maison">
                             <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
-                            <img src="{{asset(evenement.idImage.pathImage)}}"  alt="{{ evenement.nomEvent }}">
+                            <img src="{{asset(evenement.image.pathImage)}}"  alt="{{ evenement.nomEvent }}">
 
                             <p>{{ evenement.nomEvent }}</p>
                             </a>
@@ -63,7 +66,7 @@
                 {% for animal in animaux %}
                         <div class="animal">
                             <a href="{{ path('app_animal_id', {id: animal.id}) }}">
-                            <img src="{{asset(animal.idImage.pathImage)}}" alt="{{ animal.nomAnimal }}">
+                            <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
 
                             <p>{{ animal.nomAnimal }}</p>
                             </a>

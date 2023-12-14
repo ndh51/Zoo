@@ -10,7 +10,7 @@
 
     <div class="animal">
         <div class="corps-animal">
-            <img class="animalPresenter" src="{{ asset(animal.idImage.pathImage) }}" alt="image {{ animal.nomAnimal }}">
+            <img class="animalPresenter" src="{{ asset(animal.image.pathImage) }}" alt="image {{ animal.nomAnimal }}">
             <div class="infoAnimal">
                 <p class="nomAnimal">{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                 <div>

@@ -18,10 +18,10 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $pathImage = null;
 
-    #[ORM\OneToMany(mappedBy: 'idImage', targetEntity: Evenement::class)]
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Evenement::class)]
     private Collection $evenements;
 
-    #[ORM\OneToMany(mappedBy: 'idImage', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Animal::class)]
     private Collection $animals;
 
     public function __construct()
@@ -59,7 +59,7 @@ class Image
     {
         if (!$this->evenements->contains($evenement)) {
             $this->evenements->add($evenement);
-            $evenement->setIdImage($this);
+            $evenement->setImage($this);
         }
 
         return $this;
@@ -69,8 +69,8 @@ class Image
     {
         if ($this->evenements->removeElement($evenement)) {
             // set the owning side to null (unless already changed)
-            if ($evenement->getIdImage() === $this) {
-                $evenement->setIdImage(null);
+            if ($evenement->getImage() === $this) {
+                $evenement->setImage(null);
             }
         }
 
@@ -89,7 +89,7 @@ class Image
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setIdAnimal($this);
+            $animal->setanimal($this);
         }
 
         return $this;
@@ -99,8 +99,8 @@ class Image
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getIdAnimal() === $this) {
-                $animal->setIdAnimal(null);
+            if ($animal->getanimal() === $this) {
+                $animal->setanimal(null);
             }
         }
 
