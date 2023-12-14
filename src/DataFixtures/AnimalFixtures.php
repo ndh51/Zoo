@@ -41,7 +41,7 @@ class AnimalFixtures extends Fixture implements OrderedFixtureInterface
                 'idFamille' => $famRep->findOneBy(['nomFamille' => $animal['famille']]),
                 'idCategorie' => $catRep->findOneBy(['nomCategorie' => $animal['categorie']]),
                 'idEnclos' => $encRep->findOneBy(['nomEnclos' => $animal['enclos']]),
-                'idImage' => $image,
+                'image' => $image,
             ]);
         }
     }

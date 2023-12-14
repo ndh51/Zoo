@@ -38,7 +38,7 @@ class EvenementFixtures extends Fixture implements OrderedFixtureInterface
                 'descEvent' => $evenement['description'],
                 'nbPlaceMaxEvent' => random_int(15, 100),
                 'idEnclos' => $encRep->findOneBy(['nomEnclos' => $evenement['enclos']]),
-                'idImage' => $image,
+                'image' => $image,
             ]);
         }
     }

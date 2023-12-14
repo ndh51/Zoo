@@ -50,11 +50,11 @@ class AnimalCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $entity->getIdEnclos()?->getNomEnclos();
                 }),
-            AssociationField::new('idImage', 'Image')
+            AssociationField::new('image', 'Image')
                 ->setFormTypeOptions(['choice_label' => 'pathImage',
                     'label' => 'Image', ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdImage()?->getPathImage();
+                    return $entity->getImage()?->getPathImage();
                 }),
         ];
     }

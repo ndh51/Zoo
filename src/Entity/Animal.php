@@ -40,7 +40,7 @@ class Animal
     private Collection $participations;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Image $idImage = null;
+    private ?Image $image = null;
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Enclos $idEnclos = null;
 
@@ -142,14 +142,14 @@ class Animal
         return $this;
     }
 
-    public function getIdImage(): ?Image
+    public function getImage(): ?Image
     {
-        return $this->idImage;
+        return $this->image;
     }
 
-    public function setIdImage(?Image $idImage): static
+    public function setImage(?Image $image): static
     {
-        $this->idImage = $idImage;
+        $this->image = $image;
 
         return $this;
     }

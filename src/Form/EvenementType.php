@@ -41,7 +41,7 @@ class EvenementType extends AbstractType
                 },
             ]
             )
-            ->add('idImage', EntityType::class, [
+            ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',
                 'label' => 'L\'image attribuée à cet animal sera l\'image par défaut ',
