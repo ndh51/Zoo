@@ -18,6 +18,9 @@ class AnimalController extends AbstractController
     #[Route('/animal', name: 'app_animal')]
     public function index(AnimalRepository $repository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $animaux = $repository->findBy([], ['nomAnimal' => 'ASC']);
 
         return $this->render('animal/index.html.twig', ['animaux' => $animaux]);
@@ -32,6 +35,7 @@ class AnimalController extends AbstractController
         }
         $sameFamily = $animalRepo->findWithTheSameFamily($animal);
         $events = $animalRepo->findEvents($animal);
+
         return $this->render('animal/show.html.twig', [
             'animal' => $animal, 'sameFamille' => $sameFamily, 'events' => $events]);
     }
@@ -39,6 +43,9 @@ class AnimalController extends AbstractController
     #[Route('/animal/create', name: 'app_animal_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $animal = new Animal();
         $form = $this->createForm(AnimalType::class, $animal);
 
@@ -57,6 +64,9 @@ class AnimalController extends AbstractController
     #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id' => '\d+'])]
     public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createForm(AnimalType::class, $animal);
 
         $form->handleRequest($request);
@@ -75,6 +85,9 @@ class AnimalController extends AbstractController
     #[Route('/animal/{id}/delete', name: 'app_animal_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createFormBuilder()
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
