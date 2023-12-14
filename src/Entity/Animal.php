@@ -31,7 +31,7 @@ class Animal
     private ?string $descAnimal = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Famille $idFamille = null;
+    private ?Famille $famille = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     private ?Categorie $categorie = null;
@@ -85,14 +85,14 @@ class Animal
         return $this;
     }
 
-    public function getIdFamille(): ?Famille
+    public function getFamille(): ?Famille
     {
-        return $this->idFamille;
+        return $this->famille;
     }
 
-    public function setIdFamille(?Famille $idFamille): static
+    public function setFamille(?Famille $famille): static
     {
-        $this->idFamille = $idFamille;
+        $this->famille = $famille;
 
         return $this;
     }

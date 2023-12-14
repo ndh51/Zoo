@@ -20,7 +20,7 @@ class AnimalCrudController extends AbstractCrudController
         return [
             TextField::new('nomAnimal', 'Animal'),
             TextField::new('descAnimal', 'Description'),
-            AssociationField::new('idFamille', 'Famille')
+            AssociationField::new('famille', 'Famille')
             ->setFormTypeOptions(['choice_label' => 'nomFamille',
                 'label' => 'Famille',
                 'query_builder' => function (EntityRepository $entityRepository) {
@@ -28,7 +28,7 @@ class AnimalCrudController extends AbstractCrudController
                         ->orderBy('f.nomFamille', 'ASC');
                 }, ])
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getIdFamille()?->getNomFamille();
+                    return $entity->getFamille()?->getNomFamille();
                 }),
             AssociationField::new('categorie', 'Catégorie')
                 ->setFormTypeOptions(['choice_label' => 'nomCategorie',

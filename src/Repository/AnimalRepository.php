@@ -66,7 +66,7 @@ class AnimalRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->addSelect('famille')
-            ->leftJoin('a.idFamille', 'famille')
+            ->leftJoin('a.famille', 'famille')
             ->where('a.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
@@ -86,14 +86,14 @@ class AnimalRepository extends ServiceEntityRepository
 
     public function findWithTheSameFamily(Animal $animal)
     {
-        $idFamille = $animal->getIdFamille();
+        $famille = $animal->getFamille();
         $animal = $animal->getId();
 
         return $this->createQueryBuilder('a')
             ->select('a')
             ->where('a.id != :animal')
-            ->andWhere('a.idFamille = :idFamille')
-            ->setParameter('idFamille', $idFamille)
+            ->andWhere('a.famille = :famille')
+            ->setParameter('famille', $famille)
             ->setParameter('animal', $animal)
             ->orderBy('a.nomAnimal')
             ->getQuery()
