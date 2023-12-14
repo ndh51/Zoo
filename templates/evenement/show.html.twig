@@ -48,7 +48,7 @@
             <div class="animaux">
                 {% for animal in animaux %}
                 <div class="animal">
-                    <a href="{{ path('app_animal_id', {id: animal}) }}">
+                    <a href="{{ path('app_animal_id', {id: animal.id}) }}">
                     <img class="animage" src="{{ asset(animal.Image.pathImage) }}"  alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
                     <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                     </a>
