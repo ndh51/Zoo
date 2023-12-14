@@ -21,7 +21,7 @@ class Famille
     #[ORM\Column(length: 500)]
     private ?string $descFamille = null;
 
-    #[ORM\OneToMany(mappedBy: 'famille', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'famille', targetEntity: Animal::class, cascade: ['remove'])]
     private Collection $animals;
 
     public function __construct()
