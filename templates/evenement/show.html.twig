@@ -19,10 +19,10 @@
             <p>description : {{ evenement.descEvent }}</p>
         </div>
         <div class="description">
-            <h1>{{ evenement.nomEvent}}</h1>
+            <h1>{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</h1>
             <table>
                 <tr>
-                    <td>Enclos : {{ evenement.idEnclos.nomEnclos }}</td>
+                    <td>Enclos : {{ evenement.idEnclos.nomEnclos|first|upper}}{{ evenement.idEnclos.nomEnclos|slice(1) }}</td>
                 </tr>
                 <tr>
                     <td>Nombre de places maximums : {{ evenement.nbPlaceMaxEvent }}</td>
@@ -50,7 +50,7 @@
                 <div class="animal">
                     <a href="{{ path('app_animal_id', {id: animal.id}) }}">
                     <img class="animage" src="{{ asset(animal.idImage.pathImage) }}"  alt="Un animal">
-                    <p>{{ animal.nomAnimal }} </p>
+                    <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                     </a>
                 {% endfor %}
             </div>
