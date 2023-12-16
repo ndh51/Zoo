@@ -47,6 +47,8 @@ final class ReservationEvenementFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
+            'idPassageEvenement' => PassageEvenementFactory::random(),
+            'idTicket' => TicketFactory::random(),
         ];
     }
 

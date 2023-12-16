@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\ReservationEvenementFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 ;
@@ -13,6 +14,7 @@ class ReservationEvenementFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $manager->flush();
+        // $manager->flush();
+        ReservationEvenementFactory::createMany(20);
     }
 }

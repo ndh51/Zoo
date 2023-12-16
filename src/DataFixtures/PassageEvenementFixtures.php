@@ -18,4 +18,6 @@ class PassageEvenementFixtures extends Fixture
         // $manager->flush();
         PassageEvenementFactory::createMany(20);
     }
+
+
 }

@@ -9,20 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 class ReservationEvenement
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
     private ?Ticket $idTicket = null;
 
+    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
     private ?PassageEvenement $idPassageEvenement = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getIdTicket(): ?Ticket
     {
