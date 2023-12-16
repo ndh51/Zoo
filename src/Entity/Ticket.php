@@ -31,9 +31,13 @@ class Ticket
 
     private Collection $vues;
 
+    #[ORM\OneToMany(mappedBy: 'idTicket', targetEntity: ReservationEvenement::class)]
+    private Collection $reservationEvenements;
+
     public function __construct()
     {
         $this->vues = new ArrayCollection();
+        $this->reservationEvenements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,6 +105,36 @@ class Ticket
             // set the owning side to null (unless already changed)
             if ($vue->getTicket() === $this) {
                 $vue->setTicket(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ReservationEvenement>
+     */
+    public function getReservationEvenements(): Collection
+    {
+        return $this->reservationEvenements;
+    }
+
+    public function addReservationEvenement(ReservationEvenement $reservationEvenement): static
+    {
+        if (!$this->reservationEvenements->contains($reservationEvenement)) {
+            $this->reservationEvenements->add($reservationEvenement);
+            $reservationEvenement->setIdTicket($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservationEvenement(ReservationEvenement $reservationEvenement): static
+    {
+        if ($this->reservationEvenements->removeElement($reservationEvenement)) {
+            // set the owning side to null (unless already changed)
+            if ($reservationEvenement->getIdTicket() === $this) {
+                $reservationEvenement->setIdTicket(null);
             }
         }
 
