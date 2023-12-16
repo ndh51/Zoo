@@ -15,7 +15,7 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
         // $manager->persist($product);
 
         // $manager->flush();
-        PassageEvenementFactory::createMany(20);
+        PassageEvenementFactory::createMany(50);
     }
 
     public function getOrder(): int

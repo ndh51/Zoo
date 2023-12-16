@@ -16,11 +16,13 @@ class PassageEvenement
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $hDebEvenement = null;
+    #[ORM\Column(length: 50)]
+    #[Assert\Time]
+    private ?string $hDebEvenement = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $hFinEvenement = null;
+    #[ORM\Column(length: 50)]
+    #[Assert\Time]
+    private ?string $hFinEvenement = null;
 
     #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
     private ?Evenement $idEvenement = null;
@@ -38,24 +40,24 @@ class PassageEvenement
         return $this->id;
     }
 
-    public function getHDebEvenement(): ?\DateTimeInterface
+    public function getHDebEvenement(): ?string
     {
         return $this->hDebEvenement;
     }
 
-    public function setHDebEvenement(\DateTimeInterface $hDebEvenement): static
+    public function setHDebEvenement(string $hDebEvenement): static
     {
         $this->hDebEvenement = $hDebEvenement;
 
         return $this;
     }
 
-    public function getHFinEvenement(): ?\DateTimeInterface
+    public function getHFinEvenement(): ?string
     {
         return $this->hFinEvenement;
     }
 
-    public function setHFinEvenement(\DateTimeInterface $hFinEvenement): static
+    public function setHFinEvenement(string $hFinEvenement): static
     {
         $this->hFinEvenement = $hFinEvenement;
 

@@ -15,7 +15,7 @@ class ReservationEvenementFixtures extends Fixture implements OrderedFixtureInte
         // $manager->persist($product);
 
         // $manager->flush();
-        ReservationEvenementFactory::createMany(20);
+        ReservationEvenementFactory::createMany(10);
     }
 
     public function getOrder(): int
