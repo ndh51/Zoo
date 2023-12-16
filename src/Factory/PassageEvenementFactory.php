@@ -11,21 +11,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<PassageEvenement>
  *
- * @method        PassageEvenement|Proxy create(array|callable $attributes = [])
- * @method static PassageEvenement|Proxy createOne(array $attributes = [])
- * @method static PassageEvenement|Proxy find(object|array|mixed $criteria)
- * @method static PassageEvenement|Proxy findOrCreate(array $attributes)
- * @method static PassageEvenement|Proxy first(string $sortedField = 'id')
- * @method static PassageEvenement|Proxy last(string $sortedField = 'id')
- * @method static PassageEvenement|Proxy random(array $attributes = [])
- * @method static PassageEvenement|Proxy randomOrCreate(array $attributes = [])
+ * @method        PassageEvenement|Proxy                     create(array|callable $attributes = [])
+ * @method static PassageEvenement|Proxy                     createOne(array $attributes = [])
+ * @method static PassageEvenement|Proxy                     find(object|array|mixed $criteria)
+ * @method static PassageEvenement|Proxy                     findOrCreate(array $attributes)
+ * @method static PassageEvenement|Proxy                     first(string $sortedField = 'id')
+ * @method static PassageEvenement|Proxy                     last(string $sortedField = 'id')
+ * @method static PassageEvenement|Proxy                     random(array $attributes = [])
+ * @method static PassageEvenement|Proxy                     randomOrCreate(array $attributes = [])
  * @method static PassageEvenementRepository|RepositoryProxy repository()
- * @method static PassageEvenement[]|Proxy[] all()
- * @method static PassageEvenement[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static PassageEvenement[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static PassageEvenement[]|Proxy[] findBy(array $attributes)
- * @method static PassageEvenement[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static PassageEvenement[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static PassageEvenement[]|Proxy[]                 all()
+ * @method static PassageEvenement[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static PassageEvenement[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static PassageEvenement[]|Proxy[]                 findBy(array $attributes)
+ * @method static PassageEvenement[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static PassageEvenement[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class PassageEvenementFactory extends ModelFactory
 {
@@ -46,9 +46,12 @@ final class PassageEvenementFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $hFin = self::faker()->time('H:i');
+
         return [
-            'hDebEvenement' => null, // TODO add TIME type manually
-            'hFinEvenement' => null, // TODO add TIME type manually
+            'Evenement' => EvenementFactory::random(),
+            'hDebEvenement' => self::faker()->time('H:i', $hFin),
+            'hFinEvenement' => $hFin,
         ];
     }
 
