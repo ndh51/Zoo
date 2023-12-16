@@ -4,11 +4,10 @@ namespace App\DataFixtures;
 
 use App\Factory\PassageEvenementFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-use function Zenstruck\Foundry\create_many;
-
-class PassageEvenementFixtures extends Fixture
+class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -19,5 +18,8 @@ class PassageEvenementFixtures extends Fixture
         PassageEvenementFactory::createMany(20);
     }
 
-
+    public function getOrder(): int
+    {
+        return 10;
+    }
 }
