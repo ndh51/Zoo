@@ -25,9 +25,9 @@ class PassageEvenement
     private ?string $hFinEvenement = null;
 
     #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
-    private ?Evenement $idEvenement = null;
+    private ?Evenement $Evenement = null;
 
-    #[ORM\OneToMany(mappedBy: 'idPassageEvenement', targetEntity: ReservationEvenement::class)]
+    #[ORM\OneToMany(mappedBy: 'PassageEvenement', targetEntity: ReservationEvenement::class)]
     private Collection $reservationEvenements;
 
     public function __construct()
@@ -64,14 +64,14 @@ class PassageEvenement
         return $this;
     }
 
-    public function getIdEvenement(): ?Evenement
+    public function getEvenement(): ?Evenement
     {
-        return $this->idEvenement;
+        return $this->Evenement;
     }
 
-    public function setIdEvenement(?Evenement $idEvenement): static
+    public function setEvenement(?Evenement $Evenement): static
     {
-        $this->idEvenement = $idEvenement;
+        $this->Evenement = $Evenement;
 
         return $this;
     }
@@ -88,7 +88,7 @@ class PassageEvenement
     {
         if (!$this->reservationEvenements->contains($reservationEvenement)) {
             $this->reservationEvenements->add($reservationEvenement);
-            $reservationEvenement->setIdPassageEvenement($this);
+            $reservationEvenement->setPassageEvenement($this);
         }
 
         return $this;
@@ -98,8 +98,8 @@ class PassageEvenement
     {
         if ($this->reservationEvenements->removeElement($reservationEvenement)) {
             // set the owning side to null (unless already changed)
-            if ($reservationEvenement->getIdPassageEvenement() === $this) {
-                $reservationEvenement->setIdPassageEvenement(null);
+            if ($reservationEvenement->getPassageEvenement() === $this) {
+                $reservationEvenement->setPassageEvenement(null);
             }
         }
 

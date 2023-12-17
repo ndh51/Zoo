@@ -32,7 +32,7 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
             PassageEvenementFactory::createOne([
                 'hDebEvenement' => $passage['hDebEvenement'],
                 'hFinEvenement' => $passage['hFinEvenement'],
-                'idEvenement' => $evenement->findOneBy(['nomEvent' => $passage['idEvenement']]),
+                'Evenement' => $evenement->findOneBy(['nomEvent' => $passage['Evenement']]),
             ]);
         }
     }

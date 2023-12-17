@@ -10,33 +10,33 @@ class ReservationEvenement
 {
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
-    private ?Ticket $idTicket = null;
+    private ?Ticket $Ticket = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
-    private ?PassageEvenement $idPassageEvenement = null;
+    private ?PassageEvenement $PassageEvenement = null;
 
 
-    public function getIdTicket(): ?Ticket
+    public function getTicket(): ?Ticket
     {
-        return $this->idTicket;
+        return $this->Ticket;
     }
 
-    public function setIdTicket(?Ticket $idTicket): static
+    public function setTicket(?Ticket $Ticket): static
     {
-        $this->idTicket = $idTicket;
+        $this->Ticket = $Ticket;
 
         return $this;
     }
 
-    public function getIdPassageEvenement(): ?PassageEvenement
+    public function getPassageEvenement(): ?PassageEvenement
     {
-        return $this->idPassageEvenement;
+        return $this->PassageEvenement;
     }
 
-    public function setIdPassageEvenement(?PassageEvenement $idPassageEvenement): static
+    public function setPassageEvenement(?PassageEvenement $PassageEvenement): static
     {
-        $this->idPassageEvenement = $idPassageEvenement;
+        $this->PassageEvenement = $PassageEvenement;
 
         return $this;
     }

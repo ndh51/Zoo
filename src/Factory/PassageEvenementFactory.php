@@ -48,7 +48,7 @@ final class PassageEvenementFactory extends ModelFactory
     {
         $hDeb = self::faker()->time('H:i');
         return [
-            'idEvenement' => EvenementFactory::random(),
+            'Evenement' => EvenementFactory::random(),
             'hDebEvenement' => $hDeb,
             'hFinEvenement' => self::faker()->time('H:i', $hDeb),
         ];
