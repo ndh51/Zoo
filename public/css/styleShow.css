@@ -1,0 +1,95 @@
+body{
+    background-image: url("/img/fond.jpg");
+}
+p{
+    color: white;
+}
+.entity{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 2%;
+}
+
+.corps-entity{
+    display: flex;
+    flex-direction: row;
+}
+
+.infoEntity{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    padding-left: 2%;
+}
+.titre{
+    text-decoration: underline;
+    font-size: 150%;
+}
+.nomEntity{
+    font-size: 300%;
+    text-align: center;
+    border-bottom-style: solid;
+}
+
+.relationList{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+/*
+.relation{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+*/
+
+.relation{
+    align-items: center;
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.entityFromRelation{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img{
+    padding: 0.5%;
+    border-radius: 100px;
+    width:45%;
+}
+
+
+@media (max-width: 1000px) {
+
+    .entity {
+        flex-direction: column;
+    }
+    .relationList {
+        flex-direction: column-reverse;
+    }
+
+    .corps-entity{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .entity > * {
+        margin-top: 30px;
+    }
+
+    .relationList > * {
+        margin-top: 30px;
+    }
+
+    .entityPresenter{
+        margin: auto;
+    }
+
+}
