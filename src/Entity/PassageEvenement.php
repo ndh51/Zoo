@@ -27,7 +27,7 @@ class PassageEvenement
     #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
     private ?Evenement $Evenement = null;
 
-    #[ORM\OneToMany(mappedBy: 'PassageEvenement', targetEntity: ReservationEvenement::class)]
+    #[ORM\OneToMany(mappedBy: 'PassageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
     private Collection $reservationEvenements;
 
     public function __construct()
