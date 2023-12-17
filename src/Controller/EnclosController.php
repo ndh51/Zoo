@@ -52,6 +52,8 @@ class EnclosController extends AbstractController
         return $this->render('enclos/update.html.twig', [
             'enclos' => $enclos,
             'form' => $form->createView(),
+            'animaux' => $enclos->getAnimals(),
+            'evenements' => $enclos->getEvenements(),
         ]);
     }
 
