@@ -44,9 +44,13 @@ class Evenement
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?Image $image = null;
 
+    #[ORM\OneToMany(mappedBy: 'idEvenement', targetEntity: PassageEvenement::class)]
+    private Collection $passageEvenements;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
+        $this->passageEvenements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -140,6 +144,36 @@ class Evenement
     public function setImage(?Image $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PassageEvenement>
+     */
+    public function getPassageEvenements(): Collection
+    {
+        return $this->passageEvenements;
+    }
+
+    public function addPassageEvenement(PassageEvenement $passageEvenement): static
+    {
+        if (!$this->passageEvenements->contains($passageEvenement)) {
+            $this->passageEvenements->add($passageEvenement);
+            $passageEvenement->setIdEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePassageEvenement(PassageEvenement $passageEvenement): static
+    {
+        if ($this->passageEvenements->removeElement($passageEvenement)) {
+            // set the owning side to null (unless already changed)
+            if ($passageEvenement->getIdEvenement() === $this) {
+                $passageEvenement->setIdEvenement(null);
+            }
+        }
 
         return $this;
     }
