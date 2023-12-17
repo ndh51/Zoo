@@ -44,7 +44,7 @@ class EvenementType extends AbstractType
             ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',
-                'label' => 'L\'image attribuée à cet animal sera l\'image par défaut ',
+                'label' => 'L\'image attribuée à cet évènement sera l\'image par défaut ',
                 'data' => $this->getDefaultImage(),
                 'attr' => ['style' => 'display:none;'],
             ])
