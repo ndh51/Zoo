@@ -1,7 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Famille show{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/styleShow.css">
+{% endblock %}
+
+{% block title %}
+    Détails de {{ famille.nomFamille }}
+{% endblock %}
 
 {% block body %}
-    {{ famille.nomFamille }} : {{ famille.descFamille }}
+    <div class="entity">
+        <div class="corps-entity">
+            <p class="nomEntity">{{ famille.nomFamille }}</p>
+        </div>
+        <p class="titre">Description</p>
+        <p>{{ famille.descFamille|first|upper}}{{ famille.descFamille|slice(1) }}</p>
+    </div>
+    <div class="relationList">
+        {% if famille.animals is not empty %}
+            <div class="relation">
+                <p class="titre">Animaux de la famille</p>
+                {% for animal in famille.animals %}
+                    <div class="entityFromRelation">
+                        <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                            <img src="{{ asset(animal.Image.pathImage) }}" alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
+                            <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
