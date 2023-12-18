@@ -38,13 +38,13 @@ class Evenement
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?Enclos $enclos = null;
 
-    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Participer::class)]
+    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Participer::class, cascade: ['remove'])]
     private Collection $participations;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
     private ?Image $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'idEvenement', targetEntity: PassageEvenement::class)]
+    #[ORM\OneToMany(mappedBy: 'Evenement', targetEntity: PassageEvenement::class, cascade: ['remove'])]
     private Collection $passageEvenements;
 
     public function __construct()
@@ -160,7 +160,7 @@ class Evenement
     {
         if (!$this->passageEvenements->contains($passageEvenement)) {
             $this->passageEvenements->add($passageEvenement);
-            $passageEvenement->setIdEvenement($this);
+            $passageEvenement->setEvenement($this);
         }
 
         return $this;
@@ -170,8 +170,8 @@ class Evenement
     {
         if ($this->passageEvenements->removeElement($passageEvenement)) {
             // set the owning side to null (unless already changed)
-            if ($passageEvenement->getIdEvenement() === $this) {
-                $passageEvenement->setIdEvenement(null);
+            if ($passageEvenement->getEvenement() === $this) {
+                $passageEvenement->setEvenement(null);
             }
         }
 
