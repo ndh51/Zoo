@@ -1,60 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/css/styleEvenement.css">
+    <link rel="stylesheet" href="/css/styleShow.css">
 {% endblock %}
 
 {% block title %}
     Détails de {{ evenement.nomEvent }}
 {% endblock %}
 
-
-
 {% block body %}
-    <div class="content">
-    <div class="haut">
-
-        <div class="imgetdesc">
-            <img src="{{ asset(evenement.image.pathImage) }}">
-            <p>description : {{ evenement.descEvent }}</p>
+    <div class="entity">
+        <div class="corps-entity">
+            <img class="entityPresenter" src="{{ asset(evenement.Image.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+            <div class="infoEntity">
+                <p class="nomEntity">{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</p>
+                <div>
+                    <p class="titre">Emplacement </p>
+                    <p> {{ evenement.Enclos.nomEnclos|first|upper}}{{ evenement.Enclos.nomEnclos|slice(1) }}</p>
+                </div>
+                <div class="reservation">
+                    <button>RESERVER</button>
+                    <H1> X/{{ evenement.nbPlaceMaxEvent }} places restantes</H1>
+                </div>
+            </div>
         </div>
-        <div class="description">
-            <h1>{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</h1>
-            <table>
-                <tr>
-                    <td>Enclos : {{ evenement.Enclos.nomEnclos|first|upper}}{{ evenement.Enclos.nomEnclos|slice(1) }}</td>
-                </tr>
-                <tr>
-                    <td>Nombre de places maximums : {{ evenement.nbPlaceMaxEvent }}</td>
-                </tr>
-                {% if animaux is not empty %}
-                <tr>
-                    <td> Animaux Présents : </td>
-                </tr>
-                {% endif %}
-            </table>
-        </div>
+        <p class="titre">Description</p>
+        <p>{{ evenement.descEvent|first|upper}}{{ evenement.descEvent|slice(1) }}</p>
     </div>
 
-    <div class="bas">
-        <div class="reservation">
-            <button> RESERVER</button>
-            <H1> X/{{ evenement.nbPlaceMaxEvent }} places restantes</H1>
-
-
-
-        </div>
+    <div class="relationList">
         {% if animaux is not empty %}
-            <div class="animaux">
+            <div class="relation">
+                <p class="titre">Animaux participant à l'évènement</p>
                 {% for animal in animaux %}
-                <div class="animal">
+                <div class="entityFromRelation">
                     <a href="{{ path('app_animal_id', {id: animal.id}) }}">
-                    <img class="animage" src="{{ asset(animal.Image.pathImage) }}"  alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
-                    <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
+                        <img src="{{ asset(animal.Image.pathImage) }}"  alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
+                        <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                     </a>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         {% endif %}
-    </div>
     </div>
 {% endblock %}

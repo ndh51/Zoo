@@ -4,19 +4,19 @@ body{
 p{
     color: white;
 }
-.animal{
+.entity{
     display: flex;
     flex-direction: column;
     margin: 5px;
     padding: 2%;
 }
 
-.corps-animal{
+.corps-entity{
     display: flex;
     flex-direction: row;
 }
 
-.infoAnimal{
+.infoEntity{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -27,33 +27,34 @@ p{
     text-decoration: underline;
     font-size: 150%;
 }
-.nomAnimal{
+.nomEntity{
     font-size: 300%;
     text-align: center;
     border-bottom-style: solid;
 }
 
-.AnimauxetEvenements{
+.relationList{
     display: flex;
     flex-direction: row;
     padding: 2%;
 }
-.animalFamille{
+/*
+.relation{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
 }
+*/
 
-.evenementAnimal{
+.relation{
     align-items: center;
     display: flex;
     flex-grow: 2;
     flex-direction: column;
     justify-content: space-around;
-
 }
 
-.animalFamilleImg{
+.entityFromRelation{
     display: flex;
     justify-content: space-evenly;
 }
@@ -67,27 +68,27 @@ img{
 
 @media (max-width: 1000px) {
 
-    .animal {
+    .entity {
         flex-direction: column;
     }
-    .AnimauxetEvenements {
+    .relationList {
         flex-direction: column-reverse;
     }
 
-    .corps-animal{
+    .corps-entity{
         display: flex;
         flex-direction: column-reverse;
     }
 
-    .animal > * {
+    .entity > * {
         margin-top: 30px;
     }
 
-    .AnimauxetEvenements > * {
+    .relationList > * {
         margin-top: 30px;
     }
 
-    .animalPresenter{
+    .entityPresenter{
         margin: auto;
     }
 

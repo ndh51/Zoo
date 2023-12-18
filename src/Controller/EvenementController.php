@@ -102,6 +102,8 @@ class EvenementController extends AbstractController
         }
 
         return $this->render('evenement/delete.html.twig', [
-            'form' => $form->createView()]);
+            'form' => $form->createView(),
+            'evenement' => $evenement,
+        ]);
     }
 }

@@ -10,11 +10,13 @@ body {
 
 p{
     text-align: center;
-}
-
-h3{
     color: white;
 }
+
+h1, h2, h3, label{
+    color: white;
+}
+
 
 .contenu a{
     color: white;
