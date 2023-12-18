@@ -47,6 +47,9 @@ class Evenement
     #[ORM\OneToMany(mappedBy: 'Evenement', targetEntity: PassageEvenement::class, cascade: ['remove'])]
     private Collection $passageEvenements;
 
+    #[ORM\Column]
+    private ?int $duree = null;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
@@ -174,6 +177,18 @@ class Evenement
                 $passageEvenement->setEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(int $duree): static
+    {
+        $this->duree = $duree;
 
         return $this;
     }

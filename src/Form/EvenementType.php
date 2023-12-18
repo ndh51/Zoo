@@ -41,6 +41,7 @@ class EvenementType extends AbstractType
                 },
             ]
             )
+            ->add('duree', IntegerType::class, ['label' => 'Durée'])
             ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',

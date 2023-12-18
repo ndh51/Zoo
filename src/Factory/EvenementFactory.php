@@ -54,6 +54,7 @@ final class EvenementFactory extends ModelFactory
             'nbPlaceMaxEvent' => random_int(10, 150),
             'nomEvent' => self::faker()->text(30),
             'enclos' => EnclosFactory::random(),
+            'duree' => random_int(10, 60),
         ];
     }
 
