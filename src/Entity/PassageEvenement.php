@@ -20,10 +20,6 @@ class PassageEvenement
     #[Assert\Time]
     private ?string $hDebEvenement = null;
 
-    #[ORM\Column(length: 50)]
-    #[Assert\Time]
-    private ?string $hFinEvenement = null;
-
     #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
     private ?Evenement $Evenement = null;
 
@@ -48,18 +44,6 @@ class PassageEvenement
     public function setHDebEvenement(string $hDebEvenement): static
     {
         $this->hDebEvenement = $hDebEvenement;
-
-        return $this;
-    }
-
-    public function getHFinEvenement(): ?string
-    {
-        return $this->hFinEvenement;
-    }
-
-    public function setHFinEvenement(string $hFinEvenement): static
-    {
-        $this->hFinEvenement = $hFinEvenement;
 
         return $this;
     }

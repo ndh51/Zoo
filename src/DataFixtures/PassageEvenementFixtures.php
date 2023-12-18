@@ -31,7 +31,6 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
         foreach ($passages as $passage) {
             PassageEvenementFactory::createOne([
                 'hDebEvenement' => $passage['hDebEvenement'],
-                'hFinEvenement' => $passage['hFinEvenement'],
                 'Evenement' => $evenement->findOneBy(['nomEvent' => $passage['Evenement']]),
             ]);
         }
