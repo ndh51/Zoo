@@ -45,4 +45,21 @@ class TicketRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findEventsByVisiteur(int $idVisiteur)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT e.nom_event, e.image_id, t.id, t.date_ticket
+        FROM visiteur v JOIN ticket t ON (t.visiteur_id = v.id) JOIN reservation_evenement r ON (t.id = r.ticket_id) JOIN passage_evenement p ON (r.passage_evenement_id = p.id) JOIN evenement e ON (e.id = p.evenement_id)
+        WHERE v.id = :idVisiteur
+        ORDER BY t.id';
+
+        $params = ['idVisiteur' => $idVisiteur];
+
+
+        return $conn->executeQuery($sql, $params)->fetchAllAssociative();
+
+    }
 }
