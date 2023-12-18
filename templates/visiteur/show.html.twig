@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ visiteur.prenomVisiteur }} {% endblock %}
+
+{% block body %}
+    <h1>Bonjour {{ visiteur.nomVisiteur }} {{ visiteur.prenomVisiteur }} </h1>
+    <p>email : {{ visiteur.email }}</p>
+    <p>tel : {{ visiteur.telVisiteur}}</p>
+    <p>adresse : {{ visiteur.adVisiteur }}</p>
+    <p>ville : {{ visiteur.villeVisiteur }}</p>
+    <p>code postal : {{ visiteur.cpVisiteur }}</p>
+
+{% endblock %}
+
+
+
