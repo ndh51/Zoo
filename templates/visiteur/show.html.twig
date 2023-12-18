@@ -9,6 +9,21 @@
     <p>adresse : {{ visiteur.adVisiteur }}</p>
     <p>ville : {{ visiteur.villeVisiteur }}</p>
     <p>code postal : {{ visiteur.cpVisiteur }}</p>
+    {% if tickets is not empty %}
+        <h2>Liste des tickets : </h2>
+        {% set count = 0 %}
+        {% for ticket in tickets %}
+            {% if ticket.id != count %}
+                {% set count = count + 1 %}
+                <h3>Ticket N°{{ count }}</h3>
+                <h3>Date : {{ ticket.date_ticket }}</h3>
+
+            {% endif %}
+            <p>{{ ticket.nom_event }}</p>
+            <p>{{ ticket.image_id }}</p>
+        {% endfor %}
+    {% endif %}
+
 
 {% endblock %}
 
