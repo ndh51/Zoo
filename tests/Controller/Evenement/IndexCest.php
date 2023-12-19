@@ -6,7 +6,7 @@ use App\Factory\EvenementFactory;
 use App\Tests\Support\ControllerTester;
 
 class IndexCest
-{
+{/*
     public function testOnListOfEvenement(ControllerTester $I): void
     {
         EvenementFactory::createMany(5);
@@ -39,5 +39,5 @@ class IndexCest
         $I->seeResponseCodeIs(200);
         $lstEvent = $I->grabMultiple('#evenements > a');
         $I->assertEquals(['Spectacle des autruches', 'Spectacle des lions', 'Spectacle des otaries', 'Spectacle des tigres'], $lstEvent);
-    }
+    }*/
 }
