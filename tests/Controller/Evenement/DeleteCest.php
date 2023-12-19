@@ -7,9 +7,8 @@ use App\Factory\EvenementFactory;
 use App\Factory\ImageFactory;
 use App\Factory\VisiteurFactory;
 use App\Tests\Support\ControllerTester;
-use Codeception\Util\HttpCode;
 
-class UpdateCest
+class DeleteCest
 {
     public function formShowsContactDataBeforeUpdating(ControllerTester $I): void
     {
@@ -22,9 +21,9 @@ class UpdateCest
         $user = $post->object();
         $I->amLoggedInAs($user);
 
-        $I->amOnPage('/evenement/1/update');
+        $I->amOnPage('/evenement/1/delete');
 
-        $I->see('Édition de Safari Nocturne', 'h1');
+        $I->see('Suppression de Safari Nocturne', 'h1');
     }
 
     public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
@@ -34,7 +33,7 @@ class UpdateCest
 
         EvenementFactory::createOne(['nomEvent' => 'Safari Nocturne', 'image' => $img]);
 
-        $I->amOnPage('/evenement/1/update');
+        $I->amOnPage('/evenement/1/delete');
         $I->seeCurrentRouteIs('app_login');
     }
 
@@ -48,8 +47,7 @@ class UpdateCest
         $post = VisiteurFactory::createOne(['roles' => ['ROLE_ADMIN']]);
         $user = $post->object();
         $I->amLoggedInAs($user);
-        $I->amOnPage('/evenement/1/update');
-        $I->see('Édition de Safari Nocturne', 'h1');
+        $I->amOnPage('/evenement/1/delete');
         $I->seeResponseCodeIs(200);
     }
 }
