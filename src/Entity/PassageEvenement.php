@@ -24,15 +24,15 @@ class PassageEvenement
     #[Assert\Time]
     private ?string $hFinEvenement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
-    private ?Evenement $Evenement = null;
+    #[ORM\ManyToOne(inversedBy: 'passageEvenement')]
+    private ?Evenement $evenement = null;
 
-    #[ORM\OneToMany(mappedBy: 'PassageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
-    private Collection $reservationEvenements;
+    #[ORM\OneToMany(mappedBy: 'passageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
+    private Collection $reservationEvenement;
 
     public function __construct()
     {
-        $this->reservationEvenements = new ArrayCollection();
+        $this->reservationEvenement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,12 +66,12 @@ class PassageEvenement
 
     public function getEvenement(): ?Evenement
     {
-        return $this->Evenement;
+        return $this->evenement;
     }
 
-    public function setEvenement(?Evenement $Evenement): static
+    public function setEvenement(?Evenement $evenement): static
     {
-        $this->Evenement = $Evenement;
+        $this->evenement = $evenement;
 
         return $this;
     }
@@ -81,13 +81,13 @@ class PassageEvenement
      */
     public function getReservationEvenements(): Collection
     {
-        return $this->reservationEvenements;
+        return $this->reservationEvenement;
     }
 
     public function addReservationEvenement(ReservationEvenement $reservationEvenement): static
     {
-        if (!$this->reservationEvenements->contains($reservationEvenement)) {
-            $this->reservationEvenements->add($reservationEvenement);
+        if (!$this->reservationEvenement->contains($reservationEvenement)) {
+            $this->reservationEvenement->add($reservationEvenement);
             $reservationEvenement->setPassageEvenement($this);
         }
 
@@ -96,7 +96,7 @@ class PassageEvenement
 
     public function removeReservationEvenement(ReservationEvenement $reservationEvenement): static
     {
-        if ($this->reservationEvenements->removeElement($reservationEvenement)) {
+        if ($this->reservationEvenement->removeElement($reservationEvenement)) {
             // set the owning side to null (unless already changed)
             if ($reservationEvenement->getPassageEvenement() === $this) {
                 $reservationEvenement->setPassageEvenement(null);
