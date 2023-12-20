@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\PassageEvenement;
-use App\Factory\PassageEvenementFactory;
 use App\Form\PassageEvenementType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +44,17 @@ class PassageEvenementController extends AbstractController
 
         return $this->render('passageEvenement/create.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/passage/evenement/{id<\d+>}/update', name: 'app_passage_evenement_update')]
+    public function update(PassageEvenement $passageEvenement): Response
+    {
+        $form = $this->createForm(PassageEvenementType::class, $passageEvenement);
+
+        return $this->render('passageEvenement/update.html.twig', [
+            'passageEvenement' => $passageEvenement,
+            'form' => $form,
         ]);
     }
 }
