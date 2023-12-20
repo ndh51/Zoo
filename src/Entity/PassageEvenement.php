@@ -26,6 +26,9 @@ class PassageEvenement
     #[ORM\OneToMany(mappedBy: 'PassageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
     private Collection $reservationEvenements;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datePassage = null;
+
     public function __construct()
     {
         $this->reservationEvenements = new ArrayCollection();
@@ -86,6 +89,18 @@ class PassageEvenement
                 $reservationEvenement->setPassageEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDatePassage(): ?\DateTimeInterface
+    {
+        return $this->datePassage;
+    }
+
+    public function setDatePassage(\DateTimeInterface $datePassage): static
+    {
+        $this->datePassage = $datePassage;
 
         return $this;
     }
