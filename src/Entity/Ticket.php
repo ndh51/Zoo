@@ -22,22 +22,22 @@ class Ticket
     #[ORM\Column]
     private ?float $prixTicket = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\OneToMany(mappedBy: 'ticket', targetEntity: Voir::class)]
+
+    private Collection $vues;
+
+    #[ORM\OneToMany(mappedBy: 'ticket', targetEntity: ReservationEvenement::class)]
+    private Collection $reservationEvenement;
+
+    #[ORM\ManyToOne(inversedBy: 'ticket')]
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Visiteur $visiteur = null;
 
-    #[ORM\OneToMany(mappedBy: 'idTicket', targetEntity: Voir::class)]
-
-    private Collection $vues;
-
-    #[ORM\OneToMany(mappedBy: 'idTicket', targetEntity: ReservationEvenement::class)]
-    private Collection $reservationEvenements;
-
     public function __construct()
     {
         $this->vues = new ArrayCollection();
-        $this->reservationEvenements = new ArrayCollection();
+        $this->reservationEvenement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,16 +114,16 @@ class Ticket
     /**
      * @return Collection<int, ReservationEvenement>
      */
-    public function getReservationEvenements(): Collection
+    public function getReservationEvenement(): Collection
     {
-        return $this->reservationEvenements;
+        return $this->reservationEvenement;
     }
 
     public function addReservationEvenement(ReservationEvenement $reservationEvenement): static
     {
-        if (!$this->reservationEvenements->contains($reservationEvenement)) {
-            $this->reservationEvenements->add($reservationEvenement);
-            $reservationEvenement->setIdTicket($this);
+        if (!$this->reservationEvenement->contains($reservationEvenement)) {
+            $this->reservationEvenement->add($reservationEvenement);
+            $reservationEvenement->setTicket($this);
         }
 
         return $this;
@@ -131,10 +131,10 @@ class Ticket
 
     public function removeReservationEvenement(ReservationEvenement $reservationEvenement): static
     {
-        if ($this->reservationEvenements->removeElement($reservationEvenement)) {
+        if ($this->reservationEvenement->removeElement($reservationEvenement)) {
             // set the owning side to null (unless already changed)
-            if ($reservationEvenement->getIdTicket() === $this) {
-                $reservationEvenement->setIdTicket(null);
+            if ($reservationEvenement->getTicket() === $this) {
+                $reservationEvenement->setTicket(null);
             }
         }
 

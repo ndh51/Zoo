@@ -28,7 +28,7 @@ class VisiteurController extends AbstractController
         $userIdFromRoute = $visiteur->getId();
 
         if (in_array('ROLE_ADMIN', $currentUser->getRoles(), true) || $currentUser->getId() == $userIdFromRoute) {
-            $tickets = $ticketRepository->findEventsByVisiteur($visiteur->getId());
+            $tickets = $ticketRepository->findEventsByVisiteur($visiteur);
 
             return $this->render('visiteur/show.html.twig', [
                 'visiteur' => $visiteur, 'tickets' => $tickets]);
