@@ -2,27 +2,55 @@
 
 {% block title %} {{ visiteur.prenomVisiteur }} {% endblock %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/visiteur.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block body %}
-    <h1>Bonjour {{ visiteur.nomVisiteur }} {{ visiteur.prenomVisiteur }} </h1>
-    <p>email : {{ visiteur.email }}</p>
-    <p>tel : {{ visiteur.telVisiteur}}</p>
-    <p>adresse : {{ visiteur.adVisiteur }}</p>
-    <p>ville : {{ visiteur.villeVisiteur }}</p>
-    <p>code postal : {{ visiteur.cpVisiteur }}</p>
-    {% if tickets is not empty %}
+
+
+    <div class="containerr">
+        <div class="left" >
+            <img class="img-visiteur" src="/img/3135715.png" alt="Visiteur">
+
+        </div>
+        <div class="right" >
+            <ul class="info-visiteur" style="list-style-type:none;">
+
+                <li class="info">Email : <b>{{ visiteur.email }}</b></li>
+                <li class="info">Tel : <b>{{ visiteur.telVisiteur}}</b></li>
+                <li class="info">Adresse : <b>{{ visiteur.adVisiteur }}</b></li>
+                <li class="info">Ville : <b>{{ visiteur.villeVisiteur }}</b></li>
+                <li class="info">CP : <b>{{ visiteur.cpVisiteur }}</b></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="ticket">
+        <div class="titre-ticket">
         <h2>Liste des tickets : </h2>
+        </div>
+        <div class="info-ticket">
+    {% if tickets is not empty %}
+
         {% set count = 0 %}
+        <ul style="list-style-type:none;">
         {% for ticket in tickets %}
             {% if ticket.id != count %}
                 {% set count = count + 1 %}
-                <h3>Ticket N°{{ count }}</h3>
-                <h3>Date : {{ ticket.date_ticket }}</h3>
+                <li><h3>Ticket N°{{ count }}</h3></li>
+            <li><h3>Date : {{ ticket.date_ticket }}</h3></li>
 
             {% endif %}
-            <p>{{ ticket.nom_event }}</p>
-            <p>{{ ticket.image_id }}</p>
+            <li><p>- {{ ticket.nom_event }}</p></li>
+
+
         {% endfor %}
+            <br>
+        </ul>
     {% endif %}
+        </div>
+    </div>
 
 
 {% endblock %}
