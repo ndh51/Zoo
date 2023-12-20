@@ -1,0 +1,5 @@
+{{ form_start(form, {'method': 'POST'}) }}
+    {{ form_row(form.hDebEvenement, {'attr':{ 'value': '10:00' }}) }}
+    {{ form_row(form.Evenement) }}
+    <button type="submit" class="btn btn-success">{{ sumbmit_label }}</button>
+{{ form_end(form) }}

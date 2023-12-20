@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Famille Create{% endblock %}
+
+{% block body %}
+    <h1>Création d'un nouveau passage d'événement</h1>
+    {{ include('passageEvenement/_form.html.twig', {'form': form, 'sumbmit_label' : 'Créer'}, with_context = false) }}
+{% endblock %}
