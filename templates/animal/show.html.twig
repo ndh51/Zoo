@@ -27,8 +27,17 @@
                 </div>
             </div>
         </div>
-        <p class="titre">Description</p>
-        <p>{{ animal.descAnimal|first|upper}}{{ animal.descAnimal|slice(1) }}</p>
+
+        <div class="description">
+            <p class="titre">Description</p>
+            <p>{{ animal.descAnimal|first|upper}}{{ animal.descAnimal|slice(1) }}</p>
+        </div>
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <div class="reservation">
+                <button>RESERVER</button>
+
+            </div>
+        {% endif %}
     </div>
     <div class="relationList">
         {% if sameFamille is not empty %}
