@@ -9,11 +9,17 @@
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.prenomVisiteur) }}
+        {{ form_row(registrationForm.nomVisiteur) }}
+        {{ form_row(registrationForm.villeVisiteur) }}
+        {{ form_row(registrationForm.adVisiteur) }}
+        {{ form_row(registrationForm.cpVisiteur) }}
+        {{ form_row(registrationForm.telVisiteur) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn" style="color: white">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
