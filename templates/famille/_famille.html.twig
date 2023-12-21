@@ -1,0 +1,9 @@
+<ul class="list-group" id="familles">
+    <li class="list-group-item"><a href="{{ path('app_famille_create') }}">Ajouter une famille</a></li>
+    {% for famille in familles %}
+        <li class="list-group-item list-group-item-action">
+            <a href="{{ path('app_famille_id', {id: famille.id}) }}">{{ famille.nomFamille }}</a>
+                <a href="{{ path('app_famille_update',{id: famille.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><a href="{{ path('app_famille_delete',{id: famille.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
+        </li>
+    {% endfor %}
+</ul>

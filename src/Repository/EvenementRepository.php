@@ -55,7 +55,7 @@ class EvenementRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
             ->addSelect('enclos')
-            ->leftJoin('e.idEnclos', 'enclos')
+            ->leftJoin('e.enclos', 'enclos')
             ->where('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
@@ -81,8 +81,7 @@ class EvenementRepository extends ServiceEntityRepository
             ->select('e')
             ->leftJoin('e.participations', 'p')
             ->groupBy('e.id')
-            ->orderBy('COUNT(p.idAnimal)', 'DESC')
-            ->setMaxResults(3)
+            ->orderBy('COUNT(p.animal)', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -90,16 +89,16 @@ class EvenementRepository extends ServiceEntityRepository
 
     public function findAnimals(Evenement $evenement)
     {
-        $idEvent = $evenement->getId();
+        $evenement = $evenement->getId();
 
         return $this->createQueryBuilder('e')
             ->select('a')
             ->from('App\Entity\Animal', 'a')
             ->join('a.participations', 'p1')
             ->join('e.participations', 'p2')
-            ->where('p1.idEvent = :idEvent')
-            ->andWhere('p2.idEvent = :idEvent')
-            ->setParameter('idEvent', $idEvent)
+            ->where('p1.evenement = :evenement')
+            ->andWhere('p2.evenement = :evenement')
+            ->setParameter('evenement', $evenement)
             ->getQuery()
             ->getResult();
 

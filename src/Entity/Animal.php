@@ -31,18 +31,21 @@ class Animal
     private ?string $descAnimal = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Famille $idFamille = null;
+    private ?Famille $famille = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Categorie $idCategorie = null;
+    private ?Categorie $categorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Participer::class)]
+    #[ORM\OneToMany(mappedBy: 'animal', targetEntity: Participer::class)]
     private Collection $participations;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Image $idImage = null;
+    private ?Image $image = null;
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?Enclos $idEnclos = null;
+    private ?Enclos $enclos = null;
+
+    #[ORM\OneToMany(mappedBy: 'idAnimal', targetEntity: Voir::class)]
+    private Collection $vues;
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
@@ -54,6 +57,7 @@ class Animal
     public function __construct()
     {
         $this->participations = new ArrayCollection();
+        $this->vues = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,29 +89,29 @@ class Animal
         return $this;
     }
 
-    public function getIdFamille(): ?Famille
+    public function getFamille(): ?Famille
     {
-        return $this->idFamille;
+        return $this->famille;
     }
 
-    public function setIdFamille(?Famille $idFamille): static
+    public function setFamille(?Famille $famille): static
     {
-        $this->idFamille = $idFamille;
+        $this->famille = $famille;
 
         return $this;
     }
 
-    public function getIdCategorie(): ?Categorie
+    public function getCategorie(): ?Categorie
     {
-        return $this->idCategorie;
+        return $this->categorie;
     }
 
     /**
      * @return Animal
      */
-    public function setIdCategorie(?Categorie $idCategorie): static
+    public function setCategorie(?Categorie $categorie): static
     {
-        $this->idCategorie = $idCategorie;
+        $this->categorie = $categorie;
 
         return $this;
     }
@@ -142,26 +146,56 @@ class Animal
         return $this;
     }
 
-    public function getIdImage(): ?Image
+    public function getImage(): ?Image
     {
-        return $this->idImage;
+        return $this->image;
     }
 
-    public function setIdImage(?Image $idImage): static
+    public function setImage(?Image $image): static
     {
-        $this->idImage = $idImage;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function getIdEnclos(): ?Enclos
+    public function getEnclos(): ?Enclos
     {
-        return $this->idEnclos;
+        return $this->enclos;
     }
 
-    public function setIdEnclos(?Enclos $idEnclos): static
+    public function setEnclos(?Enclos $enclos): static
     {
-        $this->idEnclos = $idEnclos;
+        $this->enclos = $enclos;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voir>
+     */
+    public function getVues(): Collection
+    {
+        return $this->vues;
+    }
+
+    public function addVue(Voir $vue): static
+    {
+        if (!$this->vues->contains($vue)) {
+            $this->vues->add($vue);
+            $vue->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVue(Voir $vue): static
+    {
+        if ($this->vues->removeElement($vue)) {
+            // set the owning side to null (unless already changed)
+            if ($vue->getAnimal() === $this) {
+                $vue->setAnimal(null);
+            }
+        }
 
         return $this;
     }

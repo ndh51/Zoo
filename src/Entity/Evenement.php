@@ -36,17 +36,24 @@ class Evenement
     private ?int $nbPlaceMaxEvent = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
-    private ?Enclos $idEnclos = null;
+    private ?Enclos $enclos = null;
 
-    #[ORM\OneToMany(mappedBy: 'idEvent', targetEntity: Participer::class)]
+    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Participer::class, cascade: ['remove'])]
     private Collection $participations;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
-    private ?Image $idImage = null;
+    private ?Image $image = null;
+
+    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: PassageEvenement::class, cascade: ['remove'])]
+    private Collection $passageEvenement;
+
+    #[ORM\Column]
+    private ?int $duree = null;
 
     public function __construct()
     {
         $this->participations = new ArrayCollection();
+        $this->passageEvenement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,14 +97,14 @@ class Evenement
         return $this;
     }
 
-    public function getIdEnclos(): ?Enclos
+    public function getEnclos(): ?Enclos
     {
-        return $this->idEnclos;
+        return $this->enclos;
     }
 
-    public function setIdEnclos(?Enclos $idEnclos): static
+    public function setEnclos(?Enclos $enclos): static
     {
-        $this->idEnclos = $idEnclos;
+        $this->enclos = $enclos;
 
         return $this;
     }
@@ -132,14 +139,56 @@ class Evenement
         return $this;
     }
 
-    public function getIdImage(): ?Image
+    public function getImage(): ?Image
     {
-        return $this->idImage;
+        return $this->image;
     }
 
-    public function setIdImage(?Image $idImage): static
+    public function setImage(?Image $image): static
     {
-        $this->idImage = $idImage;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PassageEvenement>
+     */
+    public function getPassageEvenements(): Collection
+    {
+        return $this->passageEvenements;
+    }
+
+    public function addPassageEvenement(PassageEvenement $passageEvenement): static
+    {
+        if (!$this->passageEvenement->contains($passageEvenement)) {
+            $this->passageEvenement->add($passageEvenement);
+            $passageEvenement->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePassageEvenement(PassageEvenement $passageEvenement): static
+    {
+        if ($this->passageEvenement->removeElement($passageEvenement)) {
+            // set the owning side to null (unless already changed)
+            if ($passageEvenement->getEvenement() === $this) {
+                $passageEvenement->setEvenement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(int $duree): static
+    {
+        $this->duree = $duree;
 
         return $this;
     }

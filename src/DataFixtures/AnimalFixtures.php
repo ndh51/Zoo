@@ -38,10 +38,10 @@ class AnimalFixtures extends Fixture implements OrderedFixtureInterface
             }
             AnimalFactory::createOne(['nomAnimal' => $animal['nom'],
                 'descAnimal' => $animal['description'],
-                'idFamille' => $famRep->findOneBy(['nomFamille' => $animal['famille']]),
-                'idCategorie' => $catRep->findOneBy(['nomCategorie' => $animal['categorie']]),
-                'idEnclos' => $encRep->findOneBy(['nomEnclos' => $animal['enclos']]),
-                'idImage' => $image,
+                'famille' => $famRep->findOneBy(['nomFamille' => $animal['famille']]),
+                'categorie' => $catRep->findOneBy(['nomCategorie' => $animal['categorie']]),
+                'enclos' => $encRep->findOneBy(['nomEnclos' => $animal['enclos']]),
+                'image' => $image,
             ]);
         }
     }

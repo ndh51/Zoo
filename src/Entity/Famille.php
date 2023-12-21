@@ -21,7 +21,7 @@ class Famille
     #[ORM\Column(length: 500)]
     private ?string $descFamille = null;
 
-    #[ORM\OneToMany(mappedBy: 'idFamille', targetEntity: Animal::class)]
+    #[ORM\OneToMany(mappedBy: 'famille', targetEntity: Animal::class, cascade: ['remove'])]
     private Collection $animals;
 
     public function __construct()
@@ -70,7 +70,7 @@ class Famille
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setIdFamille($this);
+            $animal->setFamille($this);
         }
 
         return $this;
@@ -80,8 +80,8 @@ class Famille
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getIdFamille() === $this) {
-                $animal->setIdFamille(null);
+            if ($animal->getFamille() === $this) {
+                $animal->setFamille(null);
             }
         }
 

@@ -4,5 +4,9 @@
     <title>Edition de {{ enclos.nomEnclos }}</title>
     <h1>Edition de {{ enclos.nomEnclos }}</h1>
     {{ include('enclos/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier'}, with_context = false) }}
+    <h2>Animaux de l'enclos {{ enclos.nomEnclos }} </h2>
+    {{ include('animal/_animal.html.twig') }}
+    <h2>Evenement de l'enclos {{ enclos.nomEnclos }} </h2>
+    {{ include('evenement/_evenement.html.twig') }}
 {% endblock %}
 

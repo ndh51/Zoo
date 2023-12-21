@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class EvenementController extends AbstractController
 {
@@ -39,10 +41,13 @@ class EvenementController extends AbstractController
             'evenement' => $evenement, 'animaux' => $animaux]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/{id}/update', name: 'app_evenement_update', requirements: ['id' => '\d+'])]
-    public function update(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
+    public function update(Evenement $evenement, ImageRepository $imgRepo, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $img = $imgRepo->find($evenement->getImage());
+
+        $form = $this->createForm(EvenementType::class, $evenement, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,11 +61,13 @@ class EvenementController extends AbstractController
             'form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/create', name: 'app_evenement_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, ImageRepository $imgRepo, EntityManagerInterface $entityManager): Response
     {
+        $img = $imgRepo->find(1);
         $evenement = new Evenement();
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $form = $this->createForm(EvenementType::class, $evenement, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,6 +81,7 @@ class EvenementController extends AbstractController
             ['form' => $form->createView()]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/{id}/delete', name: 'app_evenement_delete', requirements: ['id' => '\d+'])]
     public function delete(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
     {
@@ -98,6 +106,8 @@ class EvenementController extends AbstractController
         }
 
         return $this->render('evenement/delete.html.twig', [
-            'form' => $form->createView()]);
+            'form' => $form->createView(),
+            'evenement' => $evenement,
+        ]);
     }
 }

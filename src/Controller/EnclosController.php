@@ -12,9 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class EnclosController extends AbstractController
 {
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/enclos', name: 'app_enclos')]
     public function index(EnclosRepository $repository): Response
     {
@@ -34,6 +36,7 @@ class EnclosController extends AbstractController
             'enclos' => $enclos]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/enclos/{id}/update', name: 'app_enclos_update', requirements: ['id' => '\d+'])]
     public function update(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,9 +52,12 @@ class EnclosController extends AbstractController
         return $this->render('enclos/update.html.twig', [
             'enclos' => $enclos,
             'form' => $form->createView(),
+            'animaux' => $enclos->getAnimals(),
+            'evenements' => $enclos->getEvenements(),
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/enclos/create', name: 'app_enclos_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -71,6 +77,7 @@ class EnclosController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/enclos/{id}/delete', name: 'app_enclos_delete', requirements: ['id' => '\d+'])]
     public function delete(Enclos $enclos, Request $request, EntityManagerInterface $entityManager): Response
     {

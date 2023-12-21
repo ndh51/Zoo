@@ -1,3 +1,94 @@
-*{
-    font-family: Dejavu Sans;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/img/fond.jpg");
+}
+
+p{
+    text-align: center;
+    color: white;
+}
+
+h1, h2, h3, label{
+    color: white;
+}
+
+
+.contenu a{
+    color: white;
+
+}
+
+.contenu a:visited {
+    color: #ff0000;
+}
+
+.contenu{
+    display: flex;
+    flex-direction: column;
+}
+
+#carousel-container-maison {
+    width: 95%;
+    overflow: hidden;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 100px;
+}
+
+#carousel-content-maison {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item-maison {
+    flex: 0 0 auto;
+    width: 34%;
+    box-sizing: border-box;
+}
+
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#precedent, #suivant {
+    color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 500%;
+    cursor: pointer;
+}
+
+#precedent {
+    left: 10px;
+}
+
+#suivant {
+    right: 10px;
+}
+
+.animaux{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.animal {
+    margin: 25px;
+    width: 28%;
+    text-align: center;
+}
+
+.animal img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
 }

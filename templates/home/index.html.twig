@@ -1,15 +1,77 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+{% endblock %}
+
+{% block javascripts %}
+
+    const container = document.getElementById('carousel-container-maison');
+    const content = document.getElementById('carousel-content-maison');
+
+    let currentIndex = 0;
+    const totalItems = document.querySelectorAll('.carousel-item-maison').length;
+    const visibleItems = 3; // Nombre d'images visibles à la fois
+
+    document.getElementById('suivant').addEventListener('click', () => {
+    if (currentIndex < totalItems - visibleItems) {
+    currentIndex++;
+    updateCarouselMaison();
+    }
+    });
+
+    document.getElementById('precedent').addEventListener('click', () => {
+    if (currentIndex > 0) {
+    currentIndex--;
+    updateCarouselMaison();
+    }
+    });
+
+    function updateCarouselMaison() {
+    const newPosition = -currentIndex * 102 / visibleItems + '%';
+    content.style.transform = 'translateX(' + newPosition + ')';
+    }
+
+{% endblock %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div class="events">
-    <h3>Évènements</h3>
-    {{ include('evenement/_evenement.html.twig') }}
-    </div>
-    <br>
-    <div class="animaux">
-    <h3>Animaux</h3>
-    {{ include('animal/_animal.html.twig') }}
+    <div class="contenu">
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <h2 class="text-light">Bonjour {{ app.user.nomVisiteur }}</h2>
+        {% endif %}
+        <div class="events">
+        <h3>Évènements :</h3>
+            <div id="carousel-container-maison">
+                <div id="carousel-content-maison">
+                    {% for evenement in evenements %}
+                        <div class="carousel-item-maison">
+                            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                            <img src="{{asset(evenement.image.pathImage)}}"  alt="{{ evenement.nomEvent }}">
+
+                            <p>{{ evenement.nomEvent }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div id="precedent">&lt;</div>
+                <div id="suivant">&gt;</div>
+            </div>
+        </div>
+        <br>
+        <h3>Animaux :</h3>
+        <div class="animaux">
+                {% for animal in animaux %}
+                        <div class="animal">
+                            <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                            <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
+
+                            <p>{{ animal.nomAnimal }}</p>
+                            </a>
+                        </div>
+                {% endfor %}
+        </div>
     </div>
 {% endblock %}
