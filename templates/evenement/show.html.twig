@@ -18,14 +18,19 @@
                     <p class="titre">Emplacement </p>
                     <p> {{ evenement.Enclos.nomEnclos|first|upper}}{{ evenement.Enclos.nomEnclos|slice(1) }}</p>
                 </div>
-                <div class="reservation">
-                    <button>RESERVER</button>
-                    <H1> X/{{ evenement.nbPlaceMaxEvent }} places restantes</H1>
-                </div>
             </div>
         </div>
+        <div>
         <p class="titre">Description</p>
         <p>{{ evenement.descEvent|first|upper}}{{ evenement.descEvent|slice(1) }}</p>
+        </div>
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <div class="reservation">
+                <button>RESERVER</button>
+
+                <H1> future fonction guez nb place restantes/{{ evenement.nbPlaceMaxEvent }} places restantes</H1>
+            </div>
+        {% endif %}
     </div>
 
     <div class="relationList">
