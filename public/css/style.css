@@ -5,7 +5,17 @@
 }
 
 body {
-    background-image: url("/img/fond.jpg");
+    background-image: linear-gradient(to right top, #f6f4d2, #e1e6c3, #cbd7b4, #b6c9a7, #a0bb9b, #87af93, #6ea28d, #559589, #33858a, #147389, #116084, #274c78);
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-attachment: fixed;
+
+    image-rendering: smooth;
 }
 
 p{
@@ -15,6 +25,17 @@ p{
 
 h1, h2, h3, label{
     color: white;
+}
+
+h2 {
+    margin-left: 40px;
+    margin-top: 20px;
+    font-size: 300%;
+}
+h3 {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 200%;
 }
 
 
@@ -35,7 +56,7 @@ h1, h2, h3, label{
 #carousel-container-maison {
     width: 95%;
     overflow: hidden;
-    margin: 20px auto;
+    margin: 40px auto;
     position: relative;
     border-radius: 100px;
 }
@@ -63,7 +84,7 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 500%;
+    font-size: 800%;
     cursor: pointer;
 }
 
