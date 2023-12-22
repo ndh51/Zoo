@@ -6,7 +6,9 @@ use App\Entity\PassageEvenement;
 use App\Form\PassageEvenementType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,15 +34,15 @@ class PassageEvenementController extends AbstractController
     #[Route('/passage/evenement/create', name: 'app_passage_evenement_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $passageEvent = new PassageEvenement();
-        $form = $this->createForm(PassageEvenementType::class, $passageEvent);
+        $passageEvenement = new PassageEvenement();
+        $form = $this->createForm(PassageEvenementType::class, $passageEvenement);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($passageEvent);
+            $entityManager->persist($passageEvenement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvent->getId()]);
+            return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()]);
         }
 
         return $this->render('passageEvenement/create.html.twig', [
@@ -49,9 +51,17 @@ class PassageEvenementController extends AbstractController
     }
 
     #[Route('/passage/evenement/{id<\d+>}/update', name: 'app_passage_evenement_update')]
-    public function update(PassageEvenement $passageEvenement): Response
+    public function update(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PassageEvenementType::class, $passageEvenement);
+
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()]);
+        }
 
         return $this->render('passageEvenement/update.html.twig', [
             'passageEvenement' => $passageEvenement,
@@ -75,6 +85,7 @@ class PassageEvenementController extends AbstractController
                 $idEvent = $passageEvenement->getEvenement()->getId();
                 $entityManager->remove($passageEvenement);
                 $entityManager->flush();
+
                 return $this->redirectToRoute('app_evenement_id', ['id' => $idEvent], status: 303);
             } else {
                 return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()], status: 303);
