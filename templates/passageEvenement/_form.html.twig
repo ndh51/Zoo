@@ -1,8 +1,13 @@
 {{ form_start(form, {'method': 'POST'}) }}
     {{ form_row(form.datePassage) }}
     {{ form_row(form.hDebEvenement, {'attr':{ 'value': passageEvenement.hDebEvenement ?? '10:00' }}) }}
-    <div class="{{ update ?? true ? 'hidden' : '' }}">
-        {{ form_label(form.Evenement) }}
-        {{ form_widget(form.Evenement) }}
-    </div>    <button type="submit" class="btn btn-success">{{ sumbmit_label }}</button>
+    {% if (update ?? false) %}
+        <div class="hidden">
+            {{ form_label(form.Evenement) }}
+            {{ form_widget(form.Evenement) }}
+        </div>
+    {% else %}
+        {{ form_row(form.Evenement )}}
+    {% endif %}
+<button type="submit" class="btn btn-success">{{ sumbmit_label }}</button>
 {{ form_end(form) }}

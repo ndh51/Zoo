@@ -6,6 +6,6 @@
 
 {% block body %}
     <h1> Mise a jour du passage de l'événement, {{ passageEvenement.evenement.nomEvent }}</h1>
-    {{ include('passageEvenement/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier'}, with_context = false) }}
+    {{ include('passageEvenement/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier', 'update' : true}, with_context = false) }}
 
 {% endblock %}
