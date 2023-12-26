@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Ticket;
 use App\Entity\Visiteur;
+use App\Form\TicketType;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,8 +29,15 @@ class TicketController extends AbstractController
         $userIdFromRoute = $visiteur->getId();
 
         if ($currentUser->getId() == $userIdFromRoute) {
+            $ticket = new Ticket();
+            $form = $this->createForm(TicketType::class, $ticket, [
+                'currentVisiteur' => $visiteur,
+            ]);
+
             return $this->render('ticket/index.html.twig', [
-                'controller_name' => 'TicketController',
+                'visiteur' => $visiteur,
+                'ticket' => $ticket,
+                'form' => $form->createView(),
             ]);
         }
 
