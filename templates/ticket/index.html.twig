@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styleTicket.css">
 {% endblock %}
 
 {% block body %}
@@ -10,10 +10,10 @@
 
     {{ form_start(form, {'method': 'POST'}) }}
         {{ form_row(form.dateTicket) }}
-        {{ form_row(form.prixTicket) }}
-        {{ form_row(form.visiteur) }}
-        {{ form_row(form.vues) }}
-        {{ form_row(form.reservationEvenement) }}
+        <div class="checkboxArea">
+            {{ form_row(form.vues) }}
+            {{ form_row(form.reservationEvenement) }}
+        </div>
         <button type="submit" class="btn btn-success">Créer le ticket</button>
     {{ form_end(form) }}
 {% endblock %}
