@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\VisiteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: VisiteurRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -44,6 +48,14 @@ class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 6)]
     private ?string $CpVisiteur = null;
+
+    #[ORM\OneToMany(mappedBy: 'visiteur', targetEntity: Ticket::class)]
+    private Collection $ticket;
+
+    public function __construct()
+    {
+        $this->ticket = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -183,6 +195,36 @@ class Visiteur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCpVisiteur(?string $CpVisiteur): static
     {
         $this->CpVisiteur = $CpVisiteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ticket>
+     */
+    public function getTicket(): Collection
+    {
+        return $this->ticket;
+    }
+
+    public function addTicket(Ticket $ticket): static
+    {
+        if (!$this->ticket->contains($ticket)) {
+            $this->ticket->add($ticket);
+            $ticket->setVisiteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicket(Ticket $ticket): static
+    {
+        if ($this->ticket->removeElement($ticket)) {
+            // set the owning side to null (unless already changed)
+            if ($ticket->getVisiteur() === $this) {
+                $ticket->setVisiteur(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ visiteur.prenomVisiteur }} {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/visiteur.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="containerr">
+        <div class="left" >
+            <img class="img-visiteur" src="/img/3135715.png" alt="Visiteur">
+
+        </div>
+        <div class="right" >
+            <ul class="info-visiteur" style="list-style-type:none;">
+
+                <li class="info">Email : <b>{{ visiteur.email }}</b></li>
+                <li class="info">Tel : <b>{{ visiteur.telVisiteur}}</b></li>
+                <li class="info">Adresse : <b>{{ visiteur.adVisiteur }}</b></li>
+                <li class="info">Ville : <b>{{ visiteur.villeVisiteur }}</b></li>
+                <li class="info">CP : <b>{{ visiteur.cpVisiteur }}</b></li>
+            </ul>
+        </div>
+
+    </div>
+    {% if tickets is not empty %}
+        <div class="ticket">
+            <div class="titre-ticket">
+                <h2>Liste des tickets : </h2>
+            </div>
+            <div class="info-ticket">
+                {% set count = 0 %}
+                <ul style="list-style-type:none;">
+                    {% for ticket in tickets %}
+                        {% set count = count + 1 %}
+                        <li><h3>Ticket N°{{ count }}</h3></li>
+                        <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
+                        {% for reservation in ticket.reservationEvenement %}
+                            <li><p>{{ reservation.passageEvenement.evenement.nomEvent }}</p></li>
+                            <img src="{{asset(reservation.passageEvenement.evenement.image.pathImage)}}"  alt="{{ reservation.passageEvenement.evenement.nomEvent }}">
+                        {% endfor %}
+                        <br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+
+
+
