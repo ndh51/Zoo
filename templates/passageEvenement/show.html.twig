@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block title %}
+    Détaielle du passage de 'lévènement {{ passageEvenement.Evenement.nomEvent }}
 {% endblock %}
 
 {% block body %}
-    <p>L'event {{ passageEvenement.Evenement.nomEvent }}</p>
-    <p>l'event commence a {{ passageEvenement.hDebEvenement }}</p>
+    <p>L'évènement {{ passageEvenement.Evenement.nomEvent }}</p>
+    <p>l'évènement commence a {{ passageEvenement.hDebEvenement }} le {{ passageEvenement.datePassage|date("d/m/Y") }}</p>
 {% endblock %}
