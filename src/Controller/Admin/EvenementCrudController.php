@@ -32,6 +32,7 @@ class EvenementCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $entity->getenclos()?->getNomEnclos();
                 }),
+            IntegerField::new('duree', 'Durée'),
             AssociationField::new('image', 'Image')
                 ->setFormTypeOptions(['choice_label' => 'pathImage',
                     'label' => 'Image', ])

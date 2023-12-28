@@ -9,34 +9,34 @@ use Doctrine\ORM\Mapping as ORM;
 class ReservationEvenement
 {
     #[ORM\Id]
-    #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
-    private ?Ticket $Ticket = null;
+    #[ORM\ManyToOne(inversedBy: 'reservationEvenement')]
+    private ?Ticket $ticket = null;
 
     #[ORM\Id]
-    #[ORM\ManyToOne(inversedBy: 'reservationEvenements')]
-    private ?PassageEvenement $PassageEvenement = null;
+    #[ORM\ManyToOne(inversedBy: 'reservationEvenement')]
+    private ?PassageEvenement $passageEvenement = null;
 
 
     public function getTicket(): ?Ticket
     {
-        return $this->Ticket;
+        return $this->ticket;
     }
 
-    public function setTicket(?Ticket $Ticket): static
+    public function setTicket(?Ticket $ticket): static
     {
-        $this->Ticket = $Ticket;
+        $this->ticket = $ticket;
 
         return $this;
     }
 
     public function getPassageEvenement(): ?PassageEvenement
     {
-        return $this->PassageEvenement;
+        return $this->passageEvenement;
     }
 
-    public function setPassageEvenement(?PassageEvenement $PassageEvenement): static
+    public function setPassageEvenement(?PassageEvenement $passageEvenement): static
     {
-        $this->PassageEvenement = $PassageEvenement;
+        $this->passageEvenement = $passageEvenement;
 
         return $this;
     }

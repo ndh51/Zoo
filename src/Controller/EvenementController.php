@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,9 +43,11 @@ class EvenementController extends AbstractController
 
     #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/{id}/update', name: 'app_evenement_update', requirements: ['id' => '\d+'])]
-    public function update(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
+    public function update(Evenement $evenement, ImageRepository $imgRepo, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $img = $imgRepo->find($evenement->getImage());
+
+        $form = $this->createForm(EvenementType::class, $evenement, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,10 +63,11 @@ class EvenementController extends AbstractController
 
     #[isGranted('ROLE_ADMIN')]
     #[Route('/evenement/create', name: 'app_evenement_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, ImageRepository $imgRepo, EntityManagerInterface $entityManager): Response
     {
+        $img = $imgRepo->find(1);
         $evenement = new Evenement();
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $form = $this->createForm(EvenementType::class, $evenement, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

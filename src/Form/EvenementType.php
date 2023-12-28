@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Enclos;
 use App\Entity\Evenement;
 use App\Entity\Image;
-use App\Repository\ImageRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -16,14 +15,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EvenementType extends AbstractType
 {
-    private ImageRepository $imageRepository;
-
-    public function __construct(ImageRepository $imageRepository)
-    {
-        // j'initie l'attribut au repository de l'image
-        $this->imageRepository = $imageRepository;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -41,26 +32,22 @@ class EvenementType extends AbstractType
                 },
             ]
             )
+            ->add('duree', IntegerType::class, ['label' => 'Durée'])
             ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',
                 'label' => 'L\'image attribuée à cet évènement sera l\'image par défaut ',
-                'data' => $this->getDefaultImage(),
+                'data' => $options['default_image'],
                 'attr' => ['style' => 'display:none;'],
             ])
         ;
-    }
-
-    private function getDefaultImage()
-    {
-        // je récupère l'image par défaut dans le repository de toutes les images
-        return $this->imageRepository->find(1);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Evenement::class,
+            'default_image' => null,
         ]);
     }
 }
