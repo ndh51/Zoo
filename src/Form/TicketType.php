@@ -3,14 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Animal;
-use App\Entity\Evenement;
-use App\Entity\ReservationEvenement;
+use App\Entity\PassageEvenement;
 use App\Entity\Ticket;
 use App\Entity\Visiteur;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -46,14 +44,18 @@ class TicketType extends AbstractType
                 },
             ])
             ->add('reservationEvenement', EntityType::class, [
-                'class' => Evenement::class,
-                'choice_label' => 'nomEvent',
+                'class' => PassageEvenement::class,
+                'choice_label' => function ($passageEvenement) {
+                    return $passageEvenement->getEvenement()->getNomEvent().' '.$passageEvenement->getHDebEvenement();
+                },
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Evenements',
                 'query_builder' => function (EntityRepository $entityRepository) {
-                    return $entityRepository->createQueryBuilder('e')
-                        ->orderBy('e.nomEvent', 'ASC');
+                    return $entityRepository->createQueryBuilder('pe')
+                                            ->Join('pe.evenement', 'evenement')
+                                            ->orderBy('pe.hDebEvenement', 'ASC')
+                                            ->addOrderBy('evenement.nomEvent', 'ASC');
                 },
             ])
         ;
