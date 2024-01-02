@@ -21,7 +21,7 @@ class PassageEvenement
     private ?string $hDebEvenement = null;
 
     #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
-    private ?Evenement $Evenement = null;
+    private ?Evenement $evenement = null;
 
     #[ORM\OneToMany(mappedBy: 'passageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
     private Collection $reservationEvenement;
