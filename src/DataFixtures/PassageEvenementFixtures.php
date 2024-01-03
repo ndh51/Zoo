@@ -8,6 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
+use function Zenstruck\Foundry\create_many;
 
 class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -24,17 +25,7 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
         // $manager->persist($product);
 
         // $manager->flush();
-        $tab = json_decode(file_get_contents(__DIR__.'/data/PassageEvenement.json'), true);
-        $passages = $tab['passageEvenement'];
-
-        $evenement = $this->entityManager->getRepository(Evenement::class);
-        foreach ($passages as $passage) {
-            PassageEvenementFactory::createOne([
-                'hDebEvenement' => $passage['hDebEvenement'],
-                'hFinEvenement' => $passage['hFinEvenement'],
-                'Evenement' => $evenement->findOneBy(['nomEvent' => $passage['Evenement']]),
-            ]);
-        }
+        PassageEvenementFactory::createMany(30);
     }
 
     public function getOrder(): int

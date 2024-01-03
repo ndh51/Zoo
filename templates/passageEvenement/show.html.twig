@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/styleShow.css">
+{% endblock %}
+
+{% block title %}
+    Détaielle du passage de 'lévènement {{ passageEvenement.Evenement.nomEvent }}
+{% endblock %}
+
+{% block body %}
+    <p>L'évènement {{ passageEvenement.Evenement.nomEvent }}</p>
+    <p>l'évènement commence a {{ passageEvenement.hDebEvenement }} le {{ passageEvenement.datePassage|date("d/m/Y") }}</p>
+{% endblock %}

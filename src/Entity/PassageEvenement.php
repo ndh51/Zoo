@@ -20,15 +20,14 @@ class PassageEvenement
     #[Assert\Time]
     private ?string $hDebEvenement = null;
 
-    #[ORM\Column(length: 50)]
-    #[Assert\Time]
-    private ?string $hFinEvenement = null;
-
-    #[ORM\ManyToOne(inversedBy: 'passageEvenement')]
+    #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
     private ?Evenement $evenement = null;
 
     #[ORM\OneToMany(mappedBy: 'passageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
     private Collection $reservationEvenement;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datePassage = null;
 
     public function __construct()
     {
@@ -48,18 +47,6 @@ class PassageEvenement
     public function setHDebEvenement(string $hDebEvenement): static
     {
         $this->hDebEvenement = $hDebEvenement;
-
-        return $this;
-    }
-
-    public function getHFinEvenement(): ?string
-    {
-        return $this->hFinEvenement;
-    }
-
-    public function setHFinEvenement(string $hFinEvenement): static
-    {
-        $this->hFinEvenement = $hFinEvenement;
 
         return $this;
     }
@@ -102,6 +89,18 @@ class PassageEvenement
                 $reservationEvenement->setPassageEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDatePassage(): ?\DateTimeInterface
+    {
+        return $this->datePassage;
+    }
+
+    public function setDatePassage(\DateTimeInterface $datePassage): static
+    {
+        $this->datePassage = $datePassage;
 
         return $this;
     }
