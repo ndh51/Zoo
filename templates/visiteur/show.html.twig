@@ -38,10 +38,6 @@
                         {% set count = count + 1 %}
                         <li><h3>Ticket N°{{ count }}</h3></li>
                         <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
-                        {% for reservation in ticket.reservationEvenement %}
-                            <li><p>{{ reservation.passageEvenement.evenement.nomEvent }}</p></li>
-                            <img src="{{asset(reservation.passageEvenement.evenement.image.pathImage)}}"  alt="{{ reservation.passageEvenement.evenement.nomEvent }}">
-                        {% endfor %}
                         <br>
                     {% endfor %}
                 </ul>
