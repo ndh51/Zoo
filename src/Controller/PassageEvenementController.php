@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class PassageEvenementController extends AbstractController
 {
@@ -31,6 +32,7 @@ class PassageEvenementController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/passage/evenement/create', name: 'app_passage_evenement_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +52,7 @@ class PassageEvenementController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/passage/evenement/{id<\d+>}/update', name: 'app_passage_evenement_update')]
     public function update(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -69,6 +72,7 @@ class PassageEvenementController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN')]
     #[Route('/passage/evenement/{id<\d+>}/delete', name: 'app_passage_evenement_delete')]
     public function delete(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {

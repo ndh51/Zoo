@@ -20,7 +20,7 @@ class PassageEvenement
     #[Assert\Time]
     private ?string $hDebEvenement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'passageEvenements')]
+    #[ORM\ManyToOne(inversedBy: 'passageEvenement')]
     private ?Evenement $evenement = null;
 
     #[ORM\OneToMany(mappedBy: 'passageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
