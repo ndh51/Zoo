@@ -11,9 +11,17 @@
     {{ form_start(form, {'method': 'POST'}) }}
         {{ form_row(form.dateTicket) }}
         <div class="checkboxArea">
-            {{ form_row(form.vues) }}
-            {{ form_row(form.reservationEvenement) }}
+            <div class="subCheckboxArea">
+                <p>Animaux à voir (facultatif)</p>
+                {{ form_row(form.vues) }}
+            </div>
+            {% if form.reservationEvenement is not empty %}
+                <div class="subCheckboxArea">
+                    <p>Quels évènements souhaitez vous réserver ?</p>
+                    {{ form_row(form.reservationEvenement) }}
+                </div>
+            {% endif %}
         </div>
-        <button type="submit" class="btn btn-success">Créer le ticket</button>
+        <button type="submit" class="btn btn-success w-100 p-3">Créer le ticket</button>
     {{ form_end(form) }}
 {% endblock %}
