@@ -36,9 +36,9 @@ class TicketType extends AbstractType
             ])
             ->add('visiteur', EntityType::class, [
                 'class' => Visiteur::class,
-                'choice_label' => 'id',
+                'choice_label' => 'email',
                 'data' => $options['currentVisiteur'],
-                'attr' => ['style' => 'display:none;'],
+                //'attr' => ['style' => 'display:none;'],
                 'label' => false,
             ])
             ->add('vues', EntityType::class, [
