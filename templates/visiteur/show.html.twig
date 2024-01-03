@@ -26,8 +26,8 @@
         </div>
 
     </div>
+    <div class="ticket">
     {% if tickets is not empty %}
-        <div class="ticket">
             <div class="titre-ticket">
                 <h2>Liste des tickets : </h2>
             </div>
@@ -42,8 +42,15 @@
                     {% endfor %}
                 </ul>
             </div>
-        </div>
     {% endif %}
+        <ul style="list-style-type:none;">
+            <form class="d-flex"  role="search" action="{{ path('app_filter') }}">
+                    <h2>Selectionnez la date du ticket à créer :</h2>
+                    <input class="form-control me-2" type=date name="date">
+                <button class="btn btn-outline-success" type="submit">Créer un ticket</button>
+            </form>
+        </ul>
+    </div>
 
 
 {% endblock %}
