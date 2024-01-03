@@ -26,6 +26,8 @@ class TicketType extends AbstractType
         $builder
             ->add('dateTicket', DateType::class, [
                 'data' => $date,
+                'attr' => ['style' => 'display:none;'],
+                'label' => false,
             ])
             ->add('prixTicket', IntegerType::class, [
                 'data' => 15,
@@ -44,7 +46,7 @@ class TicketType extends AbstractType
                 'choice_label' => 'nomAnimal',
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Animaux',
+                'label' => false,
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('a')
                         ->orderBy('a.nomAnimal', 'ASC');
@@ -57,7 +59,7 @@ class TicketType extends AbstractType
                 },
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Evenements',
+                'label' => false,
                 'query_builder' => function (EntityRepository $entityRepository) use ($date) {
                     return $entityRepository->createQueryBuilder('pe')
                                             ->Join('pe.evenement', 'evenement')
