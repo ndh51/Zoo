@@ -35,17 +35,23 @@ class TicketController extends AbstractController
                 return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
             }
 
-            $ticket = new Ticket();
-            $form = $this->createForm(TicketType::class, $ticket, [
-                'currentVisiteur' => $visiteur,
-                'date' => $date,
-            ]);
+            try {
+                $dateTimeTesteur = new \DateTime($date);
 
-            return $this->render('ticket/index.html.twig', [
-                'visiteur' => $visiteur,
-                'ticket' => $ticket,
-                'form' => $form->createView(),
-            ]);
+                $ticket = new Ticket();
+                $form = $this->createForm(TicketType::class, $ticket, [
+                    'currentVisiteur' => $visiteur,
+                    'date' => $date,
+                ]);
+
+                return $this->render('ticket/index.html.twig', [
+                    'visiteur' => $visiteur,
+                    'ticket' => $ticket,
+                    'form' => $form->createView(),
+                ]);
+            } catch (\Exception $e) {
+                return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
+            }
         }
 
         return $this->redirectToRoute('app_home', status: 303);
