@@ -154,9 +154,9 @@ class Evenement
     /**
      * @return Collection<int, PassageEvenement>
      */
-    public function getPassageEvenements(): Collection
+    public function getPassageEvenement(): Collection
     {
-        return $this->passageEvenements;
+        return $this->passageEvenement;
     }
 
     public function addPassageEvenement(PassageEvenement $passageEvenement): static
