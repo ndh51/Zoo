@@ -61,14 +61,9 @@ class TicketRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
             ->select('t')
             ->join('t.visiteur', 'v')
-            ->join('t.reservationEvenement', 'r')
-            ->join('r.passageEvenement', 'p')
-            ->join('p.evenement', 'e')
-            ->addSelect('r')
-            ->addSelect('p')
-            ->addSelect('e')
             ->where('v.id = :idVisiteur')
             ->setParameter('idVisiteur', $idVisiteur)
+            ->orderBy('t.dateTicket')
             ->getQuery()
             ->getResult();
 
