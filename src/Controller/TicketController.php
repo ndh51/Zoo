@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Ticket;
 use App\Entity\Visiteur;
+use App\Entity\Voir;
 use App\Form\TicketType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TicketController extends AbstractController
 {
     #[Route('/ticket/{id}', name: 'app_ticket', requirements: ['id' => '\d+'])]
-    public function create(#[MapEntity(expr: 'repository.findWithId(id)')] ?Visiteur $visiteur, Request $request): Response
+    public function create(#[MapEntity(expr: 'repository.findWithId(id)')] ?Visiteur $visiteur, Request $request, EntityManagerInterface $entityManager): Response
     {
         $currentUser = $this->getUser();
 
@@ -36,7 +38,7 @@ class TicketController extends AbstractController
             }
 
             try {
-                $dateTimeTesteur = new \DateTime($date);
+                $dateTimeTesteur = new \DateTime($date); // On crée une date de test, si la date n'est pas valide, DateTime renvoie une exception
 
                 $ticket = new Ticket();
                 $form = $this->createForm(TicketType::class, $ticket, [
@@ -44,12 +46,36 @@ class TicketController extends AbstractController
                     'date' => $date,
                 ]);
 
+                $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()) {
+
+                    // Gestion des animaux et des évènements
+                    $lstAnimal = $form->get('vues')->getData();
+
+                    foreach ($lstAnimal as $animal) {
+                        $vue = new Voir();
+                        $vue->setAnimal($animal)
+                            ->setTicket($ticket);
+
+                        $animal->addVue($vue);
+                        $ticket->addVue($vue);
+
+                        $entityManager->persist($animal);
+                        $entityManager->persist($vue);
+                    }
+                    $entityManager->persist($ticket);
+                    $entityManager->flush();
+
+                    return $this->redirectToRoute('app_visiteur', ['id' => $currentUser->getId()]);
+                }
+
                 return $this->render('ticket/index.html.twig', [
                     'visiteur' => $visiteur,
                     'ticket' => $ticket,
                     'form' => $form->createView(),
                 ]);
             } catch (\Exception $e) {
+                // On tombe ici la date passée en paramètre n'est pas valide
                 return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
             }
         }
