@@ -16,10 +16,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TicketType extends AbstractType
 {
+    /**
+     * @throws \Exception
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $date = new \DateTime($options['date']);
+
         $builder
-            ->add('dateTicket', DateType::class)
+            ->add('dateTicket', DateType::class, [
+                'data' => $date,
+            ])
             ->add('prixTicket', IntegerType::class, [
                 'data' => 15,
                 'attr' => ['style' => 'display:none;'],
@@ -51,11 +58,13 @@ class TicketType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Evenements',
-                'query_builder' => function (EntityRepository $entityRepository) {
+                'query_builder' => function (EntityRepository $entityRepository) use ($date) {
                     return $entityRepository->createQueryBuilder('pe')
                                             ->Join('pe.evenement', 'evenement')
+                                            ->andWhere('pe.datePassage = :date')
                                             ->orderBy('pe.hDebEvenement', 'ASC')
-                                            ->addOrderBy('evenement.nomEvent', 'ASC');
+                                            ->addOrderBy('evenement.nomEvent', 'ASC')
+                                            ->setParameter('date', $date);
                 },
             ])
         ;
@@ -66,6 +75,7 @@ class TicketType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Ticket::class,
             'currentVisiteur' => false,
+            'date' => false,
         ]);
     }
 }
