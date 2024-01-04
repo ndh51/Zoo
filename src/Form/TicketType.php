@@ -62,6 +62,7 @@ class TicketType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => false,
+                'mapped' => false,
                 'query_builder' => function (EntityRepository $entityRepository) use ($date) {
                     return $entityRepository->createQueryBuilder('pe')
                                             ->Join('pe.evenement', 'evenement')
