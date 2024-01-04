@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Entity\Voir;
 use App\Form\TicketType;
+use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TicketController extends AbstractController
 {
     #[Route('/ticket/create', name: 'app_ticket_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, EntityManagerInterface $entityManager, TicketRepository $ticketRepository): Response
     {
         $currentUser = $this->getUser();
 
@@ -24,7 +25,8 @@ class TicketController extends AbstractController
         }
 
         $date = $request->query->get('date', '');
-        if ('' == $date) {
+        $d = new \DateTime($date);
+        if ('' == $date || null != $ticketRepository->findOneBy(['dateTicket' => $d])) {
             return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
         }
 
