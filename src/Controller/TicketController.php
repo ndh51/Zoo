@@ -60,7 +60,7 @@ class TicketController extends AbstractController
                 return $this->redirectToRoute('app_visiteur', ['id' => $currentUser->getId()]);
             }
 
-            return $this->render('ticket/index.html.twig', [
+            return $this->render('ticket/create.html.twig', [
                 'visiteur' => $currentUser,
                 'ticket' => $ticket,
                 'form' => $form->createView(),
