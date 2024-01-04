@@ -44,7 +44,7 @@
             </div>
     {% endif %}
         <ul style="list-style-type:none;">
-            <form class="d-flex"  role="search" action="{{ path('app_ticket', {id: visiteur.id}) }}">
+            <form class="d-flex"  role="search" action="{{ path('app_ticket_create') }}">
                     <h2>Selectionnez la date du ticket à créer :</h2>
                     <input class="form-control me-2" type=date name="date">
                 <button class="btn btn-outline-success" type="submit">Créer un ticket</button>
