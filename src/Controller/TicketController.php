@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ReservationEvenement;
 use App\Entity\Ticket;
 use App\Entity\Voir;
 use App\Factory\VoirFactory;
@@ -28,6 +29,7 @@ class TicketController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
         $animaux = $ticketRepo->findAnimals($ticket);
+
         return $this->render('ticket/show.html.twig', ['ticket' => $ticket, 'vues' => $animaux[0]->getVues()]);
     }
 
@@ -60,15 +62,22 @@ class TicketController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 // Gestion des animaux et des évènements
                 $lstAnimal = $form->get('vues')->getData();
+                $lstPassageEvent = $form->get('reservationEvenement')->getData();
 
                 foreach ($lstAnimal as $animal) {
                     $vue = new Voir();
                     $vue->setAnimal($animal)
                         ->setTicket($ticket);
                     $ticket->addVue($vue);
-                    //$entityManager->persist($animal);
                     $entityManager->persist($vue);
-                    //                    VoirFactory::createOne(['animal' => $animal, 'ticket' => $ticket]);
+                }
+
+                foreach ($lstPassageEvent as $passageEvent) {
+                    $reserv = new ReservationEvenement();
+                    $reserv->setPassageEvenement($passageEvent)
+                           ->setTicket($ticket);
+                    $ticket->addReservationEvenement($reserv);
+                    $entityManager->persist($reserv);
                 }
                 $entityManager->persist($ticket);
                 $entityManager->flush();
