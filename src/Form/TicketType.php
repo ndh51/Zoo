@@ -9,6 +9,7 @@ use App\Entity\Visiteur;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,7 +39,7 @@ class TicketType extends AbstractType
                 'class' => Visiteur::class,
                 'choice_label' => 'email',
                 'data' => $options['currentVisiteur'],
-                //'attr' => ['style' => 'display:none;'],
+                'attr' => ['style' => 'display:none;'],
                 'label' => false,
             ])
             ->add('vues', EntityType::class, [
@@ -47,6 +48,7 @@ class TicketType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => false,
+                'mapped' => false,
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('a')
                         ->orderBy('a.nomAnimal', 'ASC');
