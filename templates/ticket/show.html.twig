@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Présentation du ticket</h1>
+    <h3>Référence : {{ ticket.id }}</h3>
+    <h2>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h2>
+    <h3>Liste des animaux : </h3>
+    {% for vue in vues %}
+        <h4>{{ animal.animal.nomAnimal }}</h4>
+        <img src="{{ asset(animal.animal.image.pathImage) }}" alt="image {{ animal.animal.nomAnimal }}">
+    {% endfor %}
+
+{% endblock %}
