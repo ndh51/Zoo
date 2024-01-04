@@ -27,9 +27,8 @@ class TicketController extends AbstractController
         if ($ticket->getVisiteur() !== $this->getUser()) {
             return $this->redirectToRoute('app_home');
         }
-        // $animaux = $ticketRepo->findAnimals($ticket);
 
-        return $this->render('ticket/show.html.twig', ['ticket' => $ticket/* , 'vues' => $animaux[0]->getVues() */]);
+        return $this->render('ticket/show.html.twig', ['ticket' => $ticket]);
     }
 
     #[Route('/ticket/create', name: 'app_ticket_create')]
