@@ -27,22 +27,38 @@
 
     </div>
     <div class="ticket">
-    {% if tickets is not empty %}
+    {% if usedTicket is not empty or unusedTicket is not empty %}
             <div class="titre-ticket">
                 <h2>Liste des tickets : </h2>
             </div>
             <div class="info-ticket">
                 {% set count = 0 %}
-                <ul style="list-style-type:none;">
-                    {% for ticket in tickets %}
-                        {% set count = count + 1 %}
-                        <a href="{{ path('app_ticket_id', {id: ticket.id}) }}">
-                        <li><h3>Ticket N°{{ count }}</h3></li>
-                        <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
-                        </a>
-                        <br>
-                    {% endfor %}
-                </ul>
+                {% if unusedTicket is not empty %}
+                    <ul class="unused" style="list-style-type:none;">
+                        <h3>Tickets à venir :</h3>
+                        {% for ticket in unusedTicket %}
+                            {% set count = count + 1 %}
+                            <a href="{{ path('app_ticket_id', {id: ticket.id}) }}">
+                                <li><h3>Ticket N°{{ count }}</h3></li>
+                            </a>
+                                <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if usedTicket is not empty %}
+                    <ul class="used" style="list-style-type:none;">
+                        <h3>Tickets passés :</h3>
+                        {% for ticket in usedTicket %}
+                            {% set count = count + 1 %}
+                            <a href="{{ path('app_ticket_id', {id: ticket.id}) }}">
+                                <li><h3>Ticket N°{{ count }}</h3></li>
+                            </a>
+                            <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
     {% endif %}
         <ul style="list-style-type:none;">
