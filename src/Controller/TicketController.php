@@ -57,12 +57,12 @@ class TicketController extends AbstractController
                         $vue->setAnimal($animal)
                             ->setTicket($ticket);
 
-                        $animal->addVue($vue);
                         $ticket->addVue($vue);
-
                         $entityManager->persist($animal);
                         $entityManager->persist($vue);
+
                     }
+
                     $entityManager->persist($ticket);
                     $entityManager->flush();
 
