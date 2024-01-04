@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\ReservationEvenement;
 use App\Entity\Ticket;
 use App\Entity\Voir;
-use App\Factory\VoirFactory;
 use App\Form\TicketType;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,9 +27,9 @@ class TicketController extends AbstractController
         if ($ticket->getVisiteur() !== $this->getUser()) {
             return $this->redirectToRoute('app_home');
         }
-        $animaux = $ticketRepo->findAnimals($ticket);
+        // $animaux = $ticketRepo->findAnimals($ticket);
 
-        return $this->render('ticket/show.html.twig', ['ticket' => $ticket, 'vues' => $animaux[0]->getVues()]);
+        return $this->render('ticket/show.html.twig', ['ticket' => $ticket/* , 'vues' => $animaux[0]->getVues() */]);
     }
 
     #[Route('/ticket/create', name: 'app_ticket_create')]
