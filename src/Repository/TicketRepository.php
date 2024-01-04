@@ -73,11 +73,42 @@ class TicketRepository extends ServiceEntityRepository
     public function findAnimals(Ticket $ticket)
     {
         $idTicket = $ticket->getId();
+
         return $this->createQueryBuilder('t')
             ->join('t.vues', 'v')
             ->join('v.animal', 'an')
             ->where('t.id = :idTicket')
             ->setParameter('idTicket', $idTicket)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findUsedByVisiteur(Visiteur $visiteur)
+    {
+        $idVisiteur = $visiteur->getId();
+
+        return $this->createQueryBuilder('t')
+                    ->select('t')
+                    ->join('t.visiteur', 'v')
+                    ->where('v.id = :idVisiteur')
+                    ->andWhere('t.dateTicket < CURRENT_DATE()')
+                    ->setParameter('idVisiteur', $idVisiteur)
+                    ->orderBy('t.dateTicket')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findNotUsedByVisiteur(Visiteur $visiteur)
+    {
+        $idVisiteur = $visiteur->getId();
+
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->join('t.visiteur', 'v')
+            ->where('v.id = :idVisiteur')
+            ->andWhere('t.dateTicket >= CURRENT_DATE()')
+            ->setParameter('idVisiteur', $idVisiteur)
+            ->orderBy('t.dateTicket')
             ->getQuery()
             ->getResult();
     }
