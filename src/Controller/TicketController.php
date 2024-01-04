@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Ticket;
 use App\Entity\Voir;
+use App\Factory\VoirFactory;
 use App\Form\TicketType;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +16,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TicketController extends AbstractController
 {
+    #[Route('/ticket/{id}', name: 'app_ticket_id', requirements: ['id' => '\d+'])]
+    public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
+        ?Ticket $ticket, TicketRepository $ticketRepo): Response
+    {
+        if (is_null($ticket)) {
+            return $this->redirectToRoute('app_visiteur_id', ['id' => $this->getUser()->getId()]);
+        }
+
+        if ($ticket->getVisiteur() !== $this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+        $animaux = $ticketRepo->findAnimals($ticket);
+        return $this->render('ticket/show.html.twig', ['ticket' => $ticket, 'vues' => $animaux[0]->getVues()]);
+    }
+
     #[Route('/ticket/create', name: 'app_ticket_create')]
     public function create(Request $request, EntityManagerInterface $entityManager, TicketRepository $ticketRepository): Response
     {
@@ -48,12 +65,11 @@ class TicketController extends AbstractController
                     $vue = new Voir();
                     $vue->setAnimal($animal)
                         ->setTicket($ticket);
-
                     $ticket->addVue($vue);
-                    $entityManager->persist($animal);
+                    //$entityManager->persist($animal);
                     $entityManager->persist($vue);
+                    //                    VoirFactory::createOne(['animal' => $animal, 'ticket' => $ticket]);
                 }
-
                 $entityManager->persist($ticket);
                 $entityManager->flush();
 
