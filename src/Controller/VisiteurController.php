@@ -28,10 +28,14 @@ class VisiteurController extends AbstractController
         $userIdFromRoute = $visiteur->getId();
 
         if (in_array('ROLE_ADMIN', $currentUser->getRoles(), true) || $currentUser->getId() == $userIdFromRoute) {
-            $tickets = $ticketRepository->findEventsByVisiteur($visiteur);
+            $usedTicket = $ticketRepository->findUsedByVisiteur($visiteur);
+            $unusedTicket = $ticketRepository->findNotUsedByVisiteur($visiteur);
 
             return $this->render('visiteur/show.html.twig', [
-                'visiteur' => $visiteur, 'tickets' => $tickets]);
+                'visiteur' => $visiteur,
+                'usedTicket' => $usedTicket,
+                'unusedTicket' => $unusedTicket,
+            ]);
         }
 
         return $this->redirectToRoute('app_home', status: 303);
