@@ -35,7 +35,7 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_visiteur_id', {id: visiteur.id})}}">Profil</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_visiteur_id', {id: app.user.id})}}">Profil</a>
                         </li>
                     {% endif %}
 
