@@ -23,7 +23,7 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $date = new \DateTime($options['date']);
-
+        $nbPers = intval($options['nbPers']);
         $builder
             ->add('dateTicket', DateType::class, [
                 'data' => $date,
@@ -36,9 +36,9 @@ class TicketType extends AbstractType
                 'label' => false,
             ])
             ->add('nbPers', IntegerType::class, [
-                'data' => 1,
-                'label' => 'Nombre de participants',
-                'attr' => ['min' => 1, 'max' => 20],
+                'data' => $nbPers,
+                'attr' => ['style' => 'display:none;'],
+                'label' => false,
             ])
             ->add('visiteur', EntityType::class, [
                 'class' => Visiteur::class,
@@ -68,13 +68,15 @@ class TicketType extends AbstractType
                 'expanded' => true,
                 'label' => false,
                 'mapped' => false,
-                'query_builder' => function (EntityRepository $entityRepository) use ($date) {
+                'query_builder' => function (EntityRepository $entityRepository) use ($nbPers, $date) {
                     return $entityRepository->createQueryBuilder('pe')
-                                            ->Join('pe.evenement', 'evenement')
+                                            ->Join('pe.evenement', 'e')
                                             ->andWhere('pe.datePassage = :date')
+                                            ->andWhere('pe.nbPlacesRestantes >= :nbPers')
                                             ->orderBy('pe.hDebEvenement', 'ASC')
-                                            ->addOrderBy('evenement.nomEvent', 'ASC')
-                                            ->setParameter('date', $date);
+                                            ->addOrderBy('e.nomEvent', 'ASC')
+                                            ->setParameter('date', $date)
+                                            ->setParameter('nbPers', $nbPers);
                 },
             ])
         ;
@@ -86,6 +88,7 @@ class TicketType extends AbstractType
             'data_class' => Ticket::class,
             'currentVisiteur' => false,
             'date' => false,
+            'nbPers' => false,
         ]);
     }
 }
