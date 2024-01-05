@@ -35,13 +35,13 @@ class TicketController extends AbstractController
     public function create(Request $request, EntityManagerInterface $entityManager, TicketRepository $ticketRepository): Response
     {
         $currentUser = $this->getUser();
-
         // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
         if (!$currentUser) {
             return $this->redirectToRoute('app_login');
         }
 
         $date = $request->query->get('date', '');
+        $nbPers = $request->query->get('nbPers', 1);
         $d = new \DateTime($date);
         if ('' == $date || null != $ticketRepository->findOneBy(['dateTicket' => $d])) {
             return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
@@ -54,8 +54,8 @@ class TicketController extends AbstractController
             $form = $this->createForm(TicketType::class, $ticket, [
                 'currentVisiteur' => $currentUser,
                 'date' => $date,
+                'nbPers' => intval($nbPers),
             ]);
-
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 // Gestion des animaux et des évènements
@@ -71,6 +71,7 @@ class TicketController extends AbstractController
                 }
 
                 foreach ($lstPassageEvent as $passageEvent) {
+                    $passageEvent->substractNbPlacesRestantes($ticket->getNbPers());
                     $reserv = new ReservationEvenement();
                     $reserv->setPassageEvenement($passageEvent)
                            ->setTicket($ticket);
@@ -79,7 +80,6 @@ class TicketController extends AbstractController
                 }
                 $entityManager->persist($ticket);
                 $entityManager->flush();
-
                 return $this->redirectToRoute('app_visiteur', ['id' => $currentUser->getId()]);
             }
 
