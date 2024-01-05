@@ -78,8 +78,10 @@ class TicketController extends AbstractController
                     $ticket->addReservationEvenement($reserv);
                     $entityManager->persist($reserv);
                 }
+                $ticket->setPrixTicket((15 * $nbPers) + (2 * $nbPers * count($lstPassageEvent)));
                 $entityManager->persist($ticket);
                 $entityManager->flush();
+
                 return $this->redirectToRoute('app_visiteur', ['id' => $currentUser->getId()]);
             }
 
