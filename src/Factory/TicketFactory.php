@@ -43,12 +43,14 @@ final class TicketFactory extends ModelFactory
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
      *
      * @todo add your default values here
+     * @throws \Exception
      */
     protected function getDefaults(): array
     {
         return [
             'dateTicket' => self::faker()->dateTime(),
             'prixTicket' => self::faker()->randomFloat(2, 0, 60),
+            'nbPers' => random_int(1, 10),
             'visiteur' => VisiteurFactory::random(),
         ];
     }
