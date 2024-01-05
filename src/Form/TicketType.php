@@ -7,9 +7,9 @@ use App\Entity\PassageEvenement;
 use App\Entity\Ticket;
 use App\Entity\Visiteur;
 use Doctrine\ORM\EntityRepository;
+use PHPUnit\Framework\Constraint\GreaterThan;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,6 +34,11 @@ class TicketType extends AbstractType
                 'data' => 15,
                 'attr' => ['style' => 'display:none;'],
                 'label' => false,
+            ])
+            ->add('nbPers', IntegerType::class, [
+                'data' => 1,
+                'label' => 'Nombre de participants',
+                'attr' => ['min' => 1, 'max' => 20],
             ])
             ->add('visiteur', EntityType::class, [
                 'class' => Visiteur::class,
