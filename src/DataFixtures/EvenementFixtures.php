@@ -38,7 +38,6 @@ class EvenementFixtures extends Fixture implements OrderedFixtureInterface
             EvenementFactory::createOne(['nomEvent' => $evenement['nom'],
                 'descEvent' => $evenement['description'],
                 'nbPlaceMaxEvent' => $places,
-                'nbPlacesRestantes' => $places,
                 'enclos' => $encRep->findOneBy(['nomEnclos' => $evenement['enclos']]),
                 'image' => $image,
             ]);

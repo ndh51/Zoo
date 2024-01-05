@@ -48,7 +48,7 @@ final class ReservationEvenementFactory extends ModelFactory
     {
         $passage = PassageEvenementFactory::random();
         $ticket = TicketFactory::random();
-        $passage->getEvenement()->substractNbPlacesRestantes($ticket->getNbPers());
+        $passage->substractNbPlacesRestantes($ticket->getNbPers());
         return [
             'PassageEvenement' => $passage,
             'Ticket' => $ticket,
