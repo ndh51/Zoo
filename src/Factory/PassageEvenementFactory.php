@@ -50,7 +50,7 @@ final class PassageEvenementFactory extends ModelFactory
         return [
             'evenement' => $evenement,
             'hDebEvenement' => self::faker()->time('H:i'),
-            'datePassage' => self::faker()->dateTime(),
+            'datePassage' => self::faker()->dateTimeBetween('-5 years', '+5 years'),
             'nbPlacesRestantes' => $evenement->getNbPlaceMaxEvent(),
         ];
     }
