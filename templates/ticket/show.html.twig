@@ -4,6 +4,7 @@
     <h3>Référence : {{ ticket.id }}</h3>
     <h2>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h2>
     <h2>Nombre de personnes : {{ ticket.nbPers }}</h2>
+    <h2>Prix : {{ ticket.prixTicket }}</h2>
     {% if not ticket.vues.isEmpty() %}
         <h3>Liste des animaux : </h3>
         {% for vue in ticket.vues %}
