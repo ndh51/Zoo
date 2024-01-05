@@ -34,6 +34,9 @@ class Ticket
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private ?Visiteur $visiteur = null;
 
+    #[ORM\Column]
+    private ?int $nbPers = null;
+
     public function __construct()
     {
         $this->vues = new ArrayCollection();
@@ -137,6 +140,18 @@ class Ticket
                 $reservationEvenement->setTicket(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNbPers(): ?int
+    {
+        return $this->nbPers;
+    }
+
+    public function setNbPers(int $nbPers): static
+    {
+        $this->nbPers = $nbPers;
 
         return $this;
     }

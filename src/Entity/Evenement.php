@@ -50,6 +50,9 @@ class Evenement
     #[ORM\Column]
     private ?int $duree = null;
 
+    #[ORM\Column]
+    private ?int $nbPlacesRestantes = null;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
@@ -189,6 +192,25 @@ class Evenement
     public function setDuree(int $duree): static
     {
         $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getNbPlacesRestantes(): ?int
+    {
+        return $this->nbPlacesRestantes;
+    }
+
+    public function setNbPlacesRestantes(int $nbPlacesRestantes): static
+    {
+        $this->nbPlacesRestantes = $nbPlacesRestantes;
+
+        return $this;
+    }
+
+    public function substractNbPlacesRestantes(int $nbPers): static
+    {
+        $this->nbPlacesRestantes -= $nbPers;
 
         return $this;
     }
