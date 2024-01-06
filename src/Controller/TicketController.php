@@ -10,6 +10,7 @@ use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +30,20 @@ class TicketController extends AbstractController
         }
 
         return $this->render('ticket/show.html.twig', ['ticket' => $ticket]);
+    }
+
+    #[Route('/ticket/precreate', name: 'app_ticket_precreate')]
+    public function precreate(): Response
+    {
+        $currentUser = $this->getUser();
+        // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+        if (!$currentUser) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('ticket/precreate.html.twig', [
+            'visiteur' => $currentUser,
+        ]);
     }
 
     #[Route('/ticket/create', name: 'app_ticket_create')]
