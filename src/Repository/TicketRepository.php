@@ -93,7 +93,7 @@ class TicketRepository extends ServiceEntityRepository
                     ->where('v.id = :idVisiteur')
                     ->andWhere('t.dateTicket < CURRENT_DATE()')
                     ->setParameter('idVisiteur', $idVisiteur)
-                    ->orderBy('t.dateTicket')
+                    ->orderBy('t.dateTicket', 'DESC')
                     ->getQuery()
                     ->getResult();
     }
