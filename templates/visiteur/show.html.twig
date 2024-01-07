@@ -26,28 +26,43 @@
         </div>
 
     </div>
-    {% if tickets is not empty %}
-        <div class="ticket">
+    <div class="ticket">
+    {% if usedTicket is not empty or unusedTicket is not empty %}
             <div class="titre-ticket">
                 <h2>Liste des tickets : </h2>
             </div>
             <div class="info-ticket">
                 {% set count = 0 %}
-                <ul style="list-style-type:none;">
-                    {% for ticket in tickets %}
-                        {% set count = count + 1 %}
-                        <li><h3>Ticket N°{{ count }}</h3></li>
-                        <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
-                        {% for reservation in ticket.reservationEvenement %}
-                            <li><p>{{ reservation.passageEvenement.evenement.nomEvent }}</p></li>
-                            <img src="{{asset(reservation.passageEvenement.evenement.image.pathImage)}}"  alt="{{ reservation.passageEvenement.evenement.nomEvent }}">
+                {% if unusedTicket is not empty %}
+                    <ul class="unused" style="list-style-type:none;">
+                        <h3>Tickets à venir :</h3>
+                        {% for ticket in unusedTicket %}
+                            {% set count = count + 1 %}
+                            <a href="{{ path('app_ticket_id', {id: ticket.id}) }}">
+                                <li><h3>Ticket N°{{ count }}</h3></li>
+                            </a>
+                                <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
+                            <br>
                         {% endfor %}
-                        <br>
-                    {% endfor %}
-                </ul>
+                    </ul>
+                {% endif %}
+                {% if usedTicket is not empty %}
+                    <ul class="used" style="list-style-type:none;">
+                        <h3>Tickets passés :</h3>
+                        {% for ticket in usedTicket %}
+                            {% set count = count + 1 %}
+                            <a href="{{ path('app_ticket_id', {id: ticket.id}) }}">
+                                <li><h3>Ticket N°{{ count }}</h3></li>
+                            </a>
+                            <li><h3>Date : {{ ticket.dateTicket | date('d/m/Y') }}</h3></li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
-        </div>
     {% endif %}
+        <a href="{{ path('app_ticket_precreate') }}" class="btn btn-outline-success w-75 p-3">Créer un ticket</a>
+    </div>
 
 
 {% endblock %}

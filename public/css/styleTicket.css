@@ -1,0 +1,34 @@
+legend{
+    color: white;
+}
+
+.checkboxArea {
+    display: flex;
+}
+
+.checkboxArea .subCheckboxArea {
+    flex: 1;
+    border: white solid;
+    border-radius: 1em;
+    margin: 1em;
+}
+
+#ticket_vues, #ticket_reservationEvenement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#ticket_vues {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#ticket_vues .form-check {
+    width: 48%;
+}
+
+.subCheckboxArea{
+    flex-direction: column;
+}

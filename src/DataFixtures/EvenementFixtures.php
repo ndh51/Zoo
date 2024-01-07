@@ -34,9 +34,10 @@ class EvenementFixtures extends Fixture implements OrderedFixtureInterface
             if (null === $image = $imgRep->findOneBy(['pathImage' => '/img/evenements/'.$evenement['nom'].'.jpg'])) {
                 $image = ImageFactory::createOne();
             }
+            $places = random_int(10, 150);
             EvenementFactory::createOne(['nomEvent' => $evenement['nom'],
                 'descEvent' => $evenement['description'],
-                'nbPlaceMaxEvent' => random_int(15, 100),
+                'nbPlaceMaxEvent' => $places,
                 'enclos' => $encRep->findOneBy(['nomEnclos' => $evenement['enclos']]),
                 'image' => $image,
             ]);

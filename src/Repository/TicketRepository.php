@@ -47,33 +47,69 @@ class TicketRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+    public function findWithId(int $id): ?Ticket
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function findEventsByVisiteur(Visiteur $visiteur)
     {
         $idVisiteur = $visiteur->getId();
-        // $conn = $this->getEntityManager()->getConnection();
-
-        /*$sql = '
-        SELECT e.nom_event, e.image_id, t.id, t.date_ticket
-        FROM visiteur v JOIN ticket t ON (t.visiteur_id = v.id) JOIN reservation_evenement r ON (t.id = r.ticket_id) JOIN passage_evenement p ON (r.passage_evenement_id = p.id) JOIN evenement e ON (e.id = p.evenement_id)
-        WHERE v.id = :idVisiteur
-        ORDER BY t.id';*/
 
         return $this->createQueryBuilder('t')
             ->select('t')
             ->join('t.visiteur', 'v')
-            ->join('t.reservationEvenement', 'r')
-            ->join('r.passageEvenement', 'p')
-            ->join('p.evenement', 'e')
-            ->addSelect('r')
-            ->addSelect('p')
-            ->addSelect('e')
             ->where('v.id = :idVisiteur')
             ->setParameter('idVisiteur', $idVisiteur)
+            ->orderBy('t.dateTicket')
             ->getQuery()
             ->getResult();
+    }
 
-        // $params = ['idVisiteur' => $idVisiteur];
+    public function findAnimals(Ticket $ticket)
+    {
+        $idTicket = $ticket->getId();
 
-        // return $conn->executeQuery($sql, $params)->fetchAllAssociative();
+        return $this->createQueryBuilder('t')
+            ->join('t.vues', 'v')
+            ->join('v.animal', 'an')
+            ->where('t.id = :idTicket')
+            ->setParameter('idTicket', $idTicket)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findUsedByVisiteur(Visiteur $visiteur)
+    {
+        $idVisiteur = $visiteur->getId();
+
+        return $this->createQueryBuilder('t')
+                    ->select('t')
+                    ->join('t.visiteur', 'v')
+                    ->where('v.id = :idVisiteur')
+                    ->andWhere('t.dateTicket < CURRENT_DATE()')
+                    ->setParameter('idVisiteur', $idVisiteur)
+                    ->orderBy('t.dateTicket', 'DESC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findNotUsedByVisiteur(Visiteur $visiteur)
+    {
+        $idVisiteur = $visiteur->getId();
+
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->join('t.visiteur', 'v')
+            ->where('v.id = :idVisiteur')
+            ->andWhere('t.dateTicket >= CURRENT_DATE()')
+            ->setParameter('idVisiteur', $idVisiteur)
+            ->orderBy('t.dateTicket')
+            ->getQuery()
+            ->getResult();
     }
 }

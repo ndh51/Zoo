@@ -46,10 +46,12 @@ final class PassageEvenementFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $evenement = EvenementFactory::random();
         return [
-            'Evenement' => EvenementFactory::random(),
+            'evenement' => $evenement,
             'hDebEvenement' => self::faker()->time('H:i'),
-            'datePassage' => self::faker()->dateTime(),
+            'datePassage' => self::faker()->dateTimeBetween('-5 years', '+5 years'),
+            'nbPlacesRestantes' => $evenement->getNbPlaceMaxEvent(),
         ];
     }
 

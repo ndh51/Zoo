@@ -31,14 +31,17 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if not is_granted('IS_AUTHENTICATED') %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion/Inscription</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_visiteur_id', {id: app.user.id})}}">Profil</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_ticket_precreate') }}">Réserver votre ticket</a>
                         </li>
                     {% endif %}
 
@@ -46,15 +49,18 @@
                         <a class="nav-link active" aria-current="page" href="{{ path('app_evenement') }}">Évènements</a>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_animal') }}">Animaux</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_enclos') }}">Enclos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_famille') }}">Familles</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_animal') }}">Animaux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_enclos') }}">Enclos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_famille') }}">Familles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('admin') }}">Admin</a>
+                        </li>
                     {% endif %}
                 </ul>
                 <form class="d-flex"  role="search" action="{{ path('app_filter') }}">

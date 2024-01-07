@@ -66,10 +66,27 @@ body{
     display: flex;
     justify-content: left;
     padding-left: 15%;
+    padding-right: 15%;
+    flex-direction: column;
 }
 
 .titre-ticket{
     padding-left: 15%;
+}
+
+div.info-ticket ul{
+    border-radius: 1em;
+    border-style: solid;
+}
+
+.unused{
+    border-color: #00ff00;
+    background-color: #00ff0066;
+}
+
+.used{
+    border-color: #ff0000;
+    background-color: #ff000066;
 }
 
 @media (max-width: 1200px) {
