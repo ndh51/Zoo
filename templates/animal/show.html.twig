@@ -27,32 +27,47 @@
                 </div>
             </div>
         </div>
-        <p class="titre">Description</p>
-        <p>{{ animal.descAnimal|first|upper}}{{ animal.descAnimal|slice(1) }}</p>
+
+        <div class="description">
+            <p class="titre">Description</p>
+            <p>{{ animal.descAnimal|first|upper}}{{ animal.descAnimal|slice(1) }}</p>
+        </div>
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <div class="reservation">
+                <button>RESERVER</button>
+
+            </div>
+        {% endif %}
     </div>
     <div class="relationList">
         {% if sameFamille is not empty %}
         <div class="relation">
             <p class="titre">Animaux de la même famille</p>
+            <div class="relationcontent">
             {% for animal in sameFamille %}
-            <div class="entityFromRelation">
-                <a href="{{ path('app_animal_id', {id: animal.id}) }}">
-                <img src="{{ asset(animal.Image.pathImage) }}" alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
-                <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
-                </a>
-            </div>
+                <div class="entityFromRelation">
+                    <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                        <img src="{{ asset(animal.Image.pathImage) }}"  alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
+                        <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
+                    </a>
+                </div>
             {% endfor %}
+            </div>
         </div>
         {% endif %}
         {% if events is not empty %}
         <div class="relation">
             <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
+            <div class="relationcontent">
             {% for evenement in events %}
-            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
-            <img src="{{ asset(evenement.Image.pathImage) }}" alt="image {{ evenement.nomEvent }}">
-                <p>{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</p>
-            </a>
+                <div class="entityFromRelation">
+                    <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                        <img src="{{ asset(evenement.Image.pathImage) }}" alt="image {{ evenement.nomEvent }}">
+                            <p>{{ evenement.nomEvent|first|upper}}{{ evenement.nomEvent|slice(1) }}</p>
+                    </a>
+                </div>
             {% endfor %}
+         </div>
         </div>
         {% endif %}
     </div>

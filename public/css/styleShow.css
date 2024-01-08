@@ -1,8 +1,14 @@
-body{
-    background-image: url("/img/fond.jpg");
+body {
+    background-image: linear-gradient(to right top, #fcf7a8, #e1e6c3, #cbd7b4, #b6c9a7, #a0bb9b, #87af93, #6ea28d, #559589, #33858a, #147389, #116084, #274c78);
+
+    background-attachment: fixed;
+
 }
 p{
     color: white;
+    text-stroke: 1px black;
+    -webkit-text-stroke: 0.2px black;
+    font-size: 24px;
 }
 .entity{
     display: flex;
@@ -23,6 +29,13 @@ p{
     justify-content: space-evenly;
     padding-left: 2%;
 }
+
+.descriptionetbouton{
+    display: flex;
+    flex-direction: column;
+}
+
+
 .titre{
     text-decoration: underline;
     font-size: 150%;
@@ -49,14 +62,18 @@ p{
 .relation{
     align-items: center;
     display: flex;
-    flex-grow: 2;
     flex-direction: column;
-    justify-content: space-around;
 }
 
-.entityFromRelation{
+.relationcontent{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+
+}
+
+.entityFromRelation img{
+    display: flex;
+    justify-content: center;
 }
 
 img{
