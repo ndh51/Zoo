@@ -109,6 +109,10 @@ img{
     padding-bottom: 2%;
 }
 
+.entityPresenter{
+    width: 35%;
+}
+
 @media (max-width: 1000px) {
 
     .entity {

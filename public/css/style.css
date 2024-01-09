@@ -48,7 +48,7 @@ h3 {
 }
 
 #carousel-container-maison {
-    width: 95%;
+    width: 80%;
     overflow: hidden;
     margin: 40px auto;
     position: relative;
@@ -93,12 +93,12 @@ img {
 .animaux{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .animal {
     margin: 25px;
-    width: 28%;
+    width: 20%;
     text-align: center;
     transition: transform .1s;
 }
@@ -108,7 +108,6 @@ img {
 }
 
 .animal img {
-    width: 100%;
     height: auto;
     border-radius: 50px;
 }
