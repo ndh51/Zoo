@@ -1,9 +1,7 @@
-body{
-    background-image: url("/img/fond.jpg");
-}
 p{
-    color: white;
+    text-align: left;
 }
+
 .entity{
     display: flex;
     flex-direction: column;
@@ -19,10 +17,25 @@ p{
 .infoEntity{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: space-evenly;
     padding-left: 2%;
 }
+
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reservation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reservation > button{
+    width: 25%;
+}
+
 .titre{
     text-decoration: underline;
     font-size: 150%;
@@ -37,6 +50,7 @@ p{
     display: flex;
     flex-direction: row;
     padding: 2%;
+    justify-content: space-around;
 }
 /*
 .relation{
@@ -49,15 +63,41 @@ p{
 .relation{
     align-items: center;
     display: flex;
-    flex-grow: 2;
     flex-direction: column;
-    justify-content: space-around;
+    flex-grow: 1;
 }
 
-.entityFromRelation{
+.relationContentFamille{
     display: flex;
+    flex-direction: column;
+}
+
+.relationContentEvent, .relationContent{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.entityFromRelation > a {
+    max-height: 400px;
+    max-width: 400px;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+    transition: transform .1s;
+    padding: 1%;
+}
+a > p{
+    text-align: center;
+}
+
+.entityFromRelation > a:hover{
+    transform: scale(1.1);
+}
+
 
 img{
     padding: 0.5%;
@@ -77,13 +117,23 @@ img{
     border-style: solid;
     background-color: #00500066;
 }
+
+.emplacement{
+    padding-bottom: 2%;
+}
+
+.entityPresenter{
+    width: 35%;
+}
+
 @media (max-width: 1000px) {
 
     .entity {
         flex-direction: column;
     }
+
     .relationList {
-        flex-direction: column-reverse;
+
     }
 
     .corps-entity{

@@ -1,0 +1,59 @@
+p{
+    text-align: center;
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.create{
+    text-align: center;
+    background-color: #0a53be;
+    border-radius: 15px;
+    width: 15%;
+    margin-inline: auto;
+    height: 40px;
+    padding-top: 7px;
+}
+
+.create:hover{
+    color: chartreuse;
+}
+
+img {
+    height: auto;
+    border-radius: 50px;
+}
+
+.evenements, .animaux{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.evenement, .animal{
+    margin: 25px;
+    width: 20%;
+    transition: transform .1s;
+}
+
+.evenement:hover{
+    transform: scale(1.1);
+}
+
+.nomEventModif, .nomAnimalModif{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.crud{
+    padding: 5px;
+    border-radius: 25px;
+}

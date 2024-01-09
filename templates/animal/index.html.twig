@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/indexEvent.css">
+{% endblock %}
+
 {% block title %}Animaux!{% endblock %}
 {% block body %}
+
     <h1 class="text-light">Liste des animaux</h1>
-    {{ include('animal/_animal.html.twig') }}
+    <a href="{{ path('app_animal_create') }}" class="create">Crée un animal</a>
+    <div class="animaux">
+        {% for animal in animaux %}
+            <div class="animal">
+                <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                    <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
+                </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="nomAnimalModif"><a href="{{ path('app_animal_update',{id: animal.id}) }}"><span class="material-symbols-outlined crud" style="background-color: orange">edit</span></a><p>{{ animal.nomAnimal }}</p><a href="{{ path('app_animal_delete',{id: animal.id}) }}"><span class="material-symbols-outlined crud" style="background-color: red">delete</span></a></div>
+                    {% else %}
+                        <p>{{ animal.nomAnimal }}</p>
+                    {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
