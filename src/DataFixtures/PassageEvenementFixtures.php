@@ -2,13 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Evenement;
+use App\Factory\EvenementFactory;
 use App\Factory\PassageEvenementFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
-use function Zenstruck\Foundry\create_many;
 
 class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -21,11 +20,25 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
 
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        // $manager->flush();
-        PassageEvenementFactory::createMany(200);
+        $faker = PassageEvenementFactory::faker();
+        $dateDebut = new \DateTime();
+        $I5ans = new \DateInterval('P5Y');
+        $dateFin = $dateDebut->add($I5ans);
+        while ($dateDebut < $dateFin) {
+            $heures = 10;
+            $minutes = 0;
+            $evenements = EvenementFactory::randomSet(5);
+            for ($i = 0; $i < 5; ++$i) {
+                $evenement = $evenements[$i];
+                PassageEvenementFactory::createOne([
+                    'hDebEvenement' => $heures.':'.$minutes,
+                    'evenement' => $evenement,
+                    'nbPlacesRestantes' => $evenement->getNbPlaceMaxEvent(),
+                    'datePassage' => $dateDebut]);
+                $manager->persist();
+                $dateDebut->add(new \DateInterval('P1D'));
+            }
+        }
     }
 
     public function getOrder(): int
