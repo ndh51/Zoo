@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,7 @@ class EvenementType extends AbstractType
     {
         $builder
             ->add('nomEvent', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'évènement '])
-            ->add('descEvent', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'évènement '])
+            ->add('descEvent', TextareaType::class, ['empty_data' => '', 'label' => 'Description de l\'évènement '])
             ->add('nbPlaceMaxEvent', IntegerType::class, ['label' => 'Nombre de places maximum '])
             ->add('enclos', EntityType::class, [
                 'required' => false,
