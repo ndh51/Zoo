@@ -21,11 +21,20 @@ p{
     padding-left: 2%;
 }
 
-.descriptionetbouton{
+.description{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
+.reservation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reservation > button{
+    width: 25%;
+}
 
 .titre{
     text-decoration: underline;
@@ -87,6 +96,7 @@ a > p{
 .entityFromRelation > a:hover{
     transform: scale(1.1);
 }
+
 
 img{
     padding: 0.5%;

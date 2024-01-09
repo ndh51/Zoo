@@ -31,3 +31,9 @@ img {
 .evenement:hover{
     transform: scale(1.1);
 }
+
+.nomEventModif {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
