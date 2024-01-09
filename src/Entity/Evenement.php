@@ -157,10 +157,10 @@ class Evenement
      */
     public function getPassageEvenement(): Collection
     {
-        return $this->passageEvenement;
+        return $this->passageEvenements;
     }
 
-    public function addPassageEvenement(PassageEvenement $passageEvenement): static
+    public function addPassageEvenements(PassageEvenement $passageEvenement): static
     {
         if (!$this->passageEvenements->contains($passageEvenement)) {
             $this->passageEvenements->add($passageEvenement);
@@ -170,7 +170,7 @@ class Evenement
         return $this;
     }
 
-    public function removePassageEvenement(PassageEvenement $passageEvenement): static
+    public function removePassageEvenements(PassageEvenement $passageEvenement): static
     {
         if ($this->passageEvenements->removeElement($passageEvenement)) {
             // set the owning side to null (unless already changed)

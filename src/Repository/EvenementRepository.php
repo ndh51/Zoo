@@ -104,4 +104,28 @@ class EvenementRepository extends ServiceEntityRepository
 
     }
 
+    public function findPassageForThisWeek(Evenement $evenement)
+    {
+        $currentDate = new \DateTime(); // Date actuelle
+
+        // Calcul de la date du début de la semaine
+        $startOfWeek = clone $currentDate;
+        $startOfWeek->modify('monday this week')->setTime(0, 0, 0);
+
+        // Calcul de la date de fin de la semaine
+        $endOfWeek = clone $startOfWeek;
+        $endOfWeek->modify('next monday')->setTime(0, 0, 0);
+
+        return $this->createQueryBuilder('e')
+            ->select('p')
+            ->from('App\Entity\PassageEvenement', 'p')
+            ->where('p.evenement = :evenement')
+            ->andWhere('p.datePassage >= :startOfWeek AND p.datePassage < :endOfWeek')
+            ->setParameter('evenement', $evenement)
+            ->setParameter('startOfWeek', $startOfWeek)
+            ->setParameter('endOfWeek', $endOfWeek)
+            ->addOrderBy('p.datePassage')
+            ->getQuery()
+            ->getResult();
+    }
 }

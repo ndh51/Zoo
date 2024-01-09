@@ -55,4 +55,19 @@
             </div>
         {% endif %}
     </div>
+
+    {% if passageEvenements is not empty %}
+    <div class="calender">
+        <p class="titre">Créneaux pour cet évènement cette semaine :</p>
+        <div class="lstcreneaux">
+        {% for passage in passageEvenements %}
+            <div class="creneaux">
+                <p>{{ passage.DatePassage | date('d/m/Y') }}</p>
+                <p>{{ passage.HDebEvenement }}</p>
+                <p>{{ passage.nbPlacesRestantes }} / {{ evenement.nbPlaceMaxEvent }} places restantes</p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}

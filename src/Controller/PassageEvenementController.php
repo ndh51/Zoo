@@ -6,9 +6,7 @@ use App\Entity\PassageEvenement;
 use App\Form\PassageEvenementType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,20 +14,24 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class PassageEvenementController extends AbstractController
 {
-    #[Route('/passage/evenement', name: 'app_passage_evenement')]
+    /*#[Route('/passage/evenement', name: 'app_passage_evenement')]
     public function index(): Response
     {
         return $this->render('passage_evenement/index.html.twig', [
             'controller_name' => 'PassageEvenementController',
         ]);
-    }
+    }*/
 
     #[Route('/passage/evenement/{id<\d+>}', name: 'app_passage_evenement_id')]
-    public function show(PassageEvenement $passageEvenement): Response
+    public function show(?PassageEvenement $passageEvenement): Response
     {
-        return $this->render('passageEvenement/show.html.twig', [
-            'passageEvenement' => $passageEvenement,
-        ]);
+        if (is_null($passageEvenement)) {
+            return $this->redirectToRoute('app_home', status: 303);
+        } else {
+            return $this->render('passageEvenement/show.html.twig', [
+                'passageEvenement' => $passageEvenement,
+            ]);
+        }
     }
 
     #[isGranted('ROLE_ADMIN')]
@@ -41,6 +43,7 @@ class PassageEvenementController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $passageEvenement->setNbPlacesRestantes($passageEvenement->getEvenement()->getNbPlaceMaxEvent());
             $entityManager->persist($passageEvenement);
             $entityManager->flush();
 
@@ -57,7 +60,6 @@ class PassageEvenementController extends AbstractController
     public function update(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PassageEvenementType::class, $passageEvenement);
-
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

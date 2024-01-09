@@ -36,9 +36,13 @@ class EvenementController extends AbstractController
         }
 
         $animaux = $eventRepo->findAnimals($evenement);
+        $passages = $eventRepo->findPassageForThisWeek($evenement);
 
         return $this->render('evenement/show.html.twig', [
-            'evenement' => $evenement, 'animaux' => $animaux]);
+            'evenement' => $evenement,
+            'animaux' => $animaux,
+            'passageEvenements' => $passages,
+            ]);
     }
 
     #[isGranted('ROLE_ADMIN')]
