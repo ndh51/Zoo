@@ -6,6 +6,8 @@ use App\Entity\Animal;
 use App\Entity\Enclos;
 use App\Entity\Evenement;
 use App\Entity\Famille;
+use App\Entity\Image;
+use App\Entity\PassageEvenement;
 use App\Entity\Visiteur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -61,6 +63,12 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Visiteur', 'fas fa-list', Visiteur::class);
         yield MenuItem::linkToCrud('Add Visiteur', 'fa fa-tags', Visiteur::class)->setAction('new');
+
+        yield MenuItem::linkToCrud('Passage d\'un évènement', 'fas fa-list', PassageEvenement::class);
+        yield MenuItem::linkToCrud('Add Passage d\'un évènement', 'fas fa-tags', PassageEvenement::class)->setAction('new');
+
+        yield MenuItem::linkToCrud('Image', 'fas fa-list', Image::class);
+        yield MenuItem::linkToCrud('Add Image', 'fa fa-tags', Image::class)->setAction('new');
 
     }
 }

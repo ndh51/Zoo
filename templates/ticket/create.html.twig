@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styleTicket.css">
+{% endblock %}
+
+{% block body %}
+    <title>Création d'un ticket pour {{ visiteur.prenomVisiteur }} {{ visiteur.nomVisiteur }}</title>
+    <h1>Création d'un ticket pour {{ visiteur.prenomVisiteur }} {{ visiteur.nomVisiteur }}</h1>
+
+    {{ form_start(form, {'method': 'POST'}) }}
+        {{ form_row(form.dateTicket) }}
+        <div class="form">
+            <div class="checkboxArea">
+                <div class="subCheckboxArea">
+                    <p>Animaux à voir (facultatif)</p>
+                    {{ form_row(form.vues) }}
+                </div>
+                {% if form.reservationEvenement is not empty %}
+                    <div class="subCheckboxArea">
+                        <p>Quels évènements souhaitez vous réserver ?</p>
+                        {{ form_row(form.reservationEvenement) }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-success w-75 p-3">Créer le ticket</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
+

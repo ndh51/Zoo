@@ -2,6 +2,11 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+{% endblock %}
+
 {% block body %}
 <form method="post">
     {% if error %}
@@ -13,6 +18,8 @@
             Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
     {% endif %}
+
+
 
     <h1 class="h3 mb-3 font-weight-normal text-light">Connectez-vous</h1>
     <label class="text-light" for="inputEmail">E-mail</label>
@@ -27,5 +34,6 @@
     <button class="w-100 mt-3 btn btn-lg btn-primary" type="submit">
         Connexion
     </button>
+    <a style="color: ghostwhite" href="{{ path('app_register') }}">Pas encore de compte ?</a>
 </form>
 {% endblock %}

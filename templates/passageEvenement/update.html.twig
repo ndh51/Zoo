@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+
+{% block title %}Passage évènement update{% endblock %}
+
+{% block body %}
+    <h1> Mise à jour du passage de l'évènement, {{ passageEvenement.evenement.nomEvent }}</h1>
+    {{ include('passageEvenement/_form.html.twig', {'form': form, 'sumbmit_label' : 'Modifier', 'update' : true}, with_context = false) }}
+
+{% endblock %}

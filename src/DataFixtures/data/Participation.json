@@ -1,0 +1,60 @@
+{
+  "participations": [
+    {
+      "evenement": "Safari Nocturne",
+      "animaux": ["Lion", "Girafe", "Kangourou", "Gorille", "Hippopotame", "Éléphant"]
+    },
+    {
+      "evenement": "Journée des Super Héros Animaux",
+      "animaux": ["Lion", "Panthère", "Faucon", "Aigle", "Panda"]
+    },
+    {
+      "evenement": "Atelier de Sculpture de Glace pour Pingouins",
+      "animaux": ["Ours Polaire", "Pingouin", "Otarie", "Pélican"]
+    },
+    {
+      "evenement": "Concert sous les Étoiles",
+      "animaux": ["Chouette", "Papillon Monarque", "Chauve-souris", "Faucon", "Panda Rouge"]
+    },
+    {
+      "evenement": "Festival de la Jungle",
+      "animaux": ["Gorille", "Pangolin", "Chimpanzé", "Crocodile"]
+    },
+    {
+      "evenement": "Journée des Gardiens en Herbe",
+      "animaux": ["Poule", "Hérisson", "Koala", "Tortue", "Chameau", "Écureuil"]
+    },
+    {
+      "evenement": "Chasse au Trésor Zoologique",
+      "animaux": ["Pélican", "Otarie", "Crapaud", "Grenouille"]
+    },
+    {
+      "evenement": "Yoga avec les Girafes",
+      "animaux": ["Girafe"]
+    },
+    {
+      "evenement": "Course Fun pour Animaux de Compagnie",
+      "animaux": ["Panda Rouge", "Perroquet", "Hérisson", "Grenouille", "Écureuil"]
+    },
+    {
+      "evenement": "Rencontre avec le Vétérinaire",
+      "animaux": ["Papillon Monarque", "Faucon", "Pangolin", "Dauphin"]
+    },
+    {
+      "evenement": "Journée des Sciences Naturelles",
+      "animaux": ["Araignée", "Chouette", "Papillon Monarque", "Requin", "Coccinelle"]
+    },
+    {
+      "evenement": "Soirée Cinéma en Plein Air",
+      "animaux": ["Panda Rouge", "Chauve-souris"]
+    },
+    {
+      "evenement": "Fête d'Anniversaire Géante pour les Tortues",
+      "animaux": ["Tortue"]
+    },
+    {
+      "evenement": "Journée des Oiseaux Migrateurs",
+      "animaux": ["Pélican", "Papillon Monarque", "Aigle", "Faucon", "Perroquet"]
+    }
+  ]
+}

@@ -223,6 +223,21 @@
       "famille": "Bufonidés",
       "categorie": "Amphibien",
       "enclos": "Zone aquatique"
+    },
+    {
+      "nom": "Pingouin",
+      "description": "Les pingouins sont des oiseaux marins qui ont évolué pour nager et plonger. Leurs ailes ont évolué en nageoires pour une propulsion efficace sous l'eau. Les pingouins se nourrissent principalement de poissons et de krill.",
+      "famille": "Oiseaux",
+      "categorie": "Oiseaux",
+      "enclos": "Zone côtière"
+    },
+    {
+      "nom": "Perroquet",
+      "description": "Les perroquets sont des oiseaux colorés appartenant à l'ordre des Psittaciformes. Ils ont un bec crochu, une langue musclée et des pieds zygodactyles adaptés à l'escalade. Les perroquets sont connus pour leur capacité à imiter les sons et les paroles humaines.",
+      "famille": "Oiseaux",
+      "categorie": "Oiseaux",
+      "enclos": "Forêt tropicale"
     }
+
   ]
 }

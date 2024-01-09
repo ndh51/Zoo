@@ -45,15 +45,16 @@ class Evenement
     private ?Image $image = null;
 
     #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: PassageEvenement::class, cascade: ['remove'])]
-    private Collection $passageEvenement;
+    private Collection $passageEvenements;
 
     #[ORM\Column]
     private ?int $duree = null;
 
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->passageEvenement = new ArrayCollection();
+        $this->passageEvenements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,24 +155,24 @@ class Evenement
     /**
      * @return Collection<int, PassageEvenement>
      */
-    public function getPassageEvenements(): Collection
+    public function getPassageEvenement(): Collection
     {
         return $this->passageEvenements;
     }
 
-    public function addPassageEvenement(PassageEvenement $passageEvenement): static
+    public function addPassageEvenements(PassageEvenement $passageEvenement): static
     {
-        if (!$this->passageEvenement->contains($passageEvenement)) {
-            $this->passageEvenement->add($passageEvenement);
+        if (!$this->passageEvenements->contains($passageEvenement)) {
+            $this->passageEvenements->add($passageEvenement);
             $passageEvenement->setEvenement($this);
         }
 
         return $this;
     }
 
-    public function removePassageEvenement(PassageEvenement $passageEvenement): static
+    public function removePassageEvenements(PassageEvenement $passageEvenement): static
     {
-        if ($this->passageEvenement->removeElement($passageEvenement)) {
+        if ($this->passageEvenements->removeElement($passageEvenement)) {
             // set the owning side to null (unless already changed)
             if ($passageEvenement->getEvenement() === $this) {
                 $passageEvenement->setEvenement(null);

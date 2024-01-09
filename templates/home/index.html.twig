@@ -39,10 +39,10 @@
 {% block body %}
     <div class="contenu">
         {% if is_granted('IS_AUTHENTICATED') %}
-            <h2 class="text-light">Bonjour {{ app.user.nomVisiteur }}</h2>
+            <h2 class="text-light">Bonjour {{ app.user.prenomVisiteur }}</h2>
         {% endif %}
         <div class="events">
-        <h3>Évènements :</h3>
+        <h3>Évènements</h3>
             <div id="carousel-container-maison">
                 <div id="carousel-content-maison">
                     {% for evenement in evenements %}
@@ -61,7 +61,7 @@
             </div>
         </div>
         <br>
-        <h3>Animaux :</h3>
+        <h3>Animaux</h3>
         <div class="animaux">
                 {% for animal in animaux %}
                         <div class="animal">

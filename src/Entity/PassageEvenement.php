@@ -20,15 +20,17 @@ class PassageEvenement
     #[Assert\Time]
     private ?string $hDebEvenement = null;
 
-    #[ORM\Column(length: 50)]
-    #[Assert\Time]
-    private ?string $hFinEvenement = null;
-
     #[ORM\ManyToOne(inversedBy: 'passageEvenement')]
     private ?Evenement $evenement = null;
 
     #[ORM\OneToMany(mappedBy: 'passageEvenement', targetEntity: ReservationEvenement::class, cascade: ['remove'])]
     private Collection $reservationEvenement;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datePassage = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nbPlacesRestantes = null;
 
     public function __construct()
     {
@@ -48,18 +50,6 @@ class PassageEvenement
     public function setHDebEvenement(string $hDebEvenement): static
     {
         $this->hDebEvenement = $hDebEvenement;
-
-        return $this;
-    }
-
-    public function getHFinEvenement(): ?string
-    {
-        return $this->hFinEvenement;
-    }
-
-    public function setHFinEvenement(string $hFinEvenement): static
-    {
-        $this->hFinEvenement = $hFinEvenement;
 
         return $this;
     }
@@ -102,6 +92,38 @@ class PassageEvenement
                 $reservationEvenement->setPassageEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDatePassage(): ?\DateTimeInterface
+    {
+        return $this->datePassage;
+    }
+
+    public function setDatePassage(\DateTimeInterface $datePassage): static
+    {
+        $this->datePassage = $datePassage;
+
+        return $this;
+    }
+
+
+    public function getNbPlacesRestantes(): ?int
+    {
+        return $this->nbPlacesRestantes;
+    }
+
+    public function setNbPlacesRestantes(int $nbPlacesRestantes): static
+    {
+        $this->nbPlacesRestantes = $nbPlacesRestantes;
+
+        return $this;
+    }
+
+    public function substractNbPlacesRestantes(int $nbPers): static
+    {
+        $this->nbPlacesRestantes -= $nbPers;
 
         return $this;
     }

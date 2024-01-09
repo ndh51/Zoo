@@ -1,15 +1,22 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/delete.css">
+{% endblock %}
+
 {% block body %}
     <title>Suppression de {{ evenement.nomEvent }}</title>
     <h1>Suppression de {{ evenement.nomEvent }}</h1>
-    <h1>Voulez vous vraiment supprimer cet evenement ? :</h1>
-    <h2>{{ evenement.nomEvent }}</h2>
+    <div class="suppression">
+        <h1>Voulez vous vraiment supprimer cet evenement ?</h1>
+        <h2>{{ evenement.nomEvent }}</h2>
 
-    {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
-        {{form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-danger'}} )}}
-        {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
-    {{ form_end(form) }}
-
+        {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
+            {{form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-danger'}} )}}
+            {{ form_row(form.cancel, { 'label': 'Annuler', 'attr': {'class': 'btn btn-secondary'} })}}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
