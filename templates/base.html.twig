@@ -13,7 +13,6 @@
                 crossorigin="anonymous"></script>
 
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-          <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         {% block stylesheets %}
         {% endblock %}
@@ -51,12 +50,6 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('app_animal') }}">Animaux</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_enclos') }}">Enclos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_famille') }}">Familles</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('admin') }}">Admin</a>

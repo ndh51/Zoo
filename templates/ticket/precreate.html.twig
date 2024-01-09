@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="/css/styleTicket.css">
+    <link rel="stylesheet" href="/css/style.css">
 {% endblock %}
 
 {% block body %}
     <title>Création d'un ticket pour {{ visiteur.prenomVisiteur }} {{ visiteur.nomVisiteur }}</title>
     <h1>Création d'un ticket pour {{ visiteur.prenomVisiteur }} {{ visiteur.nomVisiteur }}</h1>
 
-    <form class="d-flex flex-column"  role="search" action="{{ path('app_ticket_create') }}">
-        <h3>Selectionnez la date du ticket à créer :</h3>
+    <form class="d-flex flex-column ticket"  role="search" action="{{ path('app_ticket_create') }}">
+        <h2>Selectionnez la date du ticket à créer</h2>
         <input class="form-control me-2" type=date name="date" required>
 
-        <h3>Selectionnez le nombre de participants : </h3>
+        <h2>Selectionnez le nombre de participants</h2>
         <input class="form-control me-2 mb-2" type="number" name="nbPers" min="0" required>
 
-        <button class="btn btn-outline-success" type="submit">Créer un ticket</button>
+        <button class="btn btn-success w-100" type="submit">Créer un ticket</button>
     </form>
 {% endblock %}

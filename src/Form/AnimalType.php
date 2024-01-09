@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,7 +32,7 @@ class AnimalType extends AbstractType
     {
         $builder
             ->add('nomAnimal', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'Animal '])
-            ->add('descAnimal', TextType::class, ['empty_data' => '', 'label' => 'Description de l\'Animal '])
+            ->add('descAnimal', TextareaType::class, ['empty_data' => '', 'label' => 'Description de l\'Animal '])
             ->add('famille', EntityType::class, [
                 'required' => true,
                 'class' => Famille::class,
