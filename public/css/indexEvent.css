@@ -1,0 +1,33 @@
+p{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+img {
+    height: auto;
+    border-radius: 50px;
+}
+
+.evenements{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.evenement{
+    margin: 25px;
+    width: 28%;
+    transition: transform .1s;
+}
+
+.evenement:hover{
+    transform: scale(1.1);
+}

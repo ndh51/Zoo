@@ -1,10 +1,27 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/indexEvent.css">
+{% endblock %}
+
 {% block title %}
     Événements!
 {% endblock %}
 
 {% block body %}
     <h1 class="text-light">Liste des évènements</h1>
-    {{ include('evenement/_evenement.html.twig') }}
+    <div class="evenements">
+        {% for evenement in evenements %}
+            <div class="evenement">
+                <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                    <img src="{{asset(evenement.image.pathImage)}}" alt="{{ evenement.nomEvent }}">
+                    <p>{{ evenement.nomEvent }}</p>
+                </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_evenement_update',{id: evenement.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><a href="{{ path('app_evenement_delete',{id: evenement.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
