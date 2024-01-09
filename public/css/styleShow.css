@@ -62,7 +62,7 @@ p{
     flex-direction: column;
 }
 
-.relationContentEvent{
+.relationContentEvent, .relationContent{
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -92,6 +92,10 @@ img{
     padding: 0.5%;
     border-radius: 100px;
     width:45%;
+}
+
+.emplacement{
+    padding-bottom: 2%;
 }
 
 @media (max-width: 1000px) {
