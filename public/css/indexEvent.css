@@ -1,5 +1,6 @@
 p{
     text-align: center;
+    margin: 0;
 }
 
 h1{
@@ -36,4 +37,9 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.crud{
+    padding: 5px;
+    border-radius: 25px;
 }

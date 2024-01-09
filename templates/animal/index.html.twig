@@ -16,7 +16,7 @@
                     <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
                 </a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <div class="nomAnimalModif"><a href="{{ path('app_animal_update',{id: animal.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><p>{{ animal.nomAnimal }}</p><a href="{{ path('app_animal_delete',{id: animal.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a></div>
+                        <div class="nomAnimalModif"><a href="{{ path('app_animal_update',{id: animal.id}) }}"><span class="material-symbols-outlined crud" style="background-color: orange">edit</span></a><p>{{ animal.nomAnimal }}</p><a href="{{ path('app_animal_delete',{id: animal.id}) }}"><span class="material-symbols-outlined crud" style="background-color: red">delete</span></a></div>
                     {% else %}
                         <p>{{ animal.nomAnimal }}</p>
                     {% endif %}
