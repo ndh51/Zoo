@@ -17,7 +17,8 @@ class VisiteurFixtures extends Fixture implements OrderedFixtureInterface
         VisiteurFactory::createMany(20);
     }
 
-    public function getOrder(): int{
+    public function getOrder(): int
+    {
         return 8;
     }
 }
