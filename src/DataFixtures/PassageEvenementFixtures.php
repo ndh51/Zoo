@@ -20,24 +20,35 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
 
     public function load(ObjectManager $manager): void
     {
-        $faker = PassageEvenementFactory::faker();
         $dateDebut = new \DateTime();
-        $I5ans = new \DateInterval('P5Y');
-        $dateFin = $dateDebut->add($I5ans);
+        $I5ans = new \DateInterval('P1Y');
+        $dateFin = new \DateTime();
+        $dateFin->add($I5ans);
         while ($dateDebut < $dateFin) {
             $heures = 10;
             $minutes = 0;
             $evenements = EvenementFactory::randomSet(5);
             for ($i = 0; $i < 5; ++$i) {
                 $evenement = $evenements[$i];
+                $duree = $evenement->getDuree();
+                if (0 == intval($minutes)) {
+                    $horaire = $heures.':'.intval($minutes).'0';
+                } else {
+                    $horaire = $heures.':'.intval($minutes);
+                }
                 PassageEvenementFactory::createOne([
-                    'hDebEvenement' => $heures.':'.$minutes,
+                    'hDebEvenement' => $horaire,
                     'evenement' => $evenement,
                     'nbPlacesRestantes' => $evenement->getNbPlaceMaxEvent(),
                     'datePassage' => $dateDebut]);
-                $manager->persist();
-                $dateDebut->add(new \DateInterval('P1D'));
+                $minutes += $duree + $duree / 2;
+                $minutes = $minutes - ($minutes % 10);
+                while ($minutes >= 60) {
+                    ++$heures;
+                    $minutes -= 60;
+                }
             }
+            $dateDebut->add(new \DateInterval('P1D'));
         }
     }
 
