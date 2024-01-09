@@ -11,7 +11,9 @@
 
 {% block body %}
     <h1 class="text-light">Liste des évènements</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('app_evenement_create') }}" class="create">Crée un évènement</a>
+    {% endif %}
     <div class="evenements">
         {% for evenement in evenements %}
             <div class="evenement">
