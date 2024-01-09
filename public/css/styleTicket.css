@@ -71,3 +71,10 @@ legend{
     flex-direction: row;
     justify-content: space-around;
 }
+
+@media (max-width: 1000px) {
+.reservation{
+    flex-direction: column-reverse;
+}
+
+}
