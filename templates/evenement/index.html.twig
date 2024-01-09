@@ -11,6 +11,7 @@
 
 {% block body %}
     <h1 class="text-light">Liste des évènements</h1>
+    <a href="{{ path('app_evenement_create') }}" class="create">Crée un évènement</a>
     <div class="evenements">
         {% for evenement in evenements %}
             <div class="evenement">
