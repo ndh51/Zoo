@@ -47,3 +47,27 @@ legend{
     align-items: center;
 }
 
+.animal:hover, .evenement:hover{
+    transform: scale(1);
+}
+
+.evenements{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.evenement > img, .animal > img{
+    max-width: 200px;
+    height: auto;
+}
+
+.animal{
+    width: auto;
+}
+
+.reservation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
