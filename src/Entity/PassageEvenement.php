@@ -29,7 +29,7 @@ class PassageEvenement
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $datePassage = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $nbPlacesRestantes = null;
 
     public function __construct()
