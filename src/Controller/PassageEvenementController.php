@@ -41,6 +41,7 @@ class PassageEvenementController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $passageEvenement->setNbPlacesRestantes($passageEvenement->getEvenement()->getNbPlaceMaxEvent());
             $entityManager->persist($passageEvenement);
             $entityManager->flush();
 
