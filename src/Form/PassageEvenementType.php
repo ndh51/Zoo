@@ -4,11 +4,11 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use App\Entity\PassageEvenement;
-use Doctrine\DBAL\Types\Types;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Regex;
@@ -28,6 +28,12 @@ class PassageEvenementType extends AbstractType
                 ],
             ])
             ->add('datePassage', DateType::class, ['label' => 'Date de l\'évènement'])
+            ->add('nbPlacesRestantes', IntegerType::class, [
+                'data' => null,
+                'required' => false,
+                'attr' => ['style' => 'display:none;'],
+                'label' => false,
+            ])
             ->add('Evenement', EntityType::class, [
                 'class' => Evenement::class,
                 'choice_label' => 'nomEvent',
