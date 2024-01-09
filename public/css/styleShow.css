@@ -65,7 +65,18 @@ img{
     width:45%;
 }
 
-
+.lstcreneaux{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.creneaux{
+    border-color: #005000;
+    border-radius: 1em;
+    border-style: solid;
+    background-color: #00500066;
+}
 @media (max-width: 1000px) {
 
     .entity {
