@@ -16,15 +16,15 @@ img {
     border-radius: 50px;
 }
 
-.evenements, .animaux{
+.evenements{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.evenement, .animal{
+.evenement{
     margin: 25px;
-    width: 20%;
+    width: 28%;
     transition: transform .1s;
 }
 
@@ -32,7 +32,7 @@ img {
     transform: scale(1.1);
 }
 
-.nomEventModif, .nomAnimalModif{
+.nomEventModif {
     display: flex;
     align-items: center;
     justify-content: space-evenly;

@@ -16,13 +16,12 @@
             <div class="evenement">
                 <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
                     <img src="{{asset(evenement.image.pathImage)}}" alt="{{ evenement.nomEvent }}">
-
+                </a>
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="nomEventModif"><a href="{{ path('app_evenement_update',{id: evenement.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><p>{{ evenement.nomEvent }}</p><a href="{{ path('app_evenement_delete',{id: evenement.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a></div>
                 {% else %}
                     <p>{{ evenement.nomEvent }}</p>
                 {% endif %}
-                </a>
             </div>
         {% endfor %}
     </div>
