@@ -12,7 +12,8 @@ body {
     background-image: linear-gradient(to right top, #f6f4d2, #e1e6c3, #cbd7b4, #b6c9a7, #a0bb9b, #87af93, #6ea28d, #559589, #33858a, #147389, #116084, #274c78);
 
     background-attachment: fixed;
-
+    display: flex;
+    flex-direction: column;
 }
 
 p{

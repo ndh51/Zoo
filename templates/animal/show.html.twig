@@ -3,6 +3,7 @@
 {% block title %}Détails de {{ animal.nomAnimal }}{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/styleShow.css">
 {% endblock %}
 
@@ -43,7 +44,7 @@
         {% if sameFamille is not empty %}
         <div class="relation">
             <p class="titre">Animaux de la même famille</p>
-            <div class="relationcontent">
+            <div class="relationContentFamille">
             {% for animal in sameFamille %}
                 <div class="entityFromRelation">
                     <a href="{{ path('app_animal_id', {id: animal.id}) }}">
@@ -58,7 +59,7 @@
         {% if events is not empty %}
         <div class="relation">
             <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
-            <div class="relationcontent">
+            <div class="relationContentEvent">
             {% for evenement in events %}
                 <div class="entityFromRelation">
                     <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
