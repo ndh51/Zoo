@@ -9,6 +9,7 @@
 {% block body %}
 
     <h1 class="text-light">Liste des animaux</h1>
+    <a href="{{ path('app_animal_create') }}" class="createAnimal">Crée un animal</a>
     <div class="animaux">
         {% for animal in animaux %}
             <div class="animal">

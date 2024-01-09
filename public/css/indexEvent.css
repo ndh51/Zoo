@@ -12,6 +12,15 @@ a{
     color: white;
 }
 
+.createAnimal{
+    text-align: center;
+    background-color: #0a53be;
+    border-radius: 15px;
+    width: 15%;
+    margin-inline: auto;
+
+}
+
 img {
     height: auto;
     border-radius: 50px;
