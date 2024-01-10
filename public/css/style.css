@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .hidden {
     display: none;
 }
@@ -71,7 +76,7 @@ h3 {
 img {
     width: 100%;
     height: auto;
-    display: block;
+    border-radius: 50px;
 }
 
 #precedent, #suivant {
@@ -93,7 +98,7 @@ img {
 
 .animaux, .evenements{
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 

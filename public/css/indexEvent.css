@@ -1,15 +1,9 @@
 p{
-    text-align: center;
     margin: 0;
 }
 
 h1{
     text-align: center;
-}
-
-a{
-    text-decoration: none;
-    color: white;
 }
 
 .create{
@@ -24,27 +18,6 @@ a{
 
 .create:hover{
     color: chartreuse;
-}
-
-img {
-    height: auto;
-    border-radius: 50px;
-}
-
-.evenements, .animaux{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.evenement, .animal{
-    margin: 25px;
-    width: 20%;
-    transition: transform .1s;
-}
-
-.evenement:hover{
-    transform: scale(1.1);
 }
 
 .nomEventModif, .nomAnimalModif{
