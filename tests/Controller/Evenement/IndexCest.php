@@ -31,7 +31,7 @@ class IndexCest
         $I->amOnPage('/evenement');
         $I->seeResponseCodeIs(200);
         $I->click('.evenements > .evenement > a');
-        $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
+        $I->seeCurrentRouteIs('app_evenement_show', ['id' => 1]);
     }
 
     public function testOnSortedEvenement(ControllerTester $I): void
