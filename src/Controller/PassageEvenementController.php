@@ -22,7 +22,7 @@ class PassageEvenementController extends AbstractController
         ]);
     }*/
 
-    #[Route('/passage/evenement/{id<\d+>}', name: 'app_passage_evenement_id')]
+    #[Route('/passage/evenement/{id}', name: 'app_passage_evenement_show', requirements: ['id' => '\d+'])]
     public function show(?PassageEvenement $passageEvenement): Response
     {
         if (is_null($passageEvenement)) {
@@ -47,7 +47,7 @@ class PassageEvenementController extends AbstractController
             $entityManager->persist($passageEvenement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()]);
+            return $this->redirectToRoute('app_passage_evenement_show', ['id' => $passageEvenement->getId()]);
         }
 
         return $this->render('passageEvenement/create.html.twig', [
@@ -56,7 +56,7 @@ class PassageEvenementController extends AbstractController
     }
 
     #[isGranted('ROLE_ADMIN')]
-    #[Route('/passage/evenement/{id<\d+>}/update', name: 'app_passage_evenement_update')]
+    #[Route('/passage/evenement/{id}/update', name: 'app_passage_evenement_update', requirements: ['id' => '\d+'])]
     public function update(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PassageEvenementType::class, $passageEvenement);
@@ -65,7 +65,7 @@ class PassageEvenementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()]);
+            return $this->redirectToRoute('app_passage_evenement_show', ['id' => $passageEvenement->getId()]);
         }
 
         return $this->render('passageEvenement/update.html.twig', [
@@ -75,7 +75,7 @@ class PassageEvenementController extends AbstractController
     }
 
     #[isGranted('ROLE_ADMIN')]
-    #[Route('/passage/evenement/{id<\d+>}/delete', name: 'app_passage_evenement_delete')]
+    #[Route('/passage/evenement/{id}/delete', name: 'app_passage_evenement_delete', requirements: ['id' => '\d+'])]
     public function delete(PassageEvenement $passageEvenement, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
@@ -92,9 +92,9 @@ class PassageEvenementController extends AbstractController
                 $entityManager->remove($passageEvenement);
                 $entityManager->flush();
 
-                return $this->redirectToRoute('app_evenement_id', ['id' => $idEvent], status: 303);
+                return $this->redirectToRoute('app_evenement_show', ['id' => $idEvent], status: 303);
             } else {
-                return $this->redirectToRoute('app_passage_evenement_id', ['id' => $passageEvenement->getId()], status: 303);
+                return $this->redirectToRoute('app_passage_evenement_show', ['id' => $passageEvenement->getId()], status: 303);
             }
         }
 

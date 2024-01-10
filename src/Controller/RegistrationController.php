@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
                 $request,
             );
 
-            return $this->redirectToRoute('app_visiteur_id', ['id' => $user->getId()]);
+            return $this->redirectToRoute('app_visiteur_show', ['id' => $user->getId()]);
         }
 
         return $this->render('registration/register.html.twig', [

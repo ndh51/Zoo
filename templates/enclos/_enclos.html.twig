@@ -2,7 +2,7 @@
     <li class="list-group-item"><a href="{{ path('app_enclos_create') }}">Ajouter un enclos</a></li>
     {% for enclos in enclos %}
         <li class="list-group-item list-group-item-action">
-            <a href="{{ path('app_enclos_id', {id: enclos.id}) }}">{{ enclos.nomEnclos }}</a>
+            <a href="{{ path('app_enclos_show', {id: enclos.id}) }}">{{ enclos.nomEnclos }}</a>
             <a href="{{ path('app_enclos_update',{id: enclos.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><a href="{{ path('app_enclos_delete',{id: enclos.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
         </li>
     {% endfor %}

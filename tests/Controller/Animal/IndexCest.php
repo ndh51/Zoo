@@ -48,7 +48,7 @@ class IndexCest
         $I->seeResponseCodeIs(200);
 
         $I->click('.animaux > .animal > a');
-        $I->seeCurrentRouteIs('app_animal_id', ['id' => 1]);
+        $I->seeCurrentRouteIs('app_animal_show', ['id' => 1]);
     }
 
     public function testOnSortedAnimal(ControllerTester $I): void

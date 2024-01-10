@@ -26,7 +26,7 @@ class FamilleController extends AbstractController
         ]);
     }
 
-    #[Route('/famille/{id<\d+>}', name: 'app_famille_id')]
+    #[Route('/famille/{id}', name: 'app_famille_show', requirements: ['id' => '\d+'])]
     public function show(Famille $famille): Response
     {
         return $this->render('famille/show.html.twig', ['famille' => $famille]);
@@ -44,7 +44,7 @@ class FamilleController extends AbstractController
             $entityManager->persist($famille);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()]);
+            return $this->redirectToRoute('app_famille_show', ['id' => $famille->getId()]);
         }
 
         return $this->render('famille/create.html.twig',
@@ -52,7 +52,7 @@ class FamilleController extends AbstractController
     }
 
     #[isGranted('ROLE_ADMIN')]
-    #[Route('/famille/{id<\d+>}/update', name: 'app_famille_update')]
+    #[Route('/famille/{id}/update', name: 'app_famille_update', requirements: ['id' => '\d+'])]
     public function update(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(FamilleType::class, $famille);
@@ -60,7 +60,7 @@ class FamilleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()]);
+            return $this->redirectToRoute('app_famille_show', ['id' => $famille->getId()]);
         }
 
         return $this->render('famille/update.html.twig', [
@@ -70,7 +70,7 @@ class FamilleController extends AbstractController
     }
 
     #[isGranted('ROLE_ADMIN')]
-    #[Route('/famille/{id<\d+>}/delete', name: 'app_famille_delete')]
+    #[Route('/famille/{id}/delete', name: 'app_famille_delete', requirements: ['id' => '\d+'])]
     public function delete(Famille $famille, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
@@ -92,7 +92,7 @@ class FamilleController extends AbstractController
 
                 return $this->redirectToRoute('app_famille', status: 303);
             } else {
-                return $this->redirectToRoute('app_famille_id', ['id' => $famille->getId()], status: 303);
+                return $this->redirectToRoute('app_famille_show', ['id' => $famille->getId()], status: 303);
             }
         }
 

@@ -17,7 +17,7 @@ form > div{
     flex-direction: column;
 }
 
-input{
+.form > form > div > input button{
     border-radius: 5px;
     border-color: transparent;
     margin-top: 8px;

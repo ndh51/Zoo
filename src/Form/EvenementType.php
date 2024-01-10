@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class EvenementType extends AbstractType
 {
@@ -21,7 +22,14 @@ class EvenementType extends AbstractType
         $builder
             ->add('nomEvent', TextType::class, ['empty_data' => '', 'label' => 'Nom de l\'évènement '])
             ->add('descEvent', TextareaType::class, ['empty_data' => '', 'label' => 'Description de l\'évènement '])
-            ->add('nbPlaceMaxEvent', IntegerType::class, ['label' => 'Nombre de places maximum '])
+            ->add('nbPlaceMaxEvent', IntegerType::class, [
+                'label' => 'Nombre de places maximum ',
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'La valeur doit être supérieure à zéro.',
+                    ]),
+                ], ])
             ->add('enclos', EntityType::class, [
                 'required' => false,
                 'class' => Enclos::class,
@@ -33,7 +41,14 @@ class EvenementType extends AbstractType
                 },
             ]
             )
-            ->add('duree', IntegerType::class, ['label' => 'Durée'])
+            ->add('duree', IntegerType::class, [
+                'label' => 'Durée',
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'La valeur doit être supérieure à zéro.',
+                    ]),
+                ], ])
             ->add('image', EntityType::class, [
                 'class' => Image::class,
                 'choice_label' => 'id',
