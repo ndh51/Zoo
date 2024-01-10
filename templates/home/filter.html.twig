@@ -1,17 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/style.css">
+{% endblock %}
+
 {% block title %}
     Recherche de {{ recherche }}
 {% endblock %}
 
 {% block body %}
-    <h1>Recherche de : {{ recherche }}</h1>
     {% if evenements is not empty %}
-        <h3>Évènements</h3>
-        {{ include('evenement/_evenement.html.twig') }}
+        <h3>Évènements correspondent à {{ recherche }}</h3>
+        <div class="evenements">
+            {% for evenement in evenements %}
+                <div class="evenement">
+                    <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                        <img src="{{asset(evenement.image.pathImage)}}"  alt="{{ evenement.nomEvent }}">
+
+                        <p>{{ evenement.nomEvent }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
     {% if animaux is not empty %}
-        <h3>Animaux</h3>
-        {{ include('animal/_animal.html.twig') }}
+        <h3>Animaux correspondent à {{ recherche }}</h3>
+        <div class="animaux">
+            {% for animal in animaux %}
+                <div class="animal">
+                    <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                        <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
+
+                        <p>{{ animal.nomAnimal }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}
