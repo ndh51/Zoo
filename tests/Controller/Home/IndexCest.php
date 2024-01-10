@@ -40,7 +40,7 @@ class IndexCest
         $I->amOnPage('/');
         $I->seeResponseCodeIs(200);
         $I->click('.carousel-item-maison > a');
-        $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
+        $I->seeCurrentRouteIs('app_evenement_show', ['id' => 1]);
         $I->seeResponseCodeIs(200);
     }
 
@@ -80,7 +80,7 @@ class IndexCest
         $I->amOnPage('/');
         $I->seeResponseCodeIs(200);
         $I->click('.carousel-item-maison > a');
-        $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
+        $I->seeCurrentRouteIs('app_evenement_show', ['id' => 1]);
         $I->seeResponseCodeIs(200);
     }
 }

@@ -25,7 +25,7 @@ class AnimalController extends AbstractController
         return $this->render('animal/index.html.twig', ['animaux' => $animaux]);
     }
 
-    #[Route('/animal/{id}', name: 'app_animal_id', requirements: ['id' => '\d+'])]
+    #[Route('/animal/{id}', name: 'app_animal_show', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Animal $animal, AnimalRepository $animalRepo): Response
     {
@@ -52,7 +52,7 @@ class AnimalController extends AbstractController
             $entityManager->persist($animal);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_animal_id', ['id' => $animal->getId()]);
+            return $this->redirectToRoute('app_animal_show', ['id' => $animal->getId()]);
         }
 
         return $this->render('animal/create.html.twig',
@@ -69,7 +69,7 @@ class AnimalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_animal_id', ['id' => $animal->getId()]);
+            return $this->redirectToRoute('app_animal_show', ['id' => $animal->getId()]);
         }
 
         return $this->render('animal/update.html.twig', [
@@ -99,7 +99,7 @@ class AnimalController extends AbstractController
 
                 return $this->redirectToRoute('app_animal', status: 303);
             } else {
-                return $this->redirectToRoute('app_animal_id', ['id' => $animal->getId()], status: 303);
+                return $this->redirectToRoute('app_animal_show', ['id' => $animal->getId()], status: 303);
             }
         }
 

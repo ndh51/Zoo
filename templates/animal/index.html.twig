@@ -13,7 +13,7 @@
     <div class="animaux">
         {% for animal in animaux %}
             <div class="animal">
-                <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                <a href="{{ path('app_animal_show', {id: animal.id}) }}">
                     <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
                 </a>
                     {% if is_granted('ROLE_ADMIN') %}
