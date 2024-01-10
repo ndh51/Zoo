@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .hidden {
     display: none;
 }
@@ -71,7 +76,7 @@ h3 {
 img {
     width: 100%;
     height: auto;
-    display: block;
+    border-radius: 50px;
 }
 
 #precedent, #suivant {
@@ -91,24 +96,24 @@ img {
     right: 10px;
 }
 
-.animaux{
+.animaux, .evenements{
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.animal {
+.animal, .evenement {
     margin: 25px;
     width: 20%;
     text-align: center;
     transition: transform .1s;
 }
 
-.animal:hover{
+.animal:hover, .evenement:hover{
     transform: scale(1.1);
 }
 
-.animal img {
+.animal img, .evenement img {
     height: auto;
     border-radius: 50px;
 }

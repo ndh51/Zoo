@@ -32,6 +32,7 @@ p{
     flex-direction: column;
     align-items: center;
 }
+
 .reservation > button{
     width: 25%;
 }
@@ -40,6 +41,7 @@ p{
     text-decoration: underline;
     font-size: 150%;
 }
+
 .nomEntity{
     font-size: 300%;
     text-align: center;
@@ -52,6 +54,7 @@ p{
     padding: 2%;
     justify-content: space-around;
 }
+
 /*
 .relation{
     display: flex;
@@ -90,6 +93,7 @@ p{
     transition: transform .1s;
     padding: 1%;
 }
+
 a > p{
     text-align: center;
 }
