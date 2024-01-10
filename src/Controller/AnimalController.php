@@ -30,7 +30,7 @@ class AnimalController extends AbstractController
         ?Animal $animal, AnimalRepository $animalRepo): Response
     {
         if (is_null($animal)) {
-            return $this->redirectToRoute('app_animal', status: 303);
+            return $this->redirectToRoute('app_home', status: 303);
         }
         $sameFamily = $animalRepo->findWithTheSameFamily($animal);
         $events = $animalRepo->findEvents($animal);
