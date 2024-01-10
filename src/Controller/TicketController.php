@@ -19,7 +19,7 @@ class TicketController extends AbstractController
 {
     #[Route('/ticket/{id}', name: 'app_ticket_id', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
-        ?Ticket $ticket, TicketRepository $ticketRepo): Response
+        ?Ticket $ticket): Response
     {
         if (is_null($ticket)) {
             return $this->redirectToRoute('app_visiteur_id', ['id' => $this->getUser()->getId()]);
