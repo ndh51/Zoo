@@ -19,9 +19,9 @@ class PassageEvenementCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('hDebEvenement'),
-            DateField::new('datePassage'),
-            AssociationField::new('evenement')
+            TextField::new('hDebEvenement', 'Heure de début'),
+            DateField::new('datePassage', 'Date'),
+            AssociationField::new('evenement', 'Évènement')
                 ->setFormTypeOptions([
                     'choice_label' => 'nomEvent',
                     'query_builder' => function (EntityRepository $entityRepository) {

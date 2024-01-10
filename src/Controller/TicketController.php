@@ -17,12 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TicketController extends AbstractController
 {
-    #[Route('/ticket/{id}', name: 'app_ticket_id', requirements: ['id' => '\d+'])]
+    #[Route('/ticket/{id}', name: 'app_ticket_show', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
-        ?Ticket $ticket, TicketRepository $ticketRepo): Response
+        ?Ticket $ticket): Response
     {
         if (is_null($ticket)) {
-            return $this->redirectToRoute('app_visiteur_id', ['id' => $this->getUser()->getId()]);
+            return $this->redirectToRoute('app_visiteur_show', ['id' => $this->getUser()->getId()]);
         }
 
         if ($ticket->getVisiteur() !== $this->getUser()) {
@@ -59,7 +59,7 @@ class TicketController extends AbstractController
         $nbPers = $request->query->get('nbPers', 1);
         $d = new \DateTime($date);
         if ('' == $date || null != $ticketRepository->findOneBy(['dateTicket' => $d])) {
-            return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
+            return $this->redirectToRoute('app_visiteur_show', ['id' => $currentUser->getId()]);
         }
 
         try {
@@ -107,7 +107,7 @@ class TicketController extends AbstractController
             ]);
         } catch (\Exception $e) {
             // On tombe ici la date passée en paramètre n'est pas valide
-            return $this->redirectToRoute('app_visiteur_id', ['id' => $currentUser->getId()]);
+            return $this->redirectToRoute('app_visiteur_show', ['id' => $currentUser->getId()]);
         }
     }
 }

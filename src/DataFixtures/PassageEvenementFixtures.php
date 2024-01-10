@@ -41,7 +41,7 @@ class PassageEvenementFixtures extends Fixture implements OrderedFixtureInterfac
                     'evenement' => $evenement,
                     'nbPlacesRestantes' => $evenement->getNbPlaceMaxEvent(),
                     'datePassage' => $dateDebut]);
-                $minutes += $duree + $duree / 2;
+                $minutes += $duree + 60;
                 $minutes = $minutes - ($minutes % 10);
                 while ($minutes >= 60) {
                     ++$heures;

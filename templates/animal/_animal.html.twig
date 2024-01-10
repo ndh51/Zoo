@@ -1,9 +1,13 @@
 <ul class="list-group" id="animals">
+    {% if is_granted('ROLE_ADMIN') %}
     <li class="list-group-item"><a class="" aria-current="page" href="{{ path('app_animal_create') }}">Ajouter un animal</a></li>
+    {% endif %}
 {% for animal in animaux %}
     <li class="list-group-item list-group-item-action">
-        <a href="{{ path('app_animal_id', {id: animal.id}) }}">{{ animal.nomAnimal }}</a>
+        <a href="{{ path('app_animal_show', {id: animal.id}) }}">{{ animal.nomAnimal }}</a>
+        {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('app_animal_update',{id: animal.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><a href="{{ path('app_animal_delete',{id: animal.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
+        {% endif %}
     </li>
 {% endfor %}
 </ul>

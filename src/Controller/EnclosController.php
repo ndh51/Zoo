@@ -25,7 +25,7 @@ class EnclosController extends AbstractController
         return $this->render('enclos/index.html.twig', ['enclos' => $enclos]);
     }
 
-    #[Route('/enclos/{id}', name: 'app_enclos_id', requirements: ['id' => '\d+'])]
+    #[Route('/enclos/{id}', name: 'app_enclos_show', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')] ?Enclos $enclos): Response
     {
         if (is_null($enclos)) {
@@ -46,7 +46,7 @@ class EnclosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()]);
+            return $this->redirectToRoute('app_enclos_show', ['id' => $enclos->getId()]);
         }
 
         return $this->render('enclos/update.html.twig', [
@@ -69,7 +69,7 @@ class EnclosController extends AbstractController
             $entityManager->persist($enclos);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()]);
+            return $this->redirectToRoute('app_enclos_show', ['id' => $enclos->getId()]);
         }
 
         return $this->render('enclos/create.html.twig', [
@@ -109,7 +109,7 @@ class EnclosController extends AbstractController
 
                 return $this->redirectToRoute('app_enclos', status: 303);
             } else {
-                return $this->redirectToRoute('app_enclos_id', ['id' => $enclos->getId()], status: 303);
+                return $this->redirectToRoute('app_enclos_show', ['id' => $enclos->getId()], status: 303);
             }
         }
 

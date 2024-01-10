@@ -47,7 +47,7 @@
                 <div id="carousel-content-maison">
                     {% for evenement in evenements %}
                         <div class="carousel-item-maison">
-                            <a href="{{ path('app_evenement_id', {id: evenement.id}) }}">
+                            <a href="{{ path('app_evenement_show', {id: evenement.id}) }}">
                             <img src="{{asset(evenement.image.pathImage)}}"  alt="{{ evenement.nomEvent }}">
 
                             <p>{{ evenement.nomEvent }}</p>
@@ -65,7 +65,7 @@
         <div class="animaux">
                 {% for animal in animaux %}
                         <div class="animal">
-                            <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                            <a href="{{ path('app_animal_show', {id: animal.id}) }}">
                             <img src="{{asset(animal.image.pathImage)}}" alt="{{ animal.nomAnimal }}">
 
                             <p>{{ animal.nomAnimal }}</p>

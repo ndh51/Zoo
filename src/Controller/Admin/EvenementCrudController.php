@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class EvenementCrudController extends AbstractCrudController
 {
@@ -21,7 +22,13 @@ class EvenementCrudController extends AbstractCrudController
         return [
             TextField::new('nomEvent', 'Evenement'),
             TextField::new('descEvent', 'Description'),
-            IntegerField::new('nbPlaceMaxEvent', 'Nombre de place max'),
+            IntegerField::new('nbPlaceMaxEvent', 'Nombre de place max')
+            ->setFormTypeOptions(['constraints' => [
+                new GreaterThan([
+                    'value' => 0,
+                    'message' => 'La valeur doit être supérieure à zéro.',
+                ]),
+            ], ]),
             AssociationField::new('enclos', 'Enclos')
                 ->setFormTypeOptions(['choice_label' => 'nomEnclos',
                     'label' => 'Enclos',
@@ -32,7 +39,13 @@ class EvenementCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $entity->getenclos()?->getNomEnclos();
                 }),
-            IntegerField::new('duree', 'Durée'),
+            IntegerField::new('duree', 'Durée')
+            ->setFormTypeOptions(['constraints' => [
+                new GreaterThan([
+                    'value' => 0,
+                    'message' => 'La valeur doit être supérieure à zéro.',
+                ]),
+            ], ]),
             AssociationField::new('image', 'Image')
                 ->setFormTypeOptions(['choice_label' => 'pathImage',
                     'label' => 'Image', ])

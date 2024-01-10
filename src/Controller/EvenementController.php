@@ -27,7 +27,7 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/evenement/{id}', name: 'app_evenement_id', requirements: ['id' => '\d+'])]
+    #[Route('/evenement/{id}', name: 'app_evenement_show', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')]
         ?Evenement $evenement, EvenementRepository $eventRepo): Response
     {
@@ -57,7 +57,7 @@ class EvenementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()]);
+            return $this->redirectToRoute('app_evenement_show', ['id' => $evenement->getId()]);
         }
 
         return $this->render('evenement/update.html.twig', [
@@ -78,7 +78,7 @@ class EvenementController extends AbstractController
             $entityManager->persist($evenement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()]);
+            return $this->redirectToRoute('app_evenement_show', ['id' => $evenement->getId()]);
         }
 
         return $this->render('evenement/create.html.twig',
@@ -105,7 +105,7 @@ class EvenementController extends AbstractController
 
                 return $this->redirectToRoute('app_evenement', status: 303);
             } else {
-                return $this->redirectToRoute('app_evenement_id', ['id' => $evenement->getId()], status: 303);
+                return $this->redirectToRoute('app_evenement_show', ['id' => $evenement->getId()], status: 303);
             }
         }
 
