@@ -54,7 +54,7 @@ legend{
 .evenements{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .evenement > img, .animal > img{
@@ -72,9 +72,21 @@ legend{
     justify-content: space-around;
 }
 
-@media (max-width: 1000px) {
-.reservation{
-    flex-direction: column-reverse;
+.evenement img {
+    height: auto;
+    border-radius: 50px;
 }
+
+.evenement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px;
+}
+
+@media (max-width: 1000px) {
+    .reservation{
+        flex-direction: column-reverse;
+    }
 
 }
