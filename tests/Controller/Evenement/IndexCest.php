@@ -17,7 +17,7 @@ class IndexCest
         EvenementFactory::createMany(5, ['image' => $img]);
         $I->amOnPage('/evenement');
         $I->seeResponseCodeIs(200);
-        $I->seeNumberOfElements('.list-group-item.list-group-item-action > a', 5);
+        $I->seeNumberOfElements('.evenements > div', 5);
     }
 
     public function testOnClickOnAEvenement(ControllerTester $I): void
@@ -30,7 +30,7 @@ class IndexCest
 
         $I->amOnPage('/evenement');
         $I->seeResponseCodeIs(200);
-        $I->click('.list-group-item.list-group-item-action > a');
+        $I->click('.evenements > .evenement > a');
         $I->seeCurrentRouteIs('app_evenement_id', ['id' => 1]);
     }
 
@@ -49,7 +49,7 @@ class IndexCest
         );
         $I->amOnPage('/evenement');
         $I->seeResponseCodeIs(200);
-        $lstEvent = $I->grabMultiple('.list-group-item.list-group-item-action  > a');
+        $lstEvent = $I->grabMultiple('.evenements .evenement p');
         $I->assertEquals(['Spectacle des autruches', 'Spectacle des lions', 'Spectacle des otaries', 'Spectacle des tigres'], $lstEvent);
     }
 }
