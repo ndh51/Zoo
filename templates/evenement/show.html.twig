@@ -27,9 +27,7 @@
             </div>
             {% if is_granted('IS_AUTHENTICATED') %}
                 <div class="reservation">
-                    <button>RESERVER</button>
-
-                    <h2> future fonction get nb place restantes/{{ evenement.nbPlaceMaxEvent }} places restantes</h2>
+                    <button><a href="{{ path('app_ticket_precreate') }}">RESERVER</a></button>
                 </div>
             {% endif %}
 
@@ -45,7 +43,7 @@
                 <div class="relationContent">
                 {% for animal in animaux %}
                     <div class="entityFromRelation">
-                        <a href="{{ path('app_animal_id', {id: animal.id}) }}">
+                        <a href="{{ path('app_animal_show', {id: animal.id}) }}">
                             <img src="{{ asset(animal.Image.pathImage) }}"  alt="image {{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}">
                             <p>{{ animal.nomAnimal|first|upper}}{{ animal.nomAnimal|slice(1) }}</p>
                         </a>

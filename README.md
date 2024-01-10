@@ -42,7 +42,7 @@ composer stop
 ```  
 <br>
 
-Lancer la création totale de la base de données de zéro
+Lancer la création totale de la base de données de zéro **(celle-ci prend en moyenne 4 minutes)**
 ```bash
 composer db
 ```

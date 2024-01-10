@@ -51,18 +51,12 @@ legend{
     transform: scale(1);
 }
 
-.evenements{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
 .evenement > img, .animal > img{
     max-width: 200px;
     height: auto;
 }
 
-.animal{
+.animal, .evenement{
     width: auto;
 }
 
@@ -73,8 +67,8 @@ legend{
 }
 
 @media (max-width: 1000px) {
-.reservation{
-    flex-direction: column-reverse;
-}
+    .reservation{
+        flex-direction: column-reverse;
+    }
 
 }
