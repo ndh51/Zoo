@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VisiteurController extends AbstractController
 {
-    #[Route('/visiteur/{id}', name: 'app_visiteur_id', requirements: ['id' => '\d+'])]
+    #[Route('/visiteur/{id}', name: 'app_visiteur_show', requirements: ['id' => '\d+'])]
     public function show(#[MapEntity(expr: 'repository.findWithId(id)')] ?Visiteur $visiteur, TicketRepository $ticketRepository): Response
     {
         $currentUser = $this->getUser();

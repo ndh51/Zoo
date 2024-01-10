@@ -2,7 +2,7 @@
     <li class="list-group-item"><a class="" aria-current="page" href="{{ path('app_animal_create') }}">Ajouter un animal</a></li>
 {% for animal in animaux %}
     <li class="list-group-item list-group-item-action">
-        <a href="{{ path('app_animal_id', {id: animal.id}) }}">{{ animal.nomAnimal }}</a>
+        <a href="{{ path('app_animal_show', {id: animal.id}) }}">{{ animal.nomAnimal }}</a>
             <a href="{{ path('app_animal_update',{id: animal.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a><a href="{{ path('app_animal_delete',{id: animal.id}) }}"><span class="material-symbols-outlined text-danger">delete</span></a>
     </li>
 {% endfor %}
