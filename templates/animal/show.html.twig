@@ -35,8 +35,7 @@
         </div>
         {% if is_granted('IS_AUTHENTICATED') %}
             <div class="reservation">
-                <button>RESERVER</button>
-
+                <button><a href="{{ path('app_ticket_precreate') }}">RESERVER</a></button>
             </div>
         {% endif %}
     </div>
