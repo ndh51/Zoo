@@ -27,7 +27,7 @@
             </div>
             {% if is_granted('IS_AUTHENTICATED') %}
                 <div class="reservation">
-                    <button><a href="{{ path('app_ticket_precreate') }}">RESERVER</a></button>
+                    <button class="btn btn-success w-25"><a href="{{ path('app_ticket_precreate') }}">RESERVER</a></button>
                 </div>
             {% endif %}
 
@@ -56,7 +56,7 @@
 
     {% if passageEvenements is not empty %}
     <div class="calender">
-        <p class="titre">Créneaux pour cet évènement cette semaine :</p>
+        <p class="creneau">Créneaux pour cet évènement cette semaine</p>
         <div class="lstcreneaux">
         {% for passage in passageEvenements %}
             <div class="creneaux">
