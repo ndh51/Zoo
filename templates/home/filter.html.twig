@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Recherche de : {{ recherche }}</h1>
+    <h1>Recherche de : "{{ recherche }}"</h1>
     {% if evenements is not empty %}
         <h3>Évènements</h3>
         {{ include('evenement/_evenement.html.twig') }}
