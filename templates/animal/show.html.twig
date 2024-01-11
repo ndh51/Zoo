@@ -46,7 +46,7 @@
         {% endif %}
         {% if events is not empty %}
         <div class="evenementAnimal">
-            <p class="titre">Évènements avec {{ animal.nomAnimal }}</p>
+            <p class="titre">Évènements avec "{{ animal.nomAnimal }}"</p>
             {% for evenement in events %}
             <a href="{{ path('app_evenement_id', {id: evenement}) }}">
             <img src="{{ asset(evenement.Image.pathImage) }}" alt="image {{ evenement.nomEvent }}">
