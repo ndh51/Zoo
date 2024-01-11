@@ -5,7 +5,7 @@
 {% block title %}Famille delete{% endblock %}
 
 {% block body %}
-    <h1>Suppression de {{ famille.nomFamille }}</h1>
+    <h1>Suppression de "{{ famille.nomFamille }}"</h1>
     <h2>Attention en suppriment cette famille tous les animaux liés à cette famille seront supprimer </h2>
     {{ form_start(form, {'method': 'POST', 'attr': {'class': 'd-flex'}}) }}
         {{ form_row(form.delete, { 'label': 'Supprimer', 'attr': {'class': 'btn btn-primary'}} )}}

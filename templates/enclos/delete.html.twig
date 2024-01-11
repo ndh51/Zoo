@@ -2,7 +2,7 @@
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 {% block body %}
     <title>Suppression de {{ enclos.nomEnclos }}</title>
-    <h1>Suppression de {{ enclos.nomEnclos }}</h1>
+    <h1>Suppression de "{{ enclos.nomEnclos }}"</h1>
     <h2>Attention en supprimant cet enclos, tous les animaux et évènements liés à cet enclos seront supprimé</h2>
     <h3>Les animaux liés à cet enclos sont :</h3>
     {{ include('animal/_animal.html.twig', {'animaux' : enclos.animals}) }}
