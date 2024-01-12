@@ -9,6 +9,11 @@ p{
     padding: 2%;
 }
 
+.creneau{
+    text-align: center;
+    text-decoration: underline;
+}
+
 .corps-entity{
     display: flex;
     flex-direction: row;
