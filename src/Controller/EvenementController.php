@@ -50,7 +50,6 @@ class EvenementController extends AbstractController
     public function update(Evenement $evenement, ImageRepository $imgRepo, Request $request, EntityManagerInterface $entityManager): Response
     {
         $img = $imgRepo->find($evenement->getImage());
-
         $form = $this->createForm(EvenementType::class, $evenement, ['default_image' => $img]);
 
         $form->handleRequest($request);

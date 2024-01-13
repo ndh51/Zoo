@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,11 +42,11 @@ class AnimalController extends AbstractController
 
     #[isGranted('ROLE_ADMIN')]
     #[Route('/animal/create', name: 'app_animal_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, ImageRepository $imgRepo, EntityManagerInterface $entityManager): Response
     {
-
+        $img = $imgRepo->find(1);
         $animal = new Animal();
-        $form = $this->createForm(AnimalType::class, $animal);
+        $form = $this->createForm(AnimalType::class, $animal, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,9 +62,10 @@ class AnimalController extends AbstractController
 
     #[isGranted('ROLE_ADMIN')]
     #[Route('/animal/{id}/update', name: 'app_animal_update', requirements: ['id' => '\d+'])]
-    public function update(Request $request, ?Animal $animal, EntityManagerInterface $entityManager): Response
+    public function update(Request $request, ?Animal $animal, ImageRepository $imgRepo, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(AnimalType::class, $animal);
+        $img = $imgRepo->find($animal->getImage());
+        $form = $this->createForm(AnimalType::class, $animal, ['default_image' => $img]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
